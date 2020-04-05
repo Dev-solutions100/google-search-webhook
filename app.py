@@ -17,6 +17,7 @@ from flask import make_response
 
 from googleapiclient.discovery import build
 import pprint
+import duckduckgo
 
 # Flask app should start in global layout
 app = Flask(__name__)
@@ -84,12 +85,14 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     print(response.text)
 #     print("FREEEEEEEEEEEEEE")
     
-    url="https://api.duckduckgo.com/"
-    querystring = {"no_redirect":"1","no_html":"1","skip_disambig":"1","q":search_term,"format":"json"}
-    headers={}
-    response = requests.request("GET", url, headers=headers, params=querystring)
+#     url="https://api.duckduckgo.com/"
+#     querystring = {"no_redirect":"1","no_html":"1","skip_disambig":"1","q":search_term,"format":"json"}
+#     headers={}
+#     response = requests.request("GET", url, headers=headers, params=querystring)
+
+    r = duckduckgo.query(search_term)
     print("FREEEEEEEEEEEEEE")
-    print(response)
+    print(r)
     print("FREEEEEEEEEEEEEE")
     
     return res['items']
