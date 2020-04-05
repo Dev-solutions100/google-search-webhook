@@ -112,17 +112,19 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     parsed = BeautifulSoup(data)
     print("OK")
     print(data)
-    soup = BeautifulSoup(data, 'html.parser')
+    soup = BeautifulSoup(data, 'lxml')
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
     print("FREEEEEEEEEEEEEE2")
-    print(parsed)
-    a=soup.find_all("span", class_="f")[0]
-    b=soup.find_all("span", class_="st")[0]
-    c=soup.find_all("div", class_="r")[0]
-    print(a)
-    print(b)
-    print(c)
+    #print(parsed)
+    for g in soup.find_all(class_='st'):
+    print(g)
+#     a=soup.find_all("span", class_="f")[0]
+#     b=soup.find_all("span", class_="st")[0]
+#     c=soup.find_all("div", class_="r")[0]
+#     print(a)
+#     print(b)
+#     print(c)
     print("FREEEEEEEEEEEEEE2")
     
     return r1
