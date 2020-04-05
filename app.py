@@ -109,7 +109,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
     results = topics.findAll('div', {'class': re.compile('results_*')})
     print("FREEEEEEEEEEEEEE")
-    print results[0].text
+    print(results[0].text)
     print("FREEEEEEEEEEEEEE")
     
     return res['items']
