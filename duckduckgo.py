@@ -53,7 +53,7 @@ def query(query, useragent='python-duckduckgo '+str(__version__), safesearch=Tru
     req = urllib.request.Request(url, headers=hdr)
     response = urllib.request.urlopen(req)
 #     response.read()
-    json = j.loads(response.read())
+    json = j.loads(response.read().decode('UTF-8'))
     response.close()
 
     return Results(json)
