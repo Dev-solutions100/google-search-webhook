@@ -73,15 +73,23 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     service = build("customsearch", "v1", developerKey=api_key)
     res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
     
-    url = "https://duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com/"
-    querystring = {"no_redirect":"1","no_html":"1","callback":"process_duckduckgo","skip_disambig":"1","q":search_term,"format":"undefined"}
-    headers = {
-    'x-rapidapi-host': "duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com",
-    'x-rapidapi-key': "1ddaa42a65mshea3707d18590b92p19f14ejsn10f668df0edc"
-    }
+#     url = "https://duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com/"
+#     querystring = {"no_redirect":"1","no_html":"1","callback":"process_duckduckgo","skip_disambig":"1","q":search_term,"format":"undefined"}
+#     headers = {
+#     'x-rapidapi-host': "duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com",
+#     'x-rapidapi-key': "1ddaa42a65mshea3707d18590b92p19f14ejsn10f668df0edc"
+#     }
+#     response = requests.request("GET", url, headers=headers, params=querystring)
+#     print("FREEEEEEEEEEEEEE")
+#     print(response.text)
+#     print("FREEEEEEEEEEEEEE")
+    
+    url="https://api.duckduckgo.com/"
+    querystring = {"no_redirect":"1","no_html":"1","skip_disambig":"1","q":search_term,"format":"json"}
+    headers={}
     response = requests.request("GET", url, headers=headers, params=querystring)
     print("FREEEEEEEEEEEEEE")
-    print(response.text)
+    print(response)
     print("FREEEEEEEEEEEEEE")
     
     return res['items']
