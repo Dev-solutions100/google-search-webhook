@@ -95,22 +95,24 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     response = requests.request("GET", url, headers=headers, params=querystring)
 
 #     r = duckduckgo.get_zci(search_term)
-#     r = duckduckgo.query(search_term)
-#     print("FREEEEEEEEEEEEEE")
-#     print(r.results)
-#     print(r.related)
-#     print(r.answer)
-#     print("FREEEEEEEEEEEEEE")
-    sitr='http://duckduckgo.com/?q='+search_term
-    site = urllib.request.urlopen(sitr)
-    data = site.read()
+    r = duckduckgo.query(search_term)
+    print("FREEEEEEEEEEEEEE")
+    print(r.results)
+    print(r.related)
+    print(r.answer)
+    print("FREEEEEEEEEEEEEE")
 
-    parsed = BeautifulSoup(data)
-    topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
-    results = topics.findAll('div', {'class': re.compile('results_*')})
-    print("FREEEEEEEEEEEEEE")
-    print(results[0].text)
-    print("FREEEEEEEEEEEEEE")
+
+#     sitr='http://duckduckgo.com/?q='+search_term
+#     site = urllib.request.urlopen(sitr)
+#     data = site.read()
+
+#     parsed = BeautifulSoup(data)
+#     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
+#     results = topics.findAll('div', {'class': re.compile('results_*')})
+#     print("FREEEEEEEEEEEEEE")
+#     print(results[0].text)
+#     print("FREEEEEEEEEEEEEE")
     
     return res['items']
 
