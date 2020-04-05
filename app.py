@@ -21,7 +21,7 @@ import pprint
 # Flask app should start in global layout
 app = Flask(__name__)
 
-@app.route('/', methods=['POST'])
+@app.route('/hook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
 
