@@ -90,8 +90,8 @@ def makeWebhookResult(data, searchstring):
 
     return {
         "fulfillmentText": speech,
-        "fulfillmentMessages": [{"text": [speech]}],
-        "messages": [{"speech": speech,"type": 0}],
+        "fulfillmentMessages": [{"text": ["text":speech]}],
+#       "messages": [{"speech": speech,"type": 0}],
         # "data": data,
         # "contextOut": [],
         "source": "google-search-webhook"
