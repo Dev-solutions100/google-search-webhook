@@ -36,11 +36,10 @@ def query(query, useragent='python-duckduckgo '+str(__version__), safesearch=Tru
     meanings = '0' if meanings else '1'
     params = {
         'q': query,
-        'o': 'json',
-        'kp': safesearch,
+        'format': 'json',
         'no_redirect': '1',
-        'no_html': html,
-        'd': meanings,
+        'no_html': '1',
+        't':'covid'
         }
     params.update(kwargs)
     encparams = urllib.parse.urlencode(params)
@@ -54,6 +53,10 @@ def query(query, useragent='python-duckduckgo '+str(__version__), safesearch=Tru
     response = urllib.request.urlopen(req)
 #     response.read()
     json = j.loads(response.read().decode('UTF-8'))
+    print("START")
+    print(response)
+    print(json)
+    print("END")
     response.close()
 
     return Results(json)
