@@ -95,8 +95,7 @@ def makeWebhookResult(data, searchstring):
 #     articleSnippet3 = data[0].get('snippet')
     # print(json.dumps(item, indent=4))
 
-    speech = "*Please view these articles for more information on " + searchstring + ":* " \
-             +\t+\n+ articleUrl
+    speech = "*Please view these articles for more information on " + searchstring + ":* " + "\n\n" + "1) "+ articleSnippet1+ "\n"+articleUrl1+ "\n\n" + "2) "+ articleSnippet2+ "\n"+articleUrl2
 
     print("Response:")
     print(speech)
