@@ -58,7 +58,7 @@ def processRequest(req):
 #         searchstring += " "
     searchstring=json_params
     print(searchstring)
-    searchString = "robot %s" % searchstring
+    searchString = searchstring
 
     # KEYS SHOULDNT BE DISPLAYED
     my_api_key = "AIzaSyCdGOE_FUNxilcAd4hge330m5qr6p9K0Rc"
