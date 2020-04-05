@@ -93,10 +93,9 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     #r = duckduckgo.get_zci(search_term)
     r = duckduckgo.query(search_term)
     print("FREEEEEEEEEEEEEE")
-    print(r.Results)
-    print(r.RelatedTopics)
-    print(r.Answer)
-    print(r.AbstractText)
+    print(r.results)
+    print(r.related)
+    print(r.answer)
     print("FREEEEEEEEEEEEEE")
     
     return res['items']
