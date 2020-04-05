@@ -25,6 +25,7 @@ import duckduckgo
 
 # Flask app should start in global layout
 app = Flask(__name__)
+soup = BeautifulSoup(html_doc, 'html.parser')
 
 @app.route('/hook', methods=['POST'])
 def webhook():
@@ -75,19 +76,19 @@ def processRequest(req):
 
 
 def google_search(search_term, api_key, cse_id, **kwargs):
-    service = build("customsearch", "v1", developerKey=api_key)
-    res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
+#     service = build("customsearch", "v1", developerKey=api_key)
+#     res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
     
-    url = "https://duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com/"
-    querystring = {"no_redirect":"1","no_html":"1","callback":"process_duckduckgo","skip_disambig":"1","q":search_term,"format":"undefined"}
-    headers = {
-    'x-rapidapi-host': "duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com",
-    'x-rapidapi-key': "1ddaa42a65mshea3707d18590b92p19f14ejsn10f668df0edc"
-    }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    print("FREEEEEEEEEEEEEE")
-    print(response.text)
-    print("FREEEEEEEEEEEEEE")
+#     url = "https://duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com/"
+#     querystring = {"no_redirect":"1","no_html":"1","callback":"process_duckduckgo","skip_disambig":"1","q":search_term,"format":"undefined"}
+#     headers = {
+#     'x-rapidapi-host': "duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com",
+#     'x-rapidapi-key': "1ddaa42a65mshea3707d18590b92p19f14ejsn10f668df0edc"
+#     }
+#     response = requests.request("GET", url, headers=headers, params=querystring)
+#     print("FREEEEEEEEEEEEEE")
+#     print(response.text)
+#     print("FREEEEEEEEEEEEEE")
     
 #     url="https://api.duckduckgo.com/"
 #     querystring = {"no_redirect":"1","no_html":"1","skip_disambig":"1","q":search_term,"format":"json"}
@@ -95,17 +96,17 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     response = requests.request("GET", url, headers=headers, params=querystring)
 
     r1 = duckduckgo.get_zci(search_term)
-    r = duckduckgo.query(search_term)
+#     r = duckduckgo.query(search_term)
     print("FREEEEEEEEEEEEEE1")
-    print(r.results)
-    print(r.related)
-    print(r.answer)
+#     print(r.results)
+#     print(r.related)
+#     print(r.answer)
     print(r1)
     print("FREEEEEEEEEEEEEE1")
 
 
-    sitr='http://duckduckgo.com/?q='+search_term
-    site = urllib.request.urlopen(sitr)
+    sitesearch='http://www.google.com/?q='+search_term
+    site = urllib.request.urlopen(sitesearch)
     data = site.read()
 
     parsed = BeautifulSoup(data)
@@ -113,13 +114,19 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
     print("FREEEEEEEEEEEEEE2")
     print(parsed)
+    a=soup.find_all("span", class_="f")[0]
+    b=soup.find_all("span", class_="st")[0]
+    c=soup.find_all("div", class_="r")[0]
+    print(a)
+    print(b)
+    print(c)
     print("FREEEEEEEEEEEEEE2")
     
-    return res['items']
+    return r1
 
 
 def makeWebhookResult(data, searchstring):
-    if (data[0] is None):
+    if (data is None):
         return {
         "fulfillmentText": speech,
         "fulfillmentMessages": [{"text": {"text": ["Oops, unable to find anything on the web!"]}}],
@@ -128,18 +135,18 @@ def makeWebhookResult(data, searchstring):
         "source": "google-search-webhook"
     }
 
-    articleUrl1 = data[0].get('formattedUrl')
-    articleSnippet1 = data[0].get('snippet')
+#     articleUrl1 = data[0].get('formattedUrl')
+#     articleSnippet1 = data[0].get('snippet')
     
-    articleUrl2 = data[1].get('formattedUrl')
-    articleSnippet2 = data[1].get('snippet')
+#     articleUrl2 = data[1].get('formattedUrl')
+#     articleSnippet2 = data[1].get('snippet')
     
 #     articleUrl3 = data[0].get('formattedUrl')
 #     articleSnippet3 = data[0].get('snippet')
     # print(json.dumps(item, indent=4))
 
-    speech = "*Please view these articles for latest information on " + searchstring + ":* " + "\n\n" + "1) "+ articleSnippet1+ "\n"+articleUrl1+ "\n\n" + "2) "+ articleSnippet2+ "\n"+articleUrl2
-
+   # speech = "*Please view these articles for latest information on " + searchstring + ":* " + "\n\n" + "1) "+ articleSnippet1+ "\n"+articleUrl1+ "\n\n" + "2) "+ articleSnippet2+ "\n"+articleUrl2
+    speech=data
     print("Response:")
     print(speech)
 
