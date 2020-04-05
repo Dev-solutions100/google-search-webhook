@@ -78,41 +78,42 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     service = build("customsearch", "v1", developerKey=api_key)
     res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
     
-#     url = "https://duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com/"
-#     querystring = {"no_redirect":"1","no_html":"1","callback":"process_duckduckgo","skip_disambig":"1","q":search_term,"format":"undefined"}
-#     headers = {
-#     'x-rapidapi-host': "duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com",
-#     'x-rapidapi-key': "1ddaa42a65mshea3707d18590b92p19f14ejsn10f668df0edc"
-#     }
-#     response = requests.request("GET", url, headers=headers, params=querystring)
-#     print("FREEEEEEEEEEEEEE")
-#     print(response.text)
-#     print("FREEEEEEEEEEEEEE")
+    url = "https://duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com/"
+    querystring = {"no_redirect":"1","no_html":"1","callback":"process_duckduckgo","skip_disambig":"1","q":search_term,"format":"undefined"}
+    headers = {
+    'x-rapidapi-host': "duckduckgo-duckduckgo-zero-click-info.p.rapidapi.com",
+    'x-rapidapi-key': "1ddaa42a65mshea3707d18590b92p19f14ejsn10f668df0edc"
+    }
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    print("FREEEEEEEEEEEEEE")
+    print(response.text)
+    print("FREEEEEEEEEEEEEE")
     
 #     url="https://api.duckduckgo.com/"
 #     querystring = {"no_redirect":"1","no_html":"1","skip_disambig":"1","q":search_term,"format":"json"}
 #     headers={}
 #     response = requests.request("GET", url, headers=headers, params=querystring)
 
-#     r = duckduckgo.get_zci(search_term)
+    r1 = duckduckgo.get_zci(search_term)
     r = duckduckgo.query(search_term)
-    print("FREEEEEEEEEEEEEE")
+    print("FREEEEEEEEEEEEEE1")
     print(r.results)
     print(r.related)
     print(r.answer)
-    print("FREEEEEEEEEEEEEE")
+    print(r1)
+    print("FREEEEEEEEEEEEEE1")
 
 
-#     sitr='http://duckduckgo.com/?q='+search_term
-#     site = urllib.request.urlopen(sitr)
-#     data = site.read()
+    sitr='http://duckduckgo.com/?q='+search_term
+    site = urllib.request.urlopen(sitr)
+    data = site.read()
 
-#     parsed = BeautifulSoup(data)
+    parsed = BeautifulSoup(data)
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
-#     print("FREEEEEEEEEEEEEE")
-#     print(results[0].text)
-#     print("FREEEEEEEEEEEEEE")
+    print("FREEEEEEEEEEEEEE2")
+    print(parsed)
+    print("FREEEEEEEEEEEEEE2")
     
     return res['items']
 
