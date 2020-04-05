@@ -44,7 +44,10 @@ def processRequest(req):
 #         return {}
     json_params = req.get("queryResult").get("queryText")
     searchstring = ''    # this creates the overall topic which covers user's raw query
-
+    
+    print("JSON params is")
+    print(json_params)
+    print("DONE")
     for value in json_params.values():
         searchstring += value
         searchstring += " "
