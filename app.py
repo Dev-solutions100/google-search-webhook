@@ -118,7 +118,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     print("FREEEEEEEEEEEEEE2")
     #print(parsed)
     for g in soup.find_all(class_='st'):
-    print(g)
+        print(g)
 #     a=soup.find_all("span", class_="f")[0]
 #     b=soup.find_all("span", class_="st")[0]
 #     c=soup.find_all("div", class_="r")[0]
