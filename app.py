@@ -58,7 +58,7 @@ def processRequest(req):
     # KEYS SHOULDNT BE DISPLAYED
     my_api_key = "AIzaSyCdGOE_FUNxilcAd4hge330m5qr6p9K0Rc"
     my_cse_id = "005871159096424944872:s8zbwrmva57"
-    searchResults = google_search(searchString, my_api_key, my_cse_id, num=3,siteSearch="en.wikipedia.org",siteSearchFilter="i")    # search for the topic
+    searchResults = google_search(searchString, my_api_key, my_cse_id, num=3)    # search for the topic
     print("Search results are")
     print(searchResults)
     print("DONE RESULTS")
