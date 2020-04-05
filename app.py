@@ -92,7 +92,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 
     r = duckduckgo.query(search_term)
     print("FREEEEEEEEEEEEEE")
-    print(r.related[1].text)
+    print(r.results[0].text)
     print("FREEEEEEEEEEEEEE")
     
     return res['items']
