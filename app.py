@@ -48,9 +48,10 @@ def processRequest(req):
     print("JSON params is")
     print(json_params)
     print("DONE")
-    for value in json_params.values():
-        searchstring += value
-        searchstring += " "
+#     for value in json_params.values():
+#         searchstring += value
+#         searchstring += " "
+    searchstring=json_params
     print(searchstring)
     searchString = "robot %s" % searchstring
 
