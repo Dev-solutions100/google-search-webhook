@@ -40,9 +40,9 @@ def webhook():
 # construct search query from result.parameters
 def processRequest(req):
 
-    if req.get("result").get("action") != "googleSearch":
-        return {}
-    json_params = req.get("result").get("parameters")
+#     if req.get("result").get("action") != "googleSearch":
+#         return {}
+    json_params = req.get("queryResult").get("queryText")
     searchstring = ''    # this creates the overall topic which covers user's raw query
 
     for value in json_params.values():
@@ -83,8 +83,8 @@ def makeWebhookResult(data, searchstring):
     print(speech)
 
     return {
-        "speech": speech,
-        "displayText": speech,
+        "fulfillmentText": speech,
+        "fulfillmentMessages": [{"text": [speech]}],
         # "data": data,
         # "contextOut": [],
         "source": "google-search-webhook"
