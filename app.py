@@ -58,7 +58,7 @@ def processRequest(req):
     # KEYS SHOULDNT BE DISPLAYED
     my_api_key = "AIzaSyCdGOE_FUNxilcAd4hge330m5qr6p9K0Rc"
     my_cse_id = "005871159096424944872:s8zbwrmva57"
-    searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d3")    # search for the topic
+    searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
     print("Search results are")
     print(searchResults)
     print("DONE RESULTS")
@@ -95,7 +95,7 @@ def makeWebhookResult(data, searchstring):
 #     articleSnippet3 = data[0].get('snippet')
     # print(json.dumps(item, indent=4))
 
-    speech = "*Please view these articles for more information on " + searchstring + ":* " + "\n\n" + "1) "+ articleSnippet1+ "\n"+articleUrl1+ "\n\n" + "2) "+ articleSnippet2+ "\n"+articleUrl2
+    speech = "*Please view these articles for latest information on " + searchstring + ":* " + "\n\n" + "1) "+ articleSnippet1+ "\n"+articleUrl1+ "\n\n" + "2) "+ articleSnippet2+ "\n"+articleUrl2
 
     print("Response:")
     print(speech)
