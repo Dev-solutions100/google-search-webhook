@@ -25,7 +25,7 @@ import duckduckgo
 
 # Flask app should start in global layout
 app = Flask(__name__)
-soup = BeautifulSoup(html_doc, 'html.parser')
+
 
 @app.route('/hook', methods=['POST'])
 def webhook():
@@ -110,6 +110,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     data = site.read()
 
     parsed = BeautifulSoup(data)
+    soup = BeautifulSoup(parsed, 'html.parser')
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
     print("FREEEEEEEEEEEEEE2")
