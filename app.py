@@ -3,7 +3,7 @@
 from __future__ import print_function
 from future.standard_library import install_aliases
 install_aliases()
-
+import requests
 from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
 from urllib.error import HTTPError
@@ -72,6 +72,18 @@ def processRequest(req):
 def google_search(search_term, api_key, cse_id, **kwargs):
     service = build("customsearch", "v1", developerKey=api_key)
     res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
+    
+    url = "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/spelling/AutoComplete"
+    querystring = {"text":search_term}
+    headers = {
+    'x-rapidapi-host': "contextualwebsearch-websearch-v1.p.rapidapi.com",
+    'x-rapidapi-key': "1ddaa42a65mshea3707d18590b92p19f14ejsn10f668df0edc"
+    }
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    print("FREEEEEEEEEEEEEE")
+    print(response.text)
+    print("FREEEEEEEEEEEEEE")
+    
     return res['items']
 
 
