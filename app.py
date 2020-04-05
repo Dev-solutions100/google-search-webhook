@@ -111,8 +111,8 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 
     parsed = BeautifulSoup(data)
     print("OK")
-    print(parsed)
-    soup = BeautifulSoup(parsed, 'html.parser')
+    print(data)
+    soup = BeautifulSoup(data, 'html.parser')
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
     print("FREEEEEEEEEEEEEE2")
