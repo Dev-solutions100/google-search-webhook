@@ -90,9 +90,9 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     headers={}
 #     response = requests.request("GET", url, headers=headers, params=querystring)
 
-    r = duckduckgo.query(search_term)
+    r = duckduckgo.get_zci(search_term)
     print("FREEEEEEEEEEEEEE")
-    print(r.results[0].text)
+    print(r)
     print("FREEEEEEEEEEEEEE")
     
     return res['items']
