@@ -2,5 +2,4 @@ requests==2.21.0
 Flask==0.12
 future==0.16.0
 google_api_python_client==1.6.2
-urllib
 urllib2
