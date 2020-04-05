@@ -58,7 +58,7 @@ def processRequest(req):
     # KEYS SHOULDNT BE DISPLAYED
     my_api_key = "AIzaSyCdGOE_FUNxilcAd4hge330m5qr6p9K0Rc"
     my_cse_id = "005871159096424944872:s8zbwrmva57"
-    searchResults = google_search(searchString, my_api_key, my_cse_id, num=5,siteSearch="www.youtube.com",siteSearchFilter="e")    # search for the topic
+    searchResults = google_search(searchString, my_api_key, my_cse_id, num=3,siteSearch="en.wikipedia.org",siteSearchFilter="i")    # search for the topic
     print("Search results are")
     print(searchResults)
     print("DONE RESULTS")
@@ -77,13 +77,26 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 
 def makeWebhookResult(data, searchstring):
     if (data[0] is None):
-        return {}
+        return {
+        "fulfillmentText": speech,
+        "fulfillmentMessages": [{"text": {"text": ["Oops, unable to find anything on the web!"]}}],
+        # "data": data,
+        # "contextOut": [],
+        "source": "google-search-webhook"
+    }
 
-    articleUrl = data[0].get('formattedUrl')
+    articleUrl1 = data[0].get('formattedUrl')
+    articleSnippet1 = data[0].get('snippet')
+    
+    articleUrl2 = data[1].get('formattedUrl')
+    articleSnippet2 = data[1].get('snippet')
+    
+#     articleUrl3 = data[0].get('formattedUrl')
+#     articleSnippet3 = data[0].get('snippet')
     # print(json.dumps(item, indent=4))
 
-    speech = "Please view this article for more information on " + searchstring + ": " \
-             + articleUrl
+    speech = "*Please view these articles for more information on " + searchstring + ":* " \
+             +\t+\n+ articleUrl
 
     print("Response:")
     print(speech)
