@@ -154,6 +154,9 @@ def get_zci(q, web_fallback=True, priority=['answer', 'abstract', 'related.0', '
         index = int(ps[1]) if len(ps) > 1 else None
 
         result = getattr(ddg, type)
+        print("START1")
+        print(result)
+        print("END1")
         if index is not None: 
             if not hasattr(result, '__getitem__'): raise TypeError('%s field is not indexable' % type)
             result = result[index] if len(result) > index else None
