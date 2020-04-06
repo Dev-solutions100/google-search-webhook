@@ -105,7 +105,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     print("FREEEEEEEEEEEEEE1")
 
     text = []
-    sitesearch='http://www.google.com/?q='+search_term
+    sitesearch='https://www.google.com/search?q='+search_term
 #     site = urllib.request.urlopen(sitesearch)
 #     data = site.read()
 
