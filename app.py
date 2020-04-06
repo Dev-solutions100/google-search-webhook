@@ -11,6 +11,7 @@ from urllib.error import HTTPError
 from bs4 import BeautifulSoup
 import urllib
 import re
+import random
 
 import json
 import os
@@ -120,9 +121,34 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
     print("FREEEEEEEEEEEEEE2")
     #print(parsed)
+    a=1
+    b=1
+    c=1
+    test_list = [1, 2, 3]
+    text1=''
+    text2=''
+    text3=''
+    ran=random.choice(test_list)
     for desc in soup.find_all("span",{"class":"st"}):
-        text.append(desc.text)
-    print(text)
+        if(a==ran):
+            text1=desc.text
+            break
+        a=a+1
+    print(text1)
+    
+    for descc in soup.find_all("span",{"class":"f"}):
+        if(b==ran):
+            text2=descc.text
+            break
+        b=b+1
+    print(text2)
+    
+    for desccc in soup.find_all("h3",{"class":"r"}):
+        if(c==ran):
+            text3=desccc.text
+            break
+        c=c+1
+    print(text3)
 #     a=soup.find_all("span", class_="f")[0]
 #     b=soup.find_all("span", class_="st")[0]
 #     c=soup.find_all("div", class_="r")[0]
