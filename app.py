@@ -105,50 +105,57 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     print(r1)
     print("FREEEEEEEEEEEEEE1")
 
-    text = []
-    sitesearch='https://www.google.com/search?q='+search_term
+    if(r1=='' or r1[:4]=='http'):
+        r1=''
+        sitesearch='https://www.google.com/search?q='+search_term
 #     site = urllib.request.urlopen(sitesearch)
 #     data = site.read()
 
 #     parsed = BeautifulSoup(data)
-    headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
-    source_code = requests.get(sitesearch,headers=headers)
-    plain_text = source_code.text
-    print("OK")
-    print(plain_text)
-    soup = BeautifulSoup(plain_text, "html.parser")
+        headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
+        source_code = requests.get(sitesearch,headers=headers)
+        plain_text = source_code.text
+        print("OK")
+        print(plain_text)
+        soup = BeautifulSoup(plain_text, "html.parser")
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
-    print("FREEEEEEEEEEEEEE2")
+        print("FREEEEEEEEEEEEEE2")
     #print(parsed)
-    a=1
-    b=1
-    c=1
-    test_list = [1, 2, 3]
-    text1=''
-    text2=''
-    text3=''
-    ran=random.choice(test_list)
-    for desc in soup.find_all("span",{"class":"st"}):
-        if(a==ran):
-            text1=desc.text
-            break
-        a=a+1
-    print(text1)
+        a=1
+        b=1
+        c=1
+        test_list = [1, 2, 3, 4]
+        text1=''
+        text2=''
+        text3=''
+        ran=random.choice(test_list)
+        for desc in soup.find_all("span",{"class":"st"}):
+            if(a==ran):
+                text1=desc.text
+                break
+            a=a+1
+        print(text1)
+        r1=text1+" ("
     
-    for descc in soup.find_all("span",{"class":"f"}):
-        if(b==ran):
-            text2=descc.text
-            break
-        b=b+1
-    print(text2)
+        for descc in soup.find_all("div",{"class":"r"}):
+            if(b==ran):
+                children = descc.findChildren("a" , recursive=False)
+                for child in children:
+                    text2= child['href']
+                    break
+            if(b==ran):
+                break
+            b=b+1
+        print(text2)
+        r1=text2+")"
     
-    for desccc in soup.find_all("h3",{"class":"r"}):
-        if(c==ran):
-            text3=desccc.text
-            break
-        c=c+1
-    print(text3)
+#     for desccc in soup.find_all("h3",{"class":"r"}):
+#         if(c==ran):
+#             text3=desccc.text
+#             break
+#         c=c+1
+#     print(text3)
 #     a=soup.find_all("span", class_="f")[0]
 #     b=soup.find_all("span", class_="st")[0]
 #     c=soup.find_all("div", class_="r")[0]
