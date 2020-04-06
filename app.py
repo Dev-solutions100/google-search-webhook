@@ -96,18 +96,21 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     headers={}
 #     response = requests.request("GET", url, headers=headers, params=querystring)
 
-    r1 = duckduckgo.get_zci(search_term)
+    #r1 = duckduckgo.get_zci(search_term)
 #     r = duckduckgo.query(search_term)
     print("FREEEEEEEEEEEEEE1")
 #     print(r.results)
 #     print(r.related)
 #     print(r.answer)
-    print(r1)
-    print("FREEEEEEEEEEEEEE1")
-    rcopy=r1
+
+#     print(r1)
+#     print("FREEEEEEEEEEEEEE1")
+#     rcopy=r1
+    r1=''
     tcopy1='123#*'
     tcopy2='789#*'
-    if(r1=='' or r1[:4]=='http'):
+    #if(r1=='' or r1[:4]=='http'):
+    if(r1==''):
         r1=''
         sitesearch='https://www.google.com/search?q='+search_term
 #     site = urllib.request.urlopen(sitesearch)
@@ -167,7 +170,8 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     print(b)
 #     print(c)
     print("FREEEEEEEEEEEEEE2")
-    if(rcopy=='' or rcopy[:4]=='http'):
+    #if(rcopy=='' or rcopy[:4]=='http'):
+    if(1==1):
         if(tcopy1=='' and tcopy2==''):
             r1='Oops, I found 0 results for your search'
     return r1
