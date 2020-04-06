@@ -136,7 +136,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
                 break
             a=a+1
         print(text1)
-        r1=text1+" ("
+        r1=r1+text1+" ("
     
         for descc in soup.find_all("div",{"class":"r"}):
             if(b==ran):
@@ -163,7 +163,8 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     print(b)
 #     print(c)
     print("FREEEEEEEEEEEEEE2")
-    
+    if(r1=='()'):
+        r1='Oops, I found 0 results for your search'
     return r1
 
 
