@@ -106,18 +106,20 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 
 
     sitesearch='http://www.google.com/?q='+search_term
-    site = urllib.request.urlopen(sitesearch)
-    data = site.read()
+#     site = urllib.request.urlopen(sitesearch)
+#     data = site.read()
 
-    parsed = BeautifulSoup(data)
+#     parsed = BeautifulSoup(data)
+    source_code = requests.get(sitesearch)
+    plain_text = source_code.text
     print("OK")
-    print(data)
-    soup = BeautifulSoup(data, 'lxml')
+    print(plain_text)
+    soup = BeautifulSoup(plain_text, "html.parser")
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
     print("FREEEEEEEEEEEEEE2")
     #print(parsed)
-    for g in soup.find_all(class_='st'):
+    for g in soup.find_all("span",{"class":"st"}):
         print(g)
 #     a=soup.find_all("span", class_="f")[0]
 #     b=soup.find_all("span", class_="st")[0]
