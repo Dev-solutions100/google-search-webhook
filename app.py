@@ -114,8 +114,8 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     data = site.read()
 
 #     parsed = BeautifulSoup(data)
-        #headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
-        source_code = requests.get(sitesearch)
+        headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
+        source_code = requests.get(sitesearch,headers=headers)
         plain_text = source_code.text
         print("OK")
         print(plain_text)
