@@ -104,7 +104,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     print(r.answer)
     print(r1)
     print("FREEEEEEEEEEEEEE1")
-
+    rcopy=r1
     if(r1=='' or r1[:4]=='http'):
         r1=''
         sitesearch='https://www.google.com/search?q='+search_term
@@ -163,8 +163,9 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     print(b)
 #     print(c)
     print("FREEEEEEEEEEEEEE2")
-    if(text1=='' and text2==''):
-        r1='Oops, I found 0 results for your search'
+    if(rcopy=='' or rcopy[:4]=='http'):
+        if(text1=='' and text2==''):
+            r1='Oops, I found 0 results for your search'
     return r1
 
 
