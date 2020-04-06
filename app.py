@@ -105,6 +105,8 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     print(r1)
     print("FREEEEEEEEEEEEEE1")
     rcopy=r1
+    tcopy1='123#*'
+    tcopy2='789#*'
     if(r1=='' or r1[:4]=='http'):
         r1=''
         sitesearch='https://www.google.com/search?q='+search_term
@@ -137,6 +139,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
             a=a+1
         print(text1)
         r1=r1+text1+" ("
+        tcopy1=text1
     
         for descc in soup.find_all("div",{"class":"r"}):
             if(b==ran):
@@ -149,6 +152,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
             b=b+1
         print(text2)
         r1=r1+text2+")"
+        tcopy2=text2
     
 #     for desccc in soup.find_all("h3",{"class":"r"}):
 #         if(c==ran):
@@ -164,7 +168,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     print(c)
     print("FREEEEEEEEEEEEEE2")
     if(rcopy=='' or rcopy[:4]=='http'):
-        if(text1=='' and text2==''):
+        if(tcopy1=='' and tcopy2==''):
             r1='Oops, I found 0 results for your search'
     return r1
 
