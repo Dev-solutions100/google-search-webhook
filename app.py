@@ -148,7 +148,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
                 break
             b=b+1
         print(text2)
-        r1=text2+")"
+        r1=r1+text2+")"
     
 #     for desccc in soup.find_all("h3",{"class":"r"}):
 #         if(c==ran):
