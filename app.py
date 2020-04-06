@@ -104,13 +104,14 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     print(r1)
     print("FREEEEEEEEEEEEEE1")
 
-
+    text = []
     sitesearch='http://www.google.com/?q='+search_term
 #     site = urllib.request.urlopen(sitesearch)
 #     data = site.read()
 
 #     parsed = BeautifulSoup(data)
-    source_code = requests.get(sitesearch)
+    headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
+    source_code = requests.get(sitesearch,headers=headers)
     plain_text = source_code.text
     print("OK")
     print(plain_text)
@@ -119,8 +120,9 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
     print("FREEEEEEEEEEEEEE2")
     #print(parsed)
-    for g in soup.find_all("span",{"class":"st"}):
-        print(g)
+    for desc in soup.find_all("span",{"class":"st"}):
+        text.append(desc.text)
+    print(text)
 #     a=soup.find_all("span", class_="f")[0]
 #     b=soup.find_all("span", class_="st")[0]
 #     c=soup.find_all("div", class_="r")[0]
