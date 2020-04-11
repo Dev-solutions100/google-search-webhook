@@ -86,7 +86,7 @@ def maps_search():
     respo=respo.json()
     print(respo.get("Global").get("TotalConfirmed"))
     print("FREEEEEEEEEEEEEE")
-    r1="abc"
+    r1="🇮🇳 *India*"
     return r1
 
 
