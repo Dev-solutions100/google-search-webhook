@@ -81,7 +81,7 @@ def processRequest(req):
 
 def maps_search():
     url = "https://api.covid19api.com/summary"
-    response = requests.request("GET", url, headers=headers, params=querystring)
+    response = requests.request("GET", url)
     print("FREEEEEEEEEEEEEE")
     print(response)
     print("FREEEEEEEEEEEEEE")
