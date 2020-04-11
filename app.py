@@ -100,7 +100,7 @@ def maps_search():
     i2=respo[0].get("Recovered")
     i3=respo[0].get("Deaths")
     r1=" *India (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)+"\n\n"+" *Globally (Real Time)*\n\n Total cases: "+str(g1)+"\n Total recovery: "+str(g2)+"\n Total deaths: "+str(g3)
-    r2="Reply any country's name to see its cases (Example: *'Italy'*)\n\nReply *'Back'* to go back to Main menu"
+    r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply *'Back'* to go back to Main menu"
     return r1
 
 
