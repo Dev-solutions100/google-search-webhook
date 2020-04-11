@@ -49,6 +49,7 @@ def processRequest(req):
 
 #     if req.get("result").get("action") != "googleSearch":
 #         return {}
+    json_params1= req.get("queryResult").get("displayName")
     json_params = req.get("queryResult").get("queryText")
     searchstring = ''    # this creates the overall topic which covers user's raw query
     
@@ -65,7 +66,10 @@ def processRequest(req):
     # KEYS SHOULDNT BE DISPLAYED
     my_api_key = "AIzaSyCdGOE_FUNxilcAd4hge330m5qr6p9K0Rc"
     my_cse_id = "005871159096424944872:s8zbwrmva57"
-    searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
+    if(json_params1=='Real Time Cases'):
+        searchResults=maps_search()
+    else:
+        searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
     print("Search results are")
     print(searchResults)
     print("DONE RESULTS")
@@ -74,6 +78,15 @@ def processRequest(req):
 
     res = makeWebhookResult(searchResults, searchstring)
     return res
+
+def maps_search():
+    url = "https://api.covid19api.com/summary"
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    print("FREEEEEEEEEEEEEE")
+    print(response)
+    print("FREEEEEEEEEEEEEE")
+    r1="abc"
+    return r1
 
 
 def google_search(search_term, api_key, cse_id, **kwargs):
@@ -98,7 +111,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 
     #r1 = duckduckgo.get_zci(search_term)
 #     r = duckduckgo.query(search_term)
-    print("FREEEEEEEEEEEEEE1")
+#    print("FREEEEEEEEEEEEEE1")
 #     print(r.results)
 #     print(r.related)
 #     print(r.answer)
@@ -130,7 +143,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         a=1
         b=1
         c=1
-        test_list = [1, 2, 3, 4, 5]
+        test_list = [1, 2, 3]
         text1=''
         text2=''
         text3=''
