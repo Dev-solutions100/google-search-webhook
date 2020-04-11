@@ -69,6 +69,8 @@ def processRequest(req):
     my_cse_id = "005871159096424944872:s8zbwrmva57"
     if(json_params1=='Real Time Cases'):
         searchResults=maps_search()
+    elif(json_params1=='Real Time Cases - custom'):
+        searchResults=maps_search1(searchString)
     else:
         searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
     print("Search results are")
@@ -103,6 +105,51 @@ def maps_search():
     r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply *'Back'* to go back to Main menu"
     return r1
 
+def maps_search1(data):
+    global r2
+#     url = "https://api.covid19api.com/summary"
+#     respo = requests.request("GET", url)
+#     print("FREEEEEEEEEEEEEE")
+#     respo=respo.json()
+#     print(respo.get("Global").get("TotalConfirmed"))
+#     print("FREEEEEEEEEEEEEE")
+#     g1=respo.get("Global").get("TotalConfirmed")
+#     g2=respo.get("Global").get("TotalRecovered")
+#     g3=respo.get("Global").get("TotalDeaths")
+    text1=''
+    for ele in data:
+        if(ele!=' '):
+            text1=text1+ele.lower()
+        else:
+            text1=text1+'-'
+    data1=''
+    a=0
+    b=0
+    for ele in data:
+        if(a==0):
+            data1=data1+ele.upper()
+            a=1
+        else:
+            if(ele==' '):
+                b=1
+                data1=data1+ele
+            else:
+                if(b==0):
+                    data1=data1+ele
+                else:
+                    data1=data1+ele.upper()
+                    b=0
+    url = "https://api.covid19api.com/live/country/"+text1+"/status/confirmed"
+    respo = requests.request("GET", url)
+    #print("FREEEEEEEEEEEEEE")
+    respo=respo.json()
+    #print("FREEEEEEEEEEEEEE")
+    i1=respo[0].get("Confirmed")
+    i2=respo[0].get("Recovered")
+    i3=respo[0].get("Deaths")
+    r1=" *"+data1+" (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)
+    r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply *'Back'* to go back to Main menu"
+    return r1
 
 def google_search(search_term, api_key, cse_id, **kwargs):
     global r2
