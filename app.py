@@ -171,17 +171,17 @@ def google_search(search_term, api_key, cse_id, **kwargs):
                 break
             a=a+1
         print(text3)
-        c=0
+        d=0
         if(text3==''):
             text1=''
         else:
             for elem in text3:
-                if(c==19):
+                if(d==20):
                     break
                 if(elem!=' '):
                     text1=text1+elem
                 else:
-                    c++
+                    d=d+1
         r1=r1+text1+" ("
         tcopy1=text1
     
