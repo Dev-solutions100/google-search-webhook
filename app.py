@@ -91,10 +91,9 @@ def maps_search():
     g3=respo.get("Global").get("TotalDeaths")
     url = "https://api.covid19api.com/live/country/india/status/confirmed"
     respo = requests.request("GET", url)
-    print("FREEEEEEEEEEEEEE")
+    #print("FREEEEEEEEEEEEEE")
     respo=respo.json()
-    print(respo.get("Global").get("TotalConfirmed"))
-    print("FREEEEEEEEEEEEEE")
+    #print("FREEEEEEEEEEEEEE")
     i1=respo[0].get("Confirmed")
     i2=respo[0].get("Recovered")
     i3=respo[0].get("Deaths")
