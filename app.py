@@ -49,7 +49,7 @@ def processRequest(req):
 
 #     if req.get("result").get("action") != "googleSearch":
 #         return {}
-    json_params1= req.get("queryResult").get("displayName")
+    json_params1= req.get("queryResult").get("intent").get("displayName")
     json_params = req.get("queryResult").get("queryText")
     searchstring = ''    # this creates the overall topic which covers user's raw query
     
