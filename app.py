@@ -27,6 +27,7 @@ import duckduckgo
 # Flask app should start in global layout
 app = Flask(__name__)
 
+r2=''
 
 @app.route('/hook', methods=['POST'])
 def webhook():
@@ -98,6 +99,7 @@ def maps_search():
     i2=respo[0].get("Recovered")
     i3=respo[0].get("Deaths")
     r1=" *India (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)+"\n\n"+" *Globally (Real Time)*\n\n Total cases: "+str(g1)+"\n Total recovery: "+str(g2)+"\n Total deaths: "+str(g3)
+    r2="Reply with a country's name to see its cases (Example: *'Italy'*)\n Or reply with *'Back'* to go back to Main menu"
     return r1
 
 
@@ -226,14 +228,22 @@ def makeWebhookResult(data, searchstring):
     speech=data
     print("Response:")
     print(speech)
-
-    return {
-        "fulfillmentText": speech,
-        "fulfillmentMessages": [{"text": {"text": [speech]}}],
-        # "data": data,
-        # "contextOut": [],
-        "source": "google-search-webhook"
-    }
+    if(r2==''):
+        return {
+            "fulfillmentText": speech,
+            "fulfillmentMessages": [{"text": {"text": [speech]}}],
+            # "data": data,
+            # "contextOut": [],
+            "source": "google-search-webhook"
+        }
+    else:
+        return {
+            "fulfillmentText": speech,
+            "fulfillmentMessages": [{"text": {"text": [speech]}},{"text": {"text": [r2]}}],
+            # "data": data,
+            # "contextOut": [],
+            "source": "google-search-webhook"
+        }
 
 
 if __name__ == '__main__':
