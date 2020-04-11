@@ -81,6 +81,7 @@ def processRequest(req):
     return res
 
 def maps_search():
+    global r2
     url = "https://api.covid19api.com/summary"
     respo = requests.request("GET", url)
     print("FREEEEEEEEEEEEEE")
@@ -205,6 +206,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 
 
 def makeWebhookResult(data, searchstring):
+    global r2
     if (data is None):
         return {
         "fulfillmentText": speech,
