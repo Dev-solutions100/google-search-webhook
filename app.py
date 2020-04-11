@@ -100,7 +100,7 @@ def maps_search():
     i2=respo[0].get("Recovered")
     i3=respo[0].get("Deaths")
     r1=" *India (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)+"\n\n"+" *Globally (Real Time)*\n\n Total cases: "+str(g1)+"\n Total recovery: "+str(g2)+"\n Total deaths: "+str(g3)
-    r2="Reply with a country's name to see its cases (Example: *'Italy'*)\n\nReply with *'Back'* to go back to Main menu"
+    r2="Reply any country's name to see its cases (Example: *'Italy'*)\n\nReply *'Back'* to go back to Main menu"
     return r1
 
 
@@ -160,7 +160,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         a=1
         b=1
         c=1
-        test_list = [1, 2, 3]
+        test_list = [1, 2, 3, 4]
         text1=''
         text2=''
         text3=''
@@ -181,6 +181,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
                 if(elem!=' '):
                     text1=text1+elem
                 else:
+                    text1=text1+elem
                     d=d+1
         r1=r1+text1+" ("
         tcopy1=text1
