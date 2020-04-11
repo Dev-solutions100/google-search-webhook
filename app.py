@@ -81,9 +81,9 @@ def processRequest(req):
 
 def maps_search():
     url = "https://api.covid19api.com/summary"
-    response = requests.request("GET", url)
+    respo = requests.request("GET", url)
     print("FREEEEEEEEEEEEEE")
-    print(response.get("Global").get("TotalConfirmed"))
+    print(respo.json())
     print("FREEEEEEEEEEEEEE")
     r1="abc"
     return r1
