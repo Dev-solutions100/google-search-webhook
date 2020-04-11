@@ -100,11 +100,13 @@ def maps_search():
     i2=respo[0].get("Recovered")
     i3=respo[0].get("Deaths")
     r1=" *India (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)+"\n\n"+" *Globally (Real Time)*\n\n Total cases: "+str(g1)+"\n Total recovery: "+str(g2)+"\n Total deaths: "+str(g3)
-    r2="Reply with a country's name to see its cases (Example: *'Italy'*)\n Or reply with *'Back'* to go back to Main menu"
+    r2="Reply with a country's name to see its cases (Example: *'Italy'*)\n\nReply with *'Back'* to go back to Main menu"
     return r1
 
 
 def google_search(search_term, api_key, cse_id, **kwargs):
+    global r2
+    r2=''
 #     service = build("customsearch", "v1", developerKey=api_key)
 #     res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
     
@@ -165,10 +167,21 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         ran=random.choice(test_list)
         for desc in soup.find_all("span",{"class":"st"}):
             if(a==ran):
-                text1=desc.text
+                text3=desc.text
                 break
             a=a+1
-        print(text1)
+        print(text3)
+        c=0
+        if(text3==''):
+            text1=''
+        else:
+            for elem in text3:
+                if(c==19):
+                    break
+                if(elem!=' '):
+                    text1=text1+elem
+                else:
+                    c++
         r1=r1+text1+" ("
         tcopy1=text1
     
