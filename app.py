@@ -11,7 +11,7 @@ from urllib.error import HTTPError
 from bs4 import BeautifulSoup
 import urllib
 import re
-import random
+from random import *
 
 import json
 import os
