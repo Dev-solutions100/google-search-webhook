@@ -11,7 +11,7 @@ from urllib.error import HTTPError
 from bs4 import BeautifulSoup
 import urllib
 import re
-from random import *
+import random
 
 import json
 import os
@@ -111,7 +111,7 @@ def bored():
       
     f = open('quotes.json',) 
     datas = json.load(f)
-    n=randint(0, 498)
+    n=random.randint(0, 498)
     quote=datas[n].get("content")
     author=datas[n].get("author")
     
