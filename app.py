@@ -23,6 +23,7 @@ from flask import make_response
 from googleapiclient.discovery import build
 import pprint
 import duckduckgo
+import facts
 
 # Flask app should start in global layout
 app = Flask(__name__)
@@ -90,7 +91,7 @@ def bored():
     url = "http://www.boredapi.com/api/activity/"
     respo = requests.request("GET", url)
     respo=respo.json()
-    act=respo.get("activity")
+    activity=respo.get("activity")
     
     headers={'User-Agent':'My Library (https://github.com/Dev-solutions100/google-search-webhook)'}
     url = "https://icanhazdadjoke.com/slack"
@@ -98,12 +99,28 @@ def bored():
     respo=respo.json()
     joke=respo.get("attachments")[0].get("text")
     
-    test_list = [1, 2]
-    ran=random.choice(test_list)
-    if(ran==1):
-        
-    else:
-        
+#     test_list = [1, 2]
+#     ran=random.choice(test_list)
+#     if(ran==1):
+    fact=random.choice(facts.useless_facts)
+#     else:
+#         url = "numbersapi.com/random/trivia"
+#         respo = requests.request("GET", url)
+#         respo=respo.json()
+#         act=respo.get("activity")
+      
+    f = open('quotes.json',) 
+    datas = json.load(f)
+    n=randint(0, 498)
+    quote=datas[n].get("content")
+    author=datas[n].get("author")
+    
+    print("JOKE")
+    print(joke)
+    print(activity)
+    print(fact)
+    print(quote)
+    print(author)
         
     
 
@@ -124,9 +141,10 @@ def maps_search():
     #print("FREEEEEEEEEEEEEE")
     respo=respo.json()
     #print("FREEEEEEEEEEEEEE")
-    i1=respo[0].get("Confirmed")
-    i2=respo[0].get("Recovered")
-    i3=respo[0].get("Deaths")
+    l=len(respo)
+    i1=respo[l-1].get("Confirmed")
+    i2=respo[l-1].get("Recovered")
+    i3=respo[l-1].get("Deaths")
     r1=" *India (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)+"\n\n"+" *Globally (Real Time)*\n\n Total cases: "+str(g1)+"\n Total recovery: "+str(g2)+"\n Total deaths: "+str(g3)
     r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply *'Back'* to go back to Main menu"
     return r1
@@ -170,9 +188,10 @@ def maps_search1(data):
     #print("FREEEEEEEEEEEEEE")
     respo=respo.json()
     #print("FREEEEEEEEEEEEEE")
-    i1=respo[0].get("Confirmed")
-    i2=respo[0].get("Recovered")
-    i3=respo[0].get("Deaths")
+    l=len(respo)
+    i1=respo[l-1].get("Confirmed")
+    i2=respo[l-1].get("Recovered")
+    i3=respo[l-1].get("Deaths")
     r1=" *"+data1+" (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)
     r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply *'Back'* to go back to Main menu"
     return r1
