@@ -88,7 +88,9 @@ def processRequest(req):
 
 
 def bored():
-    url = "http://www.boredapi.com/api/activity/"
+    arr=["recreational", "social", "diy", "charity", "cooking", "relaxation", "music"]
+    act=random.choice(arr)
+    url = "http://www.boredapi.com/api/activity?type="+act
     respo = requests.request("GET", url)
     respo=respo.json()
     activity=respo.get("activity")
@@ -145,7 +147,7 @@ def maps_search():
     i1=respo[l-1].get("Confirmed")
     i2=respo[l-1].get("Recovered")
     i3=respo[l-1].get("Deaths")
-    r1=" *India (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)+"\n\n"+" *Globally (Real Time)*\n\n Total cases: "+str(g1)+"\n Total recovery: "+str(g2)+"\n Total deaths: "+str(g3)
+    r1=" *India (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)+"\n\n"+" *Globally (Updated Daily)*\n\n Total cases: "+str(g1)+"\n Total recovery: "+str(g2)+"\n Total deaths: "+str(g3)
     r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply *'Back'* to go back to Main menu"
     return r1
 
