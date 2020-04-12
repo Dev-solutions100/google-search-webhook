@@ -71,6 +71,8 @@ def processRequest(req):
         searchResults=maps_search()
     elif(json_params1=='Real Time Cases - custom'):
         searchResults=maps_search1(searchString)
+    elif(json_params1=='Bored'):
+        searchResults=bored(searchString)
     else:
         searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
     print("Search results are")
@@ -81,6 +83,30 @@ def processRequest(req):
 
     res = makeWebhookResult(searchResults, searchstring)
     return res
+
+
+
+def bored():
+    url = "http://www.boredapi.com/api/activity/"
+    respo = requests.request("GET", url)
+    respo=respo.json()
+    act=respo.get("activity")
+    
+    headers={'User-Agent':'My Library (https://github.com/Dev-solutions100/google-search-webhook)'}
+    url = "https://icanhazdadjoke.com/slack"
+    respo = requests.request("GET", url, headers=headers)
+    respo=respo.json()
+    joke=respo.get("attachments")[0].get("text")
+    
+    test_list = [1, 2]
+    ran=random.choice(test_list)
+    if(ran==1):
+        
+    else:
+        
+        
+    
+
 
 def maps_search():
     global r2
@@ -207,30 +233,30 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         a=1
         b=1
         c=1
-        test_list = [1, 2, 3, 4]
+        test_list = [1, 2, 3]
         text1=''
         text2=''
         text3=''
         ran=random.choice(test_list)
         for desc in soup.find_all("span",{"class":"st"}):
             if(a==ran):
-                text3=desc.text
+                text1=desc.text
                 break
             a=a+1
-        print(text3)
-        d=0
-        if(text3==''):
-            text1=''
-        else:
-            for elem in text3:
-                if(d==20):
-                    break
-                if(elem!=' '):
-                    text1=text1+elem
-                else:
-                    text1=text1+elem
-                    d=d+1
-        r1=r1+text1+" ("
+        print(text1)
+#         d=0
+#         if(text3==''):
+#             text1=''
+#         else:
+#             for elem in text3:
+#                 if(d==20):
+#                     break
+#                 if(elem!=' '):
+#                     text1=text1+elem
+#                 else:
+#                     text1=text1+elem
+#                     d=d+1
+        
         tcopy1=text1
     
         for descc in soup.find_all("div",{"class":"r"}):
@@ -243,7 +269,11 @@ def google_search(search_term, api_key, cse_id, **kwargs):
                 break
             b=b+1
         print(text2)
-        r1=r1+text2+")"
+        if(text2!=''):
+            r1=r1+text1+" ("
+            r1=r1+text2+")"
+        else:
+            r1=r1+text1
         tcopy2=text2
     
 #     for desccc in soup.find_all("h3",{"class":"r"}):
