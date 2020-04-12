@@ -73,7 +73,7 @@ def processRequest(req):
     elif(json_params1=='Real Time Cases - custom'):
         searchResults=maps_search1(searchString)
     elif(json_params1=='Bored'):
-        searchResults=bored(searchString)
+        searchResults=bored()
     else:
         searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
     print("Search results are")
