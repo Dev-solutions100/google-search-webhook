@@ -9,6 +9,7 @@ from urllib.request import urlopen, Request
 from urllib.error import HTTPError
 
 import emoji
+import flag
 from bs4 import BeautifulSoup
 import urllib
 import re
@@ -139,10 +140,13 @@ def news():
         print(text1)    
         print(text2)
         if(text2!=''):
-            r1=r1+emoji.emojize(':in:', use_aliases=True)+" *India: *"+text1+" ("
-            r1=r1+text2+")"
+            if(text1!=''):
+                r1=r1+flag.flagize(":IN:")+" *India:* "+text1+" ("
+                r1=r1+text2+")"
+            else:
+                r1=r1+emoji.emojize(':in:', use_aliases=True)+" *India:* "+text2
         else:
-            r1=r1+text1
+            r1=r1+emoji.emojize(':in:', use_aliases=True)+" *India:* "+text1
         tcopy2=text2
         print("FREEEEEEEEEEEEEE2")
         
@@ -191,7 +195,7 @@ def news():
         if(r1!=''):
             r1=r1+"\n\n"
         if(text2!=''):
-            r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global: *"+text1+" ("
+            r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text1+" ("
             r1=r1+text2+")"
         else:
             r1=r1+text1
