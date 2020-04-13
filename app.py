@@ -364,7 +364,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
         source_code = requests.get(sitesearch,headers=headers)
         plain_text = source_code.text
-        print("OKKKKKKKKKKKKKKKKKKKKKKKKKKK")
+        print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
         #print(plain_text)
         soup1 = BeautifulSoup(plain_text, "html.parser")
         [s.extract() for s in soup1('span')]
