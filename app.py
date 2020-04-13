@@ -360,12 +360,24 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         
         
         sitesearch='https://www.bing.com/search?q='+search_term
-        headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
+        #headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
+        headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
         source_code = requests.get(sitesearch,headers=headers)
         plain_text = source_code.text
         print("OKKKKKKKKKKKKKKKKKKKKKKKKKKK")
-        print(plain_text)
+        #print(plain_text)
         soup1 = BeautifulSoup(plain_text, "html.parser")
+        [s.extract() for s in soup1('span')]
+        unwantedTags = ['a', 'strong', 'cite']
+        for tag in unwantedTags:
+        for match in soup1.findAll(tag):
+            match.replaceWithChildren()
+            
+        results = soup1.findAll('li', { "class" : "b_algo" })
+        for result in results:
+            print "# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#"
+            print "# DESCRIPTION: " + str(result.find('p')).replace(" ", " ")
+            print "# ___________________________________________________________\n#"
         
         
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
