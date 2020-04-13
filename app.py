@@ -370,8 +370,8 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         [s.extract() for s in soup1('span')]
         unwantedTags = ['a', 'strong', 'cite']
         for tag in unwantedTags:
-        for match in soup1.findAll(tag):
-            match.replaceWithChildren()
+            for match in soup1.findAll(tag):
+                match.replaceWithChildren()
             
         results = soup1.findAll('li', { "class" : "b_algo" })
         for result in results:
