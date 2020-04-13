@@ -368,13 +368,15 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         #print(plain_text)
         soup1 = BeautifulSoup(plain_text, "html.parser")
         [s.extract() for s in soup1('span')]
-        unwantedTags = ['a', 'strong', 'cite']
+        unwantedTags = ['strong', 'cite']
         for tag in unwantedTags:
             for match in soup1.findAll(tag):
                 match.replaceWithChildren()
             
         results = soup1.findAll('li', { "class" : "b_algo" })
         for result in results:
+            ch=(result.find('h2')).find('a')
+            print("LINK: "+ch['href']+"\n#")
             print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
             print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
             print("# ___________________________________________________________\n#")
