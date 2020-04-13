@@ -139,7 +139,7 @@ def news():
         print(text1)    
         print(text2)
         if(text2!=''):
-            r1=r1+emoji.emojize(':in:', use_aliases=True)+" *India*"+text1+" ("
+            r1=r1+emoji.emojize(':in:', use_aliases=True)+" *India: *"+text1+" ("
             r1=r1+text2+")"
         else:
             r1=r1+text1
@@ -191,7 +191,7 @@ def news():
         if(r1!=''):
             r1=r1+"\n\n"
         if(text2!=''):
-            r1=r1+emoji.emojize('::globe_with_meridians::', use_aliases=True)+" *Globa*"text1+" ("
+            r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global: *"+text1+" ("
             r1=r1+text2+")"
         else:
             r1=r1+text1
@@ -200,9 +200,9 @@ def news():
         
         if(1==1):
             if(tcopy1=='' and tcopy2=='' and tcopy3=='' and tcopy4==''):
-                r1='Oops, I found 0 results for your search'
+                r1=emoji.emojize(':mag_right:', use_aliases=True)+' Oops, I found 0 results for your search'
             
-        r1=r1+"\n\nReply *4* for more News\nReply *0* for Main Menu"
+        r1=r1+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply *4* for more News\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply *0* for Main Menu"
         return r1
     
     
