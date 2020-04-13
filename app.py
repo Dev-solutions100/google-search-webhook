@@ -408,7 +408,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
                 text2=ch['href']
                 print("LINK: "+ch['href']+"\n#")
                 print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
-                txts=str(result.find('p')).replace(" ", " ")
+                txts=result.find('p')
                 text1=txts.text
                 print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
                 print("# ___________________________________________________________\n#")
