@@ -201,7 +201,7 @@ def news():
             if(tcopy1=='' and tcopy2=='' and tcopy3=='' and tcopy4==''):
                 r1='Oops, I found 0 results for your search'
             
-        r1=r1+"\n\nReply with *0* for Main Menu"
+        r1=r1+u'\U0001f604'.encode('unicode-escape')+"\n\nReply with *0* for Main Menu"
         return r1
     
     
