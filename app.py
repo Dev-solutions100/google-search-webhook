@@ -74,6 +74,8 @@ def processRequest(req):
         searchResults=maps_search1(searchString)
     elif(json_params1=='Bored'):
         searchResults=bored()
+    elif(json_params1=='News'):
+        searchResults=news()
     else:
         searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
     print("Search results are")
@@ -85,7 +87,114 @@ def processRequest(req):
     res = makeWebhookResult(searchResults, searchstring)
     return res
 
-
+def news():
+    global r2
+    r2=''
+    r1=''
+    tcopy1='123#*'
+    tcopy2='789#*'
+    if(r1==''):
+        r1=''
+        sitesearch='https://www.google.com/search?q=coronavirus+india&tbm=nws'
+        headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
+        source_code = requests.get(sitesearch,headers=headers)
+        plain_text = source_code.text
+        print("OK")
+        print(plain_text)
+        soup = BeautifulSoup(plain_text, "html.parser")
+        print("FREEEEEEEEEEEEEE2")
+        a=1
+        b=1
+        c=1
+        test_list = [1, 2]
+        text1=''
+        text2=''
+        text3=''
+        ran=random.choice(test_list)
+        for desc in soup.find_all("span",{"class":"st"}):
+            if(a==ran):
+                text1=desc.text
+                break
+            a=a+1
+        print(text1)
+        
+        tcopy1=text1
+    
+        for descc in soup.find_all("div",{"class":"r"}):
+            if(b==ran):
+                children = descc.findChildren("a" , recursive=False)
+                for child in children:
+                    text2= child['href']
+                    break
+            if(b==ran):
+                break
+            b=b+1
+        print(text2)
+        if(text2!=''):
+            r1=r1+text1+" ("
+            r1=r1+text2+")"
+        else:
+            r1=r1+text1
+        tcopy2=text2
+        
+    tcopy3='123#*'
+    tcopy4='789#*'
+    sitesearch='https://www.google.com/search?q=coronavirus+global&tbm=nws'
+    headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
+    source_code = requests.get(sitesearch,headers=headers)
+    plain_text = source_code.text
+    print("OK")
+    print(plain_text)
+    soup = BeautifulSoup(plain_text, "html.parser")
+    print("FREEEEEEEEEEEEEE2")
+    a=1
+    b=1
+    c=1
+    test_list = [3, 4]
+    text1=''
+    text2=''
+    text3=''
+    ran=random.choice(test_list)
+    for desc in soup.find_all("span",{"class":"st"}):
+        if(a==ran):
+            text1=desc.text
+            break
+        a=a+1
+    print(text1)
+        
+    tcopy3=text1
+    
+    for descc in soup.find_all("div",{"class":"r"}):
+        if(b==ran):
+            children = descc.findChildren("a" , recursive=False)
+            for child in children:
+                text2= child['href']
+                break
+        if(b==ran):
+            break
+        b=b+1
+    print(text2)
+    if(r1!=''):
+        r1+"\n\n"
+    if(text2!=''):
+        r1=r1+text1+" ("
+        r1=r1+text2+")"
+    else:
+        r1=r1+text1
+    tcopy4=text2
+        
+        
+    if(1==1):
+        if(tcopy1=='' and tcopy2=='' and tcopy3=='' and tcopy4==''):
+            r1='Oops, I found 0 results for your search'
+            
+    r1=r1+"\n\nReply with *0* for Main Menu"
+    return r1
+    
+    
+    
+    
+    
 
 def bored():
     arr=["recreational", "social", "diy", "charity", "cooking", "relaxation", "music"]
@@ -148,7 +257,7 @@ def maps_search():
     i2=respo[l-1].get("Recovered")
     i3=respo[l-1].get("Deaths")
     r1=" *India (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)+"\n\n"+" *Globally (Updated Daily)*\n\n Total cases: "+str(g1)+"\n Total recovery: "+str(g2)+"\n Total deaths: "+str(g3)
-    r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply *'Back'* to go back to Main menu"
+    r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply with *0* for Main Menu"
     return r1
 
 def maps_search1(data):
@@ -195,7 +304,7 @@ def maps_search1(data):
     i2=respo[l-1].get("Recovered")
     i3=respo[l-1].get("Deaths")
     r1=" *"+data1+" (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)
-    r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply *'Back'* to go back to Main menu"
+    r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply with *0* for Main Menu"
     return r1
 
 def google_search(search_term, api_key, cse_id, **kwargs):
@@ -245,8 +354,20 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         source_code = requests.get(sitesearch,headers=headers)
         plain_text = source_code.text
         print("OK")
-        print(plain_text)
+        #print(plain_text)
         soup = BeautifulSoup(plain_text, "html.parser")
+        
+        
+        
+        sitesearch='https://www.bing.com/search?q='+search_term
+        headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
+        source_code = requests.get(sitesearch,headers=headers)
+        plain_text = source_code.text
+        print("OKKKKKKKKKKKKKKKKKKKKKKKKKKK")
+        print(plain_text)
+        soup1 = BeautifulSoup(plain_text, "html.parser")
+        
+        
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
         print("FREEEEEEEEEEEEEE2")
