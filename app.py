@@ -116,7 +116,7 @@ def news():
         a=1
         b=1
         c=1
-        test_list = [1, 2, 3, 4]
+        test_list = [1, 2, 3, 4, 5]
         text1=''
         text2=''
         text3=''
@@ -139,7 +139,7 @@ def news():
         print(text1)    
         print(text2)
         if(text2!=''):
-            r1=r1+text1+" ("
+            r1=r1+emoji.emojize(':in:', use_aliases=True)+" *India*"+text1+" ("
             r1=r1+text2+")"
         else:
             r1=r1+text1
@@ -167,7 +167,7 @@ def news():
         a=1
         b=1
         c=1
-        test_list = [1, 2, 3, 4]
+        test_list = [1, 2, 3, 4, 5]
         text1=''
         text2=''
         text3=''
@@ -191,7 +191,7 @@ def news():
         if(r1!=''):
             r1=r1+"\n\n"
         if(text2!=''):
-            r1=r1+text1+" ("
+            r1=r1+emoji.emojize('::globe_with_meridians::', use_aliases=True)+" *Globa*"text1+" ("
             r1=r1+text2+")"
         else:
             r1=r1+text1
@@ -202,7 +202,7 @@ def news():
             if(tcopy1=='' and tcopy2=='' and tcopy3=='' and tcopy4==''):
                 r1='Oops, I found 0 results for your search'
             
-        r1=r1+emoji.emojize(':thumbsup:', use_aliases=True)+"\n\nReply with *0* for Main Menu"
+        r1=r1+"\n\nReply *4* for more News\nReply *0* for Main Menu"
         return r1
     
     
