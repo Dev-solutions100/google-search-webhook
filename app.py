@@ -374,12 +374,12 @@ def google_search(search_term, api_key, cse_id, **kwargs):
                 match.replaceWithChildren()
             
         results = soup1.findAll('li', { "class" : "b_algo" })
-        for result in results:
-            ch=(result.find('h2')).find('a')
-            print("LINK: "+ch['href']+"\n#")
-            print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
-            print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
-            print("# ___________________________________________________________\n#")
+#         for result in results:
+#             ch=(result.find('h2')).find('a')
+#             print("LINK: "+ch['href']+"\n#")
+#             print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+#             print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+#             print("# ___________________________________________________________\n#")
         
         
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
@@ -394,12 +394,29 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         text2=''
         text3=''
         ran=random.choice(test_list)
-        for desc in soup.find_all("span",{"class":"st"}):
+        
+#         for desc in soup.find_all("span",{"class":"st"}):
+#             if(a==ran):
+#                 text1=desc.text
+#                 break
+#             a=a+1
+#         print(text1)
+        
+        for result in results:
             if(a==ran):
-                text1=desc.text
+                ch=(result.find('h2')).find('a')
+                text2=ch['href']
+                print("LINK: "+ch['href']+"\n#")
+                print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+                txts=str(result.find('p')).replace(" ", " ")
+                text1=txts.text
+                print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+                print("# ___________________________________________________________\n#")
                 break
             a=a+1
-        print(text1)
+        
+        
+        
 #         d=0
 #         if(text3==''):
 #             text1=''
@@ -415,15 +432,17 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         
         tcopy1=text1
     
-        for descc in soup.find_all("div",{"class":"r"}):
-            if(b==ran):
-                children = descc.findChildren("a" , recursive=False)
-                for child in children:
-                    text2= child['href']
-                    break
-            if(b==ran):
-                break
-            b=b+1
+#         for descc in soup.find_all("div",{"class":"r"}):
+#             if(b==ran):
+#                 children = descc.findChildren("a" , recursive=False)
+#                 for child in children:
+#                     text2= child['href']
+#                     break
+#             if(b==ran):
+#                 break
+#             b=b+1
+            
+        print(text1)    
         print(text2)
         if(text2!=''):
             r1=r1+text1+" ("
