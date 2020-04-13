@@ -96,7 +96,7 @@ def news():
     if(r1==''):
         r1=''
         textsearch="Coronavirus India"
-        sitesearch='https://www.bing.com/news/search?q='+search_term
+        sitesearch='https://www.bing.com/news/search?q='+textsearch
         #headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
         headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
         source_code = requests.get(sitesearch,headers=headers)
@@ -148,7 +148,7 @@ def news():
         tcopy3='123#*'
         tcopy4='789#*'
         textsearch="Coronavirus Global"
-        sitesearch='https://www.bing.com/news/search?q='+search_term
+        sitesearch='https://www.bing.com/news/search?q='+textsearch
         #headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
         headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
         source_code = requests.get(sitesearch,headers=headers)
