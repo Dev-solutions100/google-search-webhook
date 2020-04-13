@@ -95,8 +95,9 @@ def news():
     tcopy2='789#*'
     if(r1==''):
         r1=''
-        sitesearch='https://www.google.com/search?q=coronavirus+india&tbm=nws'
-        headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
+        textsearch="Coronavirus India"
+        sitesearch='https://www.google.com/search?q='+textsearch
+        headers={'tbm':'nws','User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
         source_code = requests.get(sitesearch,headers=headers)
         plain_text = source_code.text
         print("OK")
