@@ -375,9 +375,9 @@ def google_search(search_term, api_key, cse_id, **kwargs):
             
         results = soup1.findAll('li', { "class" : "b_algo" })
         for result in results:
-            print "# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#"
-            print "# DESCRIPTION: " + str(result.find('p')).replace(" ", " ")
-            print "# ___________________________________________________________\n#"
+            print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+            print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+            print("# ___________________________________________________________\n#")
         
         
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
