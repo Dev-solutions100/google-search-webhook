@@ -138,59 +138,60 @@ def news():
             r1=r1+text1
         tcopy2=text2
         
-#     tcopy3='123#*'
-#     tcopy4='789#*'
-#     sitesearch='https://www.google.com/search?q=coronavirus+global&tbm=nws'
-#     headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
-#     source_code = requests.get(sitesearch,headers=headers)
-#     plain_text = source_code.text
-#     print("OK")
-#     print(plain_text)
-#     soup = BeautifulSoup(plain_text, "html.parser")
-#     print("FREEEEEEEEEEEEEE2")
-#     a=1
-#     b=1
-#     c=1
-#     test_list = [3, 4]
-#     text1=''
-#     text2=''
-#     text3=''
-#     ran=random.choice(test_list)
-#     for desc in soup.find_all("span",{"class":"st"}):
-#         if(a==ran):
-#             text1=desc.text
-#             break
-#         a=a+1
-#     print(text1)
+        tcopy3='123#*'
+        tcopy4='789#*'
+        textsearch="Coronavirus Global"
+        sitesearch='https://www.google.com/search?q='+textsearch
+        headers={'tbm':'nws','User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
+        source_code = requests.get(sitesearch,headers=headers)
+        plain_text = source_code.text
+        print("OK")
+        print(plain_text)
+        soup = BeautifulSoup(plain_text, "html.parser")
+        print("FREEEEEEEEEEEEEE2")
+        a=1
+        b=1
+        c=1
+        test_list = [3, 4]
+        text1=''
+        text2=''
+        text3=''
+        ran=random.choice(test_list)
+        for desc in soup.find_all("span",{"class":"st"}):
+            if(a==ran):
+                text1=desc.text
+                break
+            a=a+1
+        print(text1)
         
-#     tcopy3=text1
+        tcopy3=text1
     
-#     for descc in soup.find_all("div",{"class":"r"}):
-#         if(b==ran):
-#             children = descc.findChildren("a" , recursive=False)
-#             for child in children:
-#                 text2= child['href']
-#                 break
-#         if(b==ran):
-#             break
-#         b=b+1
-#     print(text2)
-#     if(r1!=''):
-#         r1+"\n\n"
-#     if(text2!=''):
-#         r1=r1+text1+" ("
-#         r1=r1+text2+")"
-#     else:
-#         r1=r1+text1
-#     tcopy4=text2
+        for descc in soup.find_all("div",{"class":"r"}):
+            if(b==ran):
+                children = descc.findChildren("a" , recursive=False)
+                for child in children:
+                    text2= child['href']
+                    break
+            if(b==ran):
+                break
+            b=b+1
+        print(text2)
+        if(r1!=''):
+            r1=r1+"\n\n"
+        if(text2!=''):
+            r1=r1+text1+" ("
+            r1=r1+text2+")"
+        else:
+            r1=r1+text1
+        tcopy4=text2
         
         
-#     if(1==1):
-#         if(tcopy1=='' and tcopy2=='' and tcopy3=='' and tcopy4==''):
-#             r1='Oops, I found 0 results for your search'
+        if(1==1):
+            if(tcopy1=='' and tcopy2=='' and tcopy3=='' and tcopy4==''):
+                r1='Oops, I found 0 results for your search'
             
-    r1=r1+"\n\nReply with *0* for Main Menu"
-    return r1
+        r1=r1+"\n\nReply with *0* for Main Menu"
+        return r1
     
     
     
