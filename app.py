@@ -96,40 +96,46 @@ def news():
     if(r1==''):
         r1=''
         textsearch="Coronavirus India"
-        sitesearch='https://www.google.com/search?q='+textsearch
-        headers={'tbm':'nws','User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
+        sitesearch='https://www.bing.com/news/search?q='+search_term
+        #headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
+        headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
         source_code = requests.get(sitesearch,headers=headers)
         plain_text = source_code.text
-        print("OK")
-        print(plain_text)
-        soup = BeautifulSoup(plain_text, "html.parser")
+        print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
+        #print(plain_text)
+        soup1 = BeautifulSoup(plain_text, "html.parser")
+#         [s.extract() for s in soup1('div' { "class" : "t_s" })]
+#         unwantedTags = ['strong', 'cite']
+#         for tag in unwantedTags:
+#             for match in soup1.findAll(tag):
+#                 match.replaceWithChildren()
+            
+        results = soup1.findAll('div',{ "class" : "t_s" })
         print("FREEEEEEEEEEEEEE2")
         a=1
         b=1
         c=1
-        test_list = [1, 2]
+        test_list = [1, 2, 3, 4]
         text1=''
         text2=''
         text3=''
         ran=random.choice(test_list)
-        for desc in soup.find_all("span",{"class":"st"}):
+        
+        for result in results:
             if(a==ran):
-                text1=desc.text
+                ch=(result.find('div',{ "class" : "t_t" })).find('a')
+                text2=ch['href']
+                print("LINK: "+ch['href']+"\n#")
+                print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+                ch1=result.find('div',{ "class" : "snippet" })
+                text1=ch1['title']
+                print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+                print("# ___________________________________________________________\n#")
                 break
             a=a+1
-        print(text1)
-        
         tcopy1=text1
-    
-        for descc in soup.find_all("div",{"class":"r"}):
-            if(b==ran):
-                children = descc.findChildren("a" , recursive=False)
-                for child in children:
-                    text2= child['href']
-                    break
-            if(b==ran):
-                break
-            b=b+1
+            
+        print(text1)    
         print(text2)
         if(text2!=''):
             r1=r1+text1+" ("
@@ -137,44 +143,49 @@ def news():
         else:
             r1=r1+text1
         tcopy2=text2
+        print("FREEEEEEEEEEEEEE2")
         
         tcopy3='123#*'
         tcopy4='789#*'
         textsearch="Coronavirus Global"
-        sitesearch='https://www.google.com/search?q='+textsearch
-        headers={'tbm':'nws','User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
+        sitesearch='https://www.bing.com/news/search?q='+search_term
+        #headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
+        headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
         source_code = requests.get(sitesearch,headers=headers)
         plain_text = source_code.text
-        print("OK")
-        print(plain_text)
-        soup = BeautifulSoup(plain_text, "html.parser")
+        print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
+        #print(plain_text)
+        soup1 = BeautifulSoup(plain_text, "html.parser")
+        #         [s.extract() for s in soup1('div' { "class" : "t_s" })]
+        #         unwantedTags = ['strong', 'cite']
+        #         for tag in unwantedTags:
+        #             for match in soup1.findAll(tag):
+        #                 match.replaceWithChildren()
+        results = soup1.findAll('div',{ "class" : "t_s" })
         print("FREEEEEEEEEEEEEE2")
         a=1
         b=1
         c=1
-        test_list = [3, 4]
+        test_list = [1, 2, 3, 4]
         text1=''
         text2=''
         text3=''
         ran=random.choice(test_list)
-        for desc in soup.find_all("span",{"class":"st"}):
+        for result in results:
             if(a==ran):
-                text1=desc.text
+                ch=(result.find('div',{ "class" : "t_t" })).find('a')
+                text2=ch['href']
+                print("LINK: "+ch['href']+"\n#")
+                print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+                ch1=result.find('div',{ "class" : "snippet" })
+                text1=ch1['title']
+                print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+                print("# ___________________________________________________________\n#")
                 break
             a=a+1
         print(text1)
         
         tcopy3=text1
-    
-        for descc in soup.find_all("div",{"class":"r"}):
-            if(b==ran):
-                children = descc.findChildren("a" , recursive=False)
-                for child in children:
-                    text2= child['href']
-                    break
-            if(b==ran):
-                break
-            b=b+1
         print(text2)
         if(r1!=''):
             r1=r1+"\n\n"
@@ -347,17 +358,21 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     #if(r1=='' or r1[:4]=='http'):
     if(r1==''):
         r1=''
-        sitesearch='https://www.google.com/search?q='+search_term
+        
+        #sitesearch='https://www.google.com/search?q='+search_term
+        
 #     site = urllib.request.urlopen(sitesearch)
 #     data = site.read()
 
 #     parsed = BeautifulSoup(data)
-        headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
-        source_code = requests.get(sitesearch,headers=headers)
-        plain_text = source_code.text
-        print("OK")
-        #print(plain_text)
-        soup = BeautifulSoup(plain_text, "html.parser")
+
+
+#         headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
+#         source_code = requests.get(sitesearch,headers=headers)
+#         plain_text = source_code.text
+#         print("OK")
+#         #print(plain_text)
+#         soup = BeautifulSoup(plain_text, "html.parser")
         
         
         
