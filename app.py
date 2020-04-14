@@ -254,9 +254,14 @@ def bored():
     print(fact)
     print(quote)
     print(author)
-        
+    
+    movie=''
+    song=''
+    tv_series=''
+    game=''
+    
     r1="Well, I got some ideas for you "+emoji.emojize(':bulb:', use_aliases=True)+"\n\n"+emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Fact:* "+fact+"\n\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke
-    r2=emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+    r2=emoji.emojize(':clapper:', use_aliases=True)" *Suggested Movie:* "+movie+"\n\n"+emoji.emojize(':musical_note:', use_aliases=True)+"*Suggested Song:* "+song+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
     return r1
     
 def maps_search():
@@ -416,7 +421,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         a=1
         b=1
         c=1
-        test_list = [1, 2, 3]
+        test_list = [1, 2, 3, 4]
         text1=''
         text2=''
         text3=''
