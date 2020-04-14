@@ -209,7 +209,7 @@ def news():
             if(tcopy1=='' and tcopy2=='' and tcopy3=='' and tcopy4==''):
                 r1=emoji.emojize(':mag_right:', use_aliases=True)+' Oops, I found 0 results for your search'
             
-        r1=r1+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply *4* for more News\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply *0* for Main Menu"
+        r1=r1+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* for more News\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
         return r1
     
     
@@ -255,8 +255,8 @@ def bored():
     print(quote)
     print(author)
         
-    r1="Well, I got some ideas for you "+emoji.emojize(':bulb:', use_aliases=True)+"\n\n"+emoji.emojize(':sunglasses:', use_aliases=True)+"*What you can do:* "+activity+"\n\n"+emoji.emojize(':hushed:', use_aliases=True)+"*Fact:* "+fact+"\n\n"+emoji.emojize(':relieved:', use_aliases=True)+"*Quote:* "+quote+" (By- "+author+")"+"\n\n"+emoji.emojize(':joy:', use_aliases=True)+"*Joke:* "+joke
-    r2=emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply 4 to get more Ideas\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply *0* for Main Menu"
+    r1="Well, I got some ideas for you "+emoji.emojize(':bulb:', use_aliases=True)+"\n\n"+emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Fact:* "+fact+"\n\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke
+    r2=emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
     return r1
     
 def maps_search():
@@ -280,7 +280,7 @@ def maps_search():
     i2=respo[l-1].get("Recovered")
     i3=respo[l-1].get("Deaths")
     r1=flag.flagize(":IN:")+" *India (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally (Updated Daily)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)
-    r2=emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply with a country's name to see its cases (Example: *Italy*)\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply *0* for Main Menu"
+    r2=emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
     return r1
 
 def maps_search1(data):
@@ -327,7 +327,7 @@ def maps_search1(data):
     i2=respo[l-1].get("Recovered")
     i3=respo[l-1].get("Deaths")
     r1="*"+data1+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)
-    r2=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" Reply with any country's name to see its cases (Example: *Switzerland*)\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" Reply with *0* for Main Menu"
+    r2=emoji.emojize(':globe_with_meridians:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Switzerland*)\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+"Reply with *0* for Main Menu"
     return r1
 
 def google_search(search_term, api_key, cse_id, **kwargs):
