@@ -257,7 +257,8 @@ def bored():
         
     r1="Well, I got some ideas for you "+emoji.emojize(':bulb:', use_aliases=True)+"\n\n"+emoji.emojize(':sunglasses:', use_aliases=True)+"*What you can do:* "+activity+"\n\n"+emoji.emojize(':hushed:', use_aliases=True)+"*Fact:* "+fact+"\n\n"+emoji.emojize(':relieved:', use_aliases=True)+"*Quote:* "+quote+" (By- "+author+")"+"\n\n"+emoji.emojize(':joy:', use_aliases=True)+"*Joke:* "+joke
     r2=emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply 4 to get more Ideas\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply *0* for Main Menu"
-
+    return r1
+    
 def maps_search():
     global r2
     url = "https://api.covid19api.com/summary"
