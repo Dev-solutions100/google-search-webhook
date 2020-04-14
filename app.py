@@ -144,9 +144,9 @@ def news():
                 r1=r1+flag.flagize(":IN:")+" *India:* "+text1+" ("
                 r1=r1+text2+")"
             else:
-                r1=r1+emoji.emojize(':in:', use_aliases=True)+" *India:* "+text2
+                r1=r1+flag.flagize(":IN:")+" *India:* "+text2
         else:
-            r1=r1+emoji.emojize(':in:', use_aliases=True)+" *India:* "+text1
+            r1=r1+flag.flagize(":IN:")+" *India:* "+text1
         tcopy2=text2
         print("FREEEEEEEEEEEEEE2")
         
@@ -195,10 +195,13 @@ def news():
         if(r1!=''):
             r1=r1+"\n\n"
         if(text2!=''):
-            r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text1+" ("
-            r1=r1+text2+")"
+            if(text1!=''):
+                r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text1+" ("
+                r1=r1+text2+")"
+            else:
+                r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text2
         else:
-            r1=r1+text1
+            r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text1
         tcopy4=text2
         
         
@@ -215,6 +218,7 @@ def news():
     
 
 def bored():
+    global r2
     arr=["recreational", "social", "diy", "charity", "cooking", "relaxation", "music"]
     act=random.choice(arr)
     url = "http://www.boredapi.com/api/activity?type="+act
@@ -251,8 +255,8 @@ def bored():
     print(quote)
     print(author)
         
-    
-
+    r1="Well, I got some ideas for you "+emoji.emojize(':bulb:', use_aliases=True)+"\n\n"+emoji.emojize(':sunglasses:', use_aliases=True)+"*What you can do:* "+activity+"\n\n"+emoji.emojize(':hushed:', use_aliases=True)+"*Fact:* "+fact+"\n\n"+emoji.emojize(':relieved:', use_aliases=True)+"*Quote:* "+quote+" (By- "+author+")"+"\n\n"+emoji.emojize(':joy:', use_aliases=True)+"*Joke:* "+joke
+    r2=emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply 4 to get more Ideas\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply *0* for Main Menu"
 
 def maps_search():
     global r2
@@ -274,8 +278,8 @@ def maps_search():
     i1=respo[l-1].get("Confirmed")
     i2=respo[l-1].get("Recovered")
     i3=respo[l-1].get("Deaths")
-    r1=" *India (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)+"\n\n"+" *Globally (Updated Daily)*\n\n Total cases: "+str(g1)+"\n Total recovery: "+str(g2)+"\n Total deaths: "+str(g3)
-    r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply with *0* for Main Menu"
+    r1=flag.flagize(":IN:")+" *India (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally (Updated Daily)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)
+    r2=emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply with a country's name to see its cases (Example: *Italy*)\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+" Reply *0* for Main Menu"
     return r1
 
 def maps_search1(data):
@@ -321,8 +325,8 @@ def maps_search1(data):
     i1=respo[l-1].get("Confirmed")
     i2=respo[l-1].get("Recovered")
     i3=respo[l-1].get("Deaths")
-    r1=" *"+data1+" (Real Time)*\n\n Total cases: "+str(i1)+"\n Total recovery: "+str(i2)+"\n Total deaths: "+str(i3)
-    r2="Reply with any country's name to see its cases (Example: *'Italy'*)\n\nReply with *0* for Main Menu"
+    r1="*"+data1+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)
+    r2=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" Reply with any country's name to see its cases (Example: *Switzerland*)\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" Reply with *0* for Main Menu"
     return r1
 
 def google_search(search_term, api_key, cse_id, **kwargs):
@@ -451,7 +455,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #                 else:
 #                     text1=text1+elem
 #                     d=d+1
-        
+        text1=altertext(text1)
         tcopy1=text1
     
 #         for descc in soup.find_all("div",{"class":"r"}):
@@ -467,8 +471,13 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         print(text1)    
         print(text2)
         if(text2!=''):
-            r1=r1+text1+" ("
-            r1=r1+text2+")"
+            if(text1!=''):
+                r1=r1+text1+"\n\n"
+                r1=r1+text2
+            else:
+                r1=r1+text2
+#             r1=r1+text1+" ("
+#             r1=r1+text2+")"
         else:
             r1=r1+text1
         tcopy2=text2
@@ -492,6 +501,35 @@ def google_search(search_term, api_key, cse_id, **kwargs):
             r1='Oops, I found 0 results for your search'
     return r1
 
+def altertext(text):
+    splitted=text.split()
+    l=len(splitted)
+    c=0
+    d=0
+    str=''
+    wr='...'
+    for w in splitted:
+        c=c+1
+        if(c>59):
+            d=1
+            if(w=='...'):
+                str+w
+            else:
+                wr=w
+                str=str+w+" "
+            break
+        str=str+w+" "
+    
+    if(wr!='...'):
+        str=str+"..."
+        return str
+    else:
+        if(d==0):
+            if(splitted[l-1]!='...'):
+                str=str+'...'
+            else:
+                str=str.strip()
+        return str
 
 def makeWebhookResult(data, searchstring):
     global r2
