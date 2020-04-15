@@ -72,10 +72,12 @@ def processRequest(req):
     my_cse_id = "005871159096424944872:s8zbwrmva57"
     if(json_params1=='Real Time Cases'):
         searchResults=maps_search()
-    elif(json_params1=='Real Time Cases - custom'):
+    elif(json_params1=='Real Time Cases - custom' or json_params1=='Country'):
         searchResults=maps_search1(searchString)
     elif(json_params1=='Bored'):
         searchResults=bored()
+    elif(json_params1=='Suggestions'):
+        searchResults=suggestions()
     elif(json_params1=='News'):
         searchResults=news()
     else:
@@ -237,11 +239,17 @@ def bored():
     respo=respo.json()
     joke=respo.get("attachments")[0].get("text")
     
-#     test_list = [1, 2]
-#     ran=random.choice(test_list)
-#     if(ran==1):
-    fact=random.choice(facts.useless_facts)
-#     else:
+    test_list = [1, 2]
+    ran=random.choice(test_list)
+    if(ran==1):
+        fact=random.choice(facts.useless_facts)
+    else:
+        trivia=random.choice(facts.trivia)
+        triv=trivia[0]
+        if(trivia[1]=='false'):
+            vl='It is false'
+        else:
+            vl='It is true'
 #         url = "numbersapi.com/random/trivia"
 #         respo = requests.request("GET", url)
 #         respo=respo.json()
@@ -252,20 +260,7 @@ def bored():
     n=random.randint(0, 497)
     quote=datas[n].get("content")
     author=datas[n].get("author")
-    
-    f = open('movies.json') 
-    datas = json.load(f)
-    n=random.randint(0, 3430)
-    movie=datas[n].get("title")
-    yr=datas[n].get("year")
-    
-    f = open('games.json') 
-    datas = json.load(f)
-    n=random.randint(0, 547)
-    game=datas[n].get("title")
-    
-    tvseries=random.choice(facts.tv_series)
-    
+
     print("JOKE")
     print(joke)
     print(activity)
@@ -273,8 +268,40 @@ def bored():
     print(quote)
     print(author)
     
-    r1="Well, I got some ideas for you "+emoji.emojize(':bulb:', use_aliases=True)+"\n\n"+emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Fact:* "+fact+"\n\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke
-    r2=emoji.emojize(':clapper:', use_aliases=True)" *Suggested Movie:* "+movie+"\n\n"+emoji.emojize(':musical_note:', use_aliases=True)+"*Suggested Song:* "+song+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+    if(ran==1):
+        r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Fact:* "+fact+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+    else:
+        r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Trivia:* "+triv+" *("+vl+")*"+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+    return r1
+    
+    #emoji.emojize(':clapper:', use_aliases=True)" *Suggested Movie:* "+movie+"\n\n"+emoji.emojize(':musical_note:', use_aliases=True)+"*Suggested Song:* "+song
+
+def suggestions():
+    
+    f = open('movies.json') 
+    datas = json.load(f)
+    n=random.randint(0, 3430)
+    movie=datas[n].get("title")
+    yr=datas[n].get("year")
+    
+    test_list = [1, 2]
+    ran=random.choice(test_list)
+    if(ran==1):
+        f = open('games.json') 
+        datas = json.load(f)
+        n=random.randint(0, 547)
+        game=datas[n].get("title")
+    else:
+        books
+    
+    tvseries=random.choice(facts.tv_series)
+    
+    songs
+    
+    if(ran==1):
+        r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Fact:* "+fact+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+    else:
+        r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Trivia:* "+triv+" *("+vl+")*"+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
     return r1
     
 def maps_search():
@@ -297,8 +324,7 @@ def maps_search():
     i1=respo[l-1].get("Confirmed")
     i2=respo[l-1].get("Recovered")
     i3=respo[l-1].get("Deaths")
-    r1=flag.flagize(":IN:")+" *India (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally (Updated Daily)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)
-    r2=emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+    r1=flag.flagize(":IN:")+" *India (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally (Updated Daily)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
     return r1
 
 def maps_search1(data):
@@ -344,8 +370,7 @@ def maps_search1(data):
     i1=respo[l-1].get("Confirmed")
     i2=respo[l-1].get("Recovered")
     i3=respo[l-1].get("Deaths")
-    r1="*"+data1+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)
-    r2=emoji.emojize(':globe_with_meridians:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Switzerland*)\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+"Reply with *0* for Main Menu"
+    r1="*"+data1+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Switzerland*)\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+"Reply with *0* for Main Menu"
     return r1
 
 def google_search(search_term, api_key, cse_id, **kwargs):
