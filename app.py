@@ -283,6 +283,7 @@ def suggestions():
     n=random.randint(0, 3430)
     movie=datas[n].get("title")
     yr=datas[n].get("year")
+    genre=datas[n].get("genres")
     
     test_list = [1, 2]
     ran=random.choice(test_list)
@@ -292,11 +293,22 @@ def suggestions():
         n=random.randint(0, 547)
         game=datas[n].get("title")
     else:
-        books
+        f = open('books.json') 
+        datas = json.load(f)
+        n=random.randint(0, 5980)
+        book=datas[n].get("title")
+        author=datas[n].get("authors")
+        rating=datas[n].get("average_rating")
     
     tvseries=random.choice(facts.tv_series)
     
-    songs
+    f = open('songs.json') 
+    datas = json.load(f)
+    n=random.randint(0, 9000)
+    song=datas[n].get("title")
+    artist=datas[n].get("artist")
+    yrsongs=datas[n].get("date")
+    link='https://www.youtube.com/results?search_query='+song+' by '+artist
     
     if(ran==1):
         r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Fact:* "+fact+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
