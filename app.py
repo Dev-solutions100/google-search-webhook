@@ -219,12 +219,17 @@ def news():
 
 def bored():
     global r2
-    arr=["recreational", "social", "diy", "charity", "cooking", "relaxation", "music"]
-    act=random.choice(arr)
-    url = "http://www.boredapi.com/api/activity?type="+act
-    respo = requests.request("GET", url)
-    respo=respo.json()
-    activity=respo.get("activity")
+#     arr=["recreational", "social", "diy", "charity", "cooking", "relaxation", "music"]
+#     act=random.choice(arr)
+#     url = "http://www.boredapi.com/api/activity?type="+act
+#     respo = requests.request("GET", url)
+#     respo=respo.json()
+#     activity=respo.get("activity")
+
+    f = open('activities.json') 
+    datas = json.load(f)
+    n=random.randint(0, 134)
+    activity=datas[n].get("activity")
     
     headers={'User-Agent':'My Library (https://github.com/Dev-solutions100/google-search-webhook)'}
     url = "https://icanhazdadjoke.com/slack"
@@ -242,11 +247,24 @@ def bored():
 #         respo=respo.json()
 #         act=respo.get("activity")
       
-    f = open('quotes.json',) 
+    f = open('quotes.json') 
     datas = json.load(f)
-    n=random.randint(0, 498)
+    n=random.randint(0, 497)
     quote=datas[n].get("content")
     author=datas[n].get("author")
+    
+    f = open('movies.json') 
+    datas = json.load(f)
+    n=random.randint(0, 3430)
+    movie=datas[n].get("title")
+    yr=datas[n].get("year")
+    
+    f = open('games.json') 
+    datas = json.load(f)
+    n=random.randint(0, 547)
+    game=datas[n].get("title")
+    
+    tvseries=random.choice(facts.tv_series)
     
     print("JOKE")
     print(joke)
@@ -254,11 +272,6 @@ def bored():
     print(fact)
     print(quote)
     print(author)
-    
-    movie=''
-    song=''
-    tv_series=''
-    game=''
     
     r1="Well, I got some ideas for you "+emoji.emojize(':bulb:', use_aliases=True)+"\n\n"+emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Fact:* "+fact+"\n\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke
     r2=emoji.emojize(':clapper:', use_aliases=True)" *Suggested Movie:* "+movie+"\n\n"+emoji.emojize(':musical_note:', use_aliases=True)+"*Suggested Song:* "+song+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
