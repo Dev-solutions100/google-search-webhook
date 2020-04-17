@@ -260,12 +260,12 @@ def bored():
     quote=datas[n].get("content")
     author=datas[n].get("author")
 
-    print("JOKE")
-    print(joke)
-    print(activity)
-    print(fact)
-    print(quote)
-    print(author)
+#     print("JOKE")
+#     print(joke)
+#     print(activity)
+#     print(fact)
+#     print(quote)
+#     print(author)
     
     if(ran==1):
         r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Fact:* "+fact+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
