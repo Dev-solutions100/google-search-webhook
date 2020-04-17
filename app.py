@@ -244,7 +244,7 @@ def bored():
     if(ran==1):
         fact=random.choice(facts.useless_facts)
     else:
-        trivia=random.choice(facts.trivia)
+        trivia=random.choice(facts.triviaa)
         triv=trivia[0]
         if(trivia[1]=='false'):
             vl='It is false'
