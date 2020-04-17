@@ -284,6 +284,7 @@ def suggestions():
     movie=datas[n].get("title")
     yr=datas[n].get("year")
     genre=datas[n].get("genres")
+    gen=", ".join(genre)
     
     test_list = [1, 2]
     ran=random.choice(test_list)
@@ -308,12 +309,16 @@ def suggestions():
     song=datas[n].get("title")
     artist=datas[n].get("artist")
     yrsongs=datas[n].get("date")
-    link='https://www.youtube.com/results?search_query='+song+' by '+artist
+    arr=song.split()
+    arr1=artist.split()
+    arr2=arr+arr1
+    qr="+".join(arr2)
+    link='https://www.youtube.com/results?search_query='+qr
     
     if(ran==1):
-        r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Fact:* "+fact+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+        r1=emoji.emojize(':clapper:', use_aliases=True)+" *Suggested Movie:* "+movie+" ("+yr+", "+gen+")"+"\n"+emoji.emojize(':musical_note:', use_aliases=True)+" *Suggested Song:* "+song+"- By "+artist+" ("+link+")"+"\n"+emoji.emojize(':video_game:', use_aliases=True)+" *Suggested Game:* "+game+"\n"+emoji.emojize(':computer:', use_aliases=True)+" *Suggested Tv-Series:* "+tvseries+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
     else:
-        r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Trivia:* "+triv+" *("+vl+")*"+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By- "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+        r1=emoji.emojize(':clapper:', use_aliases=True)+" *Suggested Movie:* "+movie+" ("+yr+", "+gen+")"+"\n"+emoji.emojize(':musical_note:', use_aliases=True)+" *Suggested Song:* "+song+"- By "+artist+" ("+link+")"+"\n"+emoji.emojize(':video_game:', use_aliases=True)+" *Suggested Book:* "+book+" (By- "+author+" Rating- "+rating+"\n"+emoji.emojize(':computer:', use_aliases=True)+" *Suggested Tv-Series:* "+tvseries+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
     return r1
     
 def maps_search():
