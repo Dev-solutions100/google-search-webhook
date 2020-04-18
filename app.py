@@ -211,7 +211,7 @@ def news():
             if(tcopy1=='' and tcopy2=='' and tcopy3=='' and tcopy4==''):
                 r1=emoji.emojize(':mag_right:', use_aliases=True)+' Oops, I found 0 results for your search'
             
-        r1=r1+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* for more News\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+        r1=r1+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *6* for more News\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
         return r1
     
     
@@ -315,9 +315,9 @@ def suggestions():
     link='https://www.youtube.com/results?search_query='+qr
     
     if(ran==1):
-        r1=emoji.emojize(':clapper:', use_aliases=True)+" *Suggested Movie:* "+movie+" ("+str(yr)+", "+gen+")"+"\n"+emoji.emojize(':musical_note:', use_aliases=True)+" *Suggested Song:* "+song+" - By "+artist+"\n"+emoji.emojize(':video_game:', use_aliases=True)+" *Suggested Game:* "+game+"\n"+emoji.emojize(':computer:', use_aliases=True)+" *Suggested Tv-Series:* "+tvseries+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Suggestions\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+        r1=emoji.emojize(':clapper:', use_aliases=True)+" *Suggested Movie:* "+movie+" ("+str(yr)+", "+gen+")"+"\n"+emoji.emojize(':musical_note:', use_aliases=True)+" *Suggested Song:* "+song+" - By "+artist+"\n"+emoji.emojize(':video_game:', use_aliases=True)+" *Suggested Game:* "+game+"\n"+emoji.emojize(':computer:', use_aliases=True)+" *Suggested Tv-Series:* "+tvseries+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *5* to get more Suggestions\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
     else:
-        r1=emoji.emojize(':clapper:', use_aliases=True)+" *Suggested Movie:* "+movie+" ("+str(yr)+", "+gen+")"+"\n"+emoji.emojize(':musical_note:', use_aliases=True)+" *Suggested Song:* "+song+" - By "+artist+"\n"+emoji.emojize(':blue_book:', use_aliases=True)+" *Suggested Book:* "+book+" (By - "+author+", Rating - "+str(rating)+"\n"+emoji.emojize(':computer:', use_aliases=True)+" *Suggested Tv-Series:* "+tvseries+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Suggestions\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+        r1=emoji.emojize(':clapper:', use_aliases=True)+" *Suggested Movie:* "+movie+" ("+str(yr)+", "+gen+")"+"\n"+emoji.emojize(':musical_note:', use_aliases=True)+" *Suggested Song:* "+song+" - By "+artist+"\n"+emoji.emojize(':blue_book:', use_aliases=True)+" *Suggested Book:* "+book+" (By - "+author+", Rating - "+str(rating)+"\n"+emoji.emojize(':computer:', use_aliases=True)+" *Suggested Tv-Series:* "+tvseries+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *5* to get more Suggestions\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
     return r1
     
 def maps_search():
