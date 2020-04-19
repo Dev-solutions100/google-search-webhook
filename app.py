@@ -425,8 +425,8 @@ def maps_search1(data):
     err=0
     try:
         respo = requests.request("GET", url)
-        print("FREEEEEEEEEEEEEE")
-        print(respo.status_code)
+#         print("FREEEEEEEEEEEEEE")
+#         print(respo.status_code)
     except:
         err=1
     finally:
@@ -435,10 +435,13 @@ def maps_search1(data):
             respo=respo.json()
             ##print("FREEEEEEEEEEEEEE")
             l=len(respo)
-            i1=respo[l-1].get("Confirmed")
-            i2=respo[l-1].get("Recovered")
-            i3=respo[l-1].get("Deaths")
-            r1="\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+data1+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
+            if(respo!=''):
+                i1=respo[l-1].get("Confirmed")
+                i2=respo[l-1].get("Recovered")
+                i3=respo[l-1].get("Deaths")
+                r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+data1+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
+            else:
+                r1="Please check the country's name (Ex: *United States of America*). Or try after sometime."
         else:
             r1="Please check the country's name (Ex: *United States of America*). Or try after sometime."
         return r1
@@ -576,8 +579,10 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #                 else:
 #                     text1=text1+elem
 #                     d=d+1
-                text1=altertext(text1)
+                
                 tcopy1=text1
+                if(text1!=''):
+                    text1=altertext(text1)
     
 #         for descc in soup.find_all("div",{"class":"r"}):
 #             if(b==ran):
