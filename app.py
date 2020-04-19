@@ -36,13 +36,13 @@ r2=''
 def webhook():
     req = request.get_json(silent=True, force=True)
 
-    print("Request:")
-    print(json.dumps(req, indent=4))
+    #print("Request:")
+    #print(json.dumps(req, indent=4))
 
     res = processRequest(req)
 
     res = json.dumps(res, indent=4)
-    # print(res)
+    # #print(res)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
@@ -57,14 +57,14 @@ def processRequest(req):
     json_params = req.get("queryResult").get("queryText")
     searchstring = ''    # this creates the overall topic which covers user's raw query
     
-    print("JSON params is")
-    print(json_params)
-    print("DONE")
+    #print("JSON params is")
+    #print(json_params)
+    #print("DONE")
 #     for value in json_params.values():
 #         searchstring += value
 #         searchstring += " "
     searchstring=json_params
-    print(searchstring)
+    #print(searchstring)
     searchString = searchstring
 
     # KEYS SHOULDNT BE DISPLAYED
@@ -82,9 +82,9 @@ def processRequest(req):
         searchResults=news()
     else:
         searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
-    print("Search results are")
-    print(searchResults)
-    print("DONE RESULTS")
+    #print("Search results are")
+    #print(searchResults)
+    #print("DONE RESULTS")
     if searchResults is None:
         return{}
 
@@ -103,116 +103,132 @@ def news():
         sitesearch='https://www.bing.com/news/search?q='+textsearch
         #headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
         headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
-        source_code = requests.get(sitesearch,headers=headers)
-        plain_text = source_code.text
-        print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
-        #print(plain_text)
-        soup1 = BeautifulSoup(plain_text, "html.parser")
+        err=0
+        try:
+            source_code = requests.get(sitesearch,headers=headers)
+        except:
+            err=1
+            tcopy1=''
+            tcopy2=''
+        finally:
+            if(err==0):
+                plain_text = source_code.text
+                #print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
+        ##print(plain_text)
+                soup1 = BeautifulSoup(plain_text, "html.parser")
 #         [s.extract() for s in soup1('div' { "class" : "t_s" })]
 #         unwantedTags = ['strong', 'cite']
 #         for tag in unwantedTags:
 #             for match in soup1.findAll(tag):
 #                 match.replaceWithChildren()
             
-        results = soup1.findAll('div',{ "class" : "t_s" })
-        print("FREEEEEEEEEEEEEE2")
-        a=1
-        b=1
-        c=1
-        test_list = [1, 2, 3, 4, 5, 6, 7]
-        text1=''
-        text2=''
-        text3=''
-        ran=random.choice(test_list)
+                results = soup1.findAll('div',{ "class" : "t_s" })
+                #print("FREEEEEEEEEEEEEE2")
+                a=1
+                b=1
+                c=1
+                test_list = [1, 2, 3, 4, 5, 6, 7]
+                text1=''
+                text2=''
+                text3=''
+                ran=random.choice(test_list)
         
-        for result in results:
-            if(a==ran):
-                ch=(result.find('div',{ "class" : "t_t" })).find('a')
-                text2=ch['href']
-                print("LINK: "+ch['href']+"\n#")
-                print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
-                ch1=result.find('div',{ "class" : "snippet" })
-                text1=ch1['title']
-                print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
-                print("# ___________________________________________________________\n#")
-                break
-            a=a+1
-        tcopy1=text1
+                for result in results:
+                    if(a==ran):
+                        ch=(result.find('div',{ "class" : "t_t" })).find('a')
+                        text2=ch['href']
+                        #print("LINK: "+ch['href']+"\n#")
+                        #print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+                        ch1=result.find('div',{ "class" : "snippet" })
+                        text1=ch1['title']
+                        #print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+                        #print("# ___________________________________________________________\n#")
+                        break
+                    a=a+1
+                tcopy1=text1
             
-        print(text1)    
-        print(text2)
-        if(text2!=''):
-            if(text1!=''):
-                r1=r1+flag.flagize(":IN:")+" *India:* "+text1+" ("
-                r1=r1+text2+")"
-            else:
-                r1=r1+flag.flagize(":IN:")+" *India:* "+text2
-        else:
-            r1=r1+flag.flagize(":IN:")+" *India:* "+text1
-        tcopy2=text2
-        print("FREEEEEEEEEEEEEE2")
-        
-        tcopy3='123#*'
-        tcopy4='789#*'
-        textsearch="Coronavirus Global"
-        sitesearch='https://www.bing.com/news/search?q='+textsearch
+                #print(text1)    
+                #print(text2)
+                if(text2!=''):
+                    if(text1!=''):
+                        r1=r1+flag.flagize(":IN:")+" *India:* "+text1+" ("
+                        r1=r1+text2+")"
+                    else:
+                        r1=r1+flag.flagize(":IN:")+" *India:* "+text2
+                else:
+                    r1=r1+flag.flagize(":IN:")+" *India:* "+text1
+                tcopy2=text2
+                #print("FREEEEEEEEEEEEEE2")
+            
+                tcopy3='123#*'
+                tcopy4='789#*'
+                textsearch="Coronavirus Global"
+                sitesearch='https://www.bing.com/news/search?q='+textsearch
         #headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
-        headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
-        source_code = requests.get(sitesearch,headers=headers)
-        plain_text = source_code.text
-        print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
-        #print(plain_text)
-        soup1 = BeautifulSoup(plain_text, "html.parser")
+                headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
+                err1=0
+                try:
+                    source_code = requests.get(sitesearch,headers=headers)
+                except:
+                    err1=1
+                    tcopy3=''
+                    tcopy4=''
+                finally:
+                    if(err1==0):
+                        plain_text = source_code.text
+                        #print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
+        ##print(plain_text)
+                        soup1 = BeautifulSoup(plain_text, "html.parser")
         #         [s.extract() for s in soup1('div' { "class" : "t_s" })]
         #         unwantedTags = ['strong', 'cite']
         #         for tag in unwantedTags:
         #             for match in soup1.findAll(tag):
         #                 match.replaceWithChildren()
-        results = soup1.findAll('div',{ "class" : "t_s" })
-        print("FREEEEEEEEEEEEEE2")
-        a=1
-        b=1
-        c=1
-        test_list = [1, 2, 3, 4, 5, 6, 7]
-        text1=''
-        text2=''
-        text3=''
-        ran=random.choice(test_list)
-        for result in results:
-            if(a==ran):
-                ch=(result.find('div',{ "class" : "t_t" })).find('a')
-                text2=ch['href']
-                print("LINK: "+ch['href']+"\n#")
-                print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
-                ch1=result.find('div',{ "class" : "snippet" })
-                text1=ch1['title']
-                print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
-                print("# ___________________________________________________________\n#")
-                break
-            a=a+1
-        print(text1)
+                        results = soup1.findAll('div',{ "class" : "t_s" })
+                        #print("FREEEEEEEEEEEEEE2")
+                        a=1
+                        b=1
+                        c=1
+                        test_list = [1, 2, 3, 4, 5, 6, 7]
+                        text1=''
+                        text2=''
+                        text3=''
+                        ran=random.choice(test_list)
+                        for result in results:
+                            if(a==ran):
+                                ch=(result.find('div',{ "class" : "t_t" })).find('a')
+                                text2=ch['href']
+                                #print("LINK: "+ch['href']+"\n#")
+                                #print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+                                ch1=result.find('div',{ "class" : "snippet" })
+                                text1=ch1['title']
+                                #print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+                                #print("# ___________________________________________________________\n#")
+                                break
+                            a=a+1
+                        #print(text1)
         
-        tcopy3=text1
-        print(text2)
-        if(r1!=''):
-            r1=r1+"\n\n"
-        if(text2!=''):
-            if(text1!=''):
-                r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text1+" ("
-                r1=r1+text2+")"
-            else:
-                r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text2
-        else:
-            r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text1
-        tcopy4=text2
+                        tcopy3=text1
+                        #print(text2)
+                        if(r1!=''):
+                            r1=r1+"\n\n"
+                        if(text2!=''):
+                            if(text1!=''):
+                                r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text1+" ("
+                                r1=r1+text2+")"
+                            else:
+                                r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text2
+                        else:
+                            r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text1
+                        tcopy4=text2
         
         
-        if(1==1):
-            if(tcopy1=='' and tcopy2=='' and tcopy3=='' and tcopy4==''):
-                r1=emoji.emojize(':mag_right:', use_aliases=True)+' Oops, I found 0 results for your search'
+                        if(1==1):
+                            if(tcopy1=='' and tcopy2=='' and tcopy3=='' and tcopy4==''):
+                                r1=emoji.emojize(':mag_right:', use_aliases=True)+' Oops, I found 0 results for your search'
             
-        r1=r1+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *6* for more News\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
-        return r1
+                        r1=r1+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *6* for more News\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                        return r1
     
     
     
@@ -231,12 +247,6 @@ def bored():
     datas = json.load(f)
     n=random.randint(0, 134)
     activity=datas[n].get("activity")
-    
-    headers={'User-Agent':'My Library (https://github.com/Dev-solutions100/google-search-webhook)'}
-    url = "https://icanhazdadjoke.com/slack"
-    respo = requests.request("GET", url, headers=headers)
-    respo=respo.json()
-    joke=respo.get("attachments")[0].get("text")
     
     test_list = [1, 2]
     ran=random.choice(test_list)
@@ -260,18 +270,33 @@ def bored():
     quote=datas[n].get("content")
     author=datas[n].get("author")
 
-#     print("JOKE")
-#     print(joke)
-#     print(activity)
-#     print(fact)
-#     print(quote)
-#     print(author)
+#     #print("JOKE")
+#     #print(joke)
+#     #print(activity)
+#     #print(fact)
+#     #print(quote)
+#     #print(author)
     
-    if(ran==1):
-        r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Fact:* "+fact+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By - "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
-    else:
-        r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Trivia:* "+triv+" *("+vl+")*"+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By - "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
-    return r1
+    headers={'User-Agent':'My Library (https://github.com/Dev-solutions100/google-search-webhook)'}
+    url = "https://icanhazdadjoke.com/slack"
+    err=0
+    try:
+        respo = requests.request("GET", url, headers=headers)
+    except:
+        err=1
+    finally:
+        if(err==0):
+            respo=respo.json()
+            joke=respo.get("attachments")[0].get("text")
+        else:
+            ar=["What doy call an alligator in a vest? An in-vest-igator!","An apple a day keeps the bullies away. If you throw it hard enough.","Did you hear about the two thieves who stole a calendar? They each got six months.","What has ears but cannot hear? A field of corn."]
+            joke=random.choice(ar)
+    
+        if(ran==1):
+            r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Fact:* "+fact+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By - "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+        else:
+            r1=emoji.emojize(':sunglasses:', use_aliases=True)+" *What you can do:* "+activity+"\n"+emoji.emojize(':hushed:', use_aliases=True)+" *Trivia:* "+triv+" *("+vl+")*"+"\n"+emoji.emojize(':relieved:', use_aliases=True)+" *Quote:* "+quote+" (By - "+author+")"+"\n"+emoji.emojize(':joy:', use_aliases=True)+" *Joke:* "+joke+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *4* to get more Ideas\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+        return r1
     
     #emoji.emojize(':clapper:', use_aliases=True)" *Suggested Movie:* "+movie+"\n\n"+emoji.emojize(':musical_note:', use_aliases=True)+"*Suggested Song:* "+song
 
@@ -322,35 +347,54 @@ def suggestions():
     
 def maps_search():
     global r2
+    err=0
     url = "https://api.covid19api.com/summary"
-    respo = requests.request("GET", url)
-    print("FREEEEEEEEEEEEEE")
-    respo=respo.json()
-    print(respo.get("Global").get("TotalConfirmed"))
-    print("FREEEEEEEEEEEEEE")
-    g1=respo.get("Global").get("TotalConfirmed")
-    g2=respo.get("Global").get("TotalRecovered")
-    g3=respo.get("Global").get("TotalDeaths")
-    url = "https://api.covid19api.com/live/country/india/status/confirmed"
-    respo = requests.request("GET", url)
-    #print("FREEEEEEEEEEEEEE")
-    respo=respo.json()
-    #print("FREEEEEEEEEEEEEE")
-    l=len(respo)
-    i1=respo[l-1].get("Confirmed")
-    i2=respo[l-1].get("Recovered")
-    i3=respo[l-1].get("Deaths")
-    r1=flag.flagize(":IN:")+" *India (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally (Updated Daily)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
-    return r1
+    try:
+        respo = requests.request("GET", url)
+    except:
+        err=1
+        g1="2,000,000+"
+        g2="500,000+"
+        g3="150,000+"
+    finally:
+        if(err==0):
+            #print("FREEEEEEEEEEEEEE")
+            respo=respo.json()
+            #print(respo.get("Global").get("TotalConfirmed"))
+            #print("FREEEEEEEEEEEEEE")
+            g1=respo.get("Global").get("TotalConfirmed")
+            g2=respo.get("Global").get("TotalRecovered")
+            g3=respo.get("Global").get("TotalDeaths")
+        err1=0
+        url = "https://api.covid19api.com/live/country/india/status/confirmed"
+        try:
+            respo = requests.request("GET", url)
+        except:
+            err1=1
+            i1="15,000+"
+            i2="2,000+"
+            i3="500+"
+        finally:
+            if(err1==0):
+                respo = requests.request("GET", url)
+                ##print("FREEEEEEEEEEEEEE")
+                respo=respo.json()
+                ##print("FREEEEEEEEEEEEEE")
+                l=len(respo)
+                i1=respo[l-1].get("Confirmed")
+                i2=respo[l-1].get("Recovered")
+                i3=respo[l-1].get("Deaths")
+            r1=flag.flagize(":IN:")+" *India (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally (Updated Daily)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+            return r1
 
 def maps_search1(data):
     global r2
 #     url = "https://api.covid19api.com/summary"
 #     respo = requests.request("GET", url)
-#     print("FREEEEEEEEEEEEEE")
+#     #print("FREEEEEEEEEEEEEE")
 #     respo=respo.json()
-#     print(respo.get("Global").get("TotalConfirmed"))
-#     print("FREEEEEEEEEEEEEE")
+#     #print(respo.get("Global").get("TotalConfirmed"))
+#     #print("FREEEEEEEEEEEEEE")
 #     g1=respo.get("Global").get("TotalConfirmed")
 #     g2=respo.get("Global").get("TotalRecovered")
 #     g3=respo.get("Global").get("TotalDeaths")
@@ -378,16 +422,24 @@ def maps_search1(data):
                     data1=data1+ele.upper()
                     b=0
     url = "https://api.covid19api.com/live/country/"+text1+"/status/confirmed"
-    respo = requests.request("GET", url)
-    #print("FREEEEEEEEEEEEEE")
-    respo=respo.json()
-    #print("FREEEEEEEEEEEEEE")
-    l=len(respo)
-    i1=respo[l-1].get("Confirmed")
-    i2=respo[l-1].get("Recovered")
-    i3=respo[l-1].get("Deaths")
-    r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+data1+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *New Zealand*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
-    return r1
+    err=0
+    try:
+        respo = requests.request("GET", url)
+    except:
+        err=1
+    finally:
+        if(err==0):
+            ##print("FREEEEEEEEEEEEEE")
+            respo=respo.json()
+            ##print("FREEEEEEEEEEEEEE")
+            l=len(respo)
+            i1=respo[l-1].get("Confirmed")
+            i2=respo[l-1].get("Recovered")
+            i3=respo[l-1].get("Deaths")
+            r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+data1+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
+        else:
+            r1="Please check the country's name (Ex: *United States of America*). Or try after sometime."
+        return r1
 
 def google_search(search_term, api_key, cse_id, **kwargs):
     global r2
@@ -402,9 +454,9 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #     'x-rapidapi-key': "1ddaa42a65mshea3707d18590b92p19f14ejsn10f668df0edc"
 #     }
 #     response = requests.request("GET", url, headers=headers, params=querystring)
-#     print("FREEEEEEEEEEEEEE")
-#     print(response.text)
-#     print("FREEEEEEEEEEEEEE")
+#     #print("FREEEEEEEEEEEEEE")
+#     #print(response.text)
+#     #print("FREEEEEEEEEEEEEE")
     
 #     url="https://api.duckduckgo.com/"
 #     querystring = {"no_redirect":"1","no_html":"1","skip_disambig":"1","q":search_term,"format":"json"}
@@ -413,13 +465,13 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 
     #r1 = duckduckgo.get_zci(search_term)
 #     r = duckduckgo.query(search_term)
-#    print("FREEEEEEEEEEEEEE1")
-#     print(r.results)
-#     print(r.related)
-#     print(r.answer)
+#    #print("FREEEEEEEEEEEEEE1")
+#     #print(r.results)
+#     #print(r.related)
+#     #print(r.answer)
 
-#     print(r1)
-#     print("FREEEEEEEEEEEEEE1")
+#     #print(r1)
+#     #print("FREEEEEEEEEEEEEE1")
 #     rcopy=r1
     r1=''
     tcopy1='123#*'
@@ -439,8 +491,8 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #         headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
 #         source_code = requests.get(sitesearch,headers=headers)
 #         plain_text = source_code.text
-#         print("OK")
-#         #print(plain_text)
+#         #print("OK")
+#         ##print(plain_text)
 #         soup = BeautifulSoup(plain_text, "html.parser")
         
         
@@ -448,58 +500,65 @@ def google_search(search_term, api_key, cse_id, **kwargs):
         sitesearch='https://www.bing.com/search?q='+search_term
         #headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
         headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
-        source_code = requests.get(sitesearch,headers=headers)
-        plain_text = source_code.text
-        print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
-        #print(plain_text)
-        soup1 = BeautifulSoup(plain_text, "html.parser")
-        [s.extract() for s in soup1('span')]
-        unwantedTags = ['strong', 'cite']
-        for tag in unwantedTags:
-            for match in soup1.findAll(tag):
-                match.replaceWithChildren()
+
+        err=0
+        try:
+            source_code = requests.get(sitesearch,headers=headers)
+        except:
+            err=1
+        finally:
+            if(err==0):
+                plain_text = source_code.text
+                #print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
+            ##print(plain_text)
+                soup1 = BeautifulSoup(plain_text, "html.parser")
+                [s.extract() for s in soup1('span')]
+                unwantedTags = ['strong', 'cite']
+                for tag in unwantedTags:
+                    for match in soup1.findAll(tag):
+                        match.replaceWithChildren()
             
-        results = soup1.findAll('li', { "class" : "b_algo" })
+                results = soup1.findAll('li', { "class" : "b_algo" })
 #         for result in results:
 #             ch=(result.find('h2')).find('a')
-#             print("LINK: "+ch['href']+"\n#")
-#             print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
-#             print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
-#             print("# ___________________________________________________________\n#")
+#             #print("LINK: "+ch['href']+"\n#")
+#             #print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+#             #print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+#             #print("# ___________________________________________________________\n#")
         
         
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
-        print("FREEEEEEEEEEEEEE2")
-    #print(parsed)
-        a=1
-        b=1
-        c=1
-        test_list = [1, 2, 3, 4]
-        text1=''
-        text2=''
-        text3=''
-        ran=random.choice(test_list)
+                #print("FREEEEEEEEEEEEEE2")
+    ##print(parsed)
+                a=1
+                b=1
+                c=1
+                test_list = [1, 2, 3, 4]
+                text1=''
+                text2=''
+                text3=''
+                ran=random.choice(test_list)
         
 #         for desc in soup.find_all("span",{"class":"st"}):
 #             if(a==ran):
 #                 text1=desc.text
 #                 break
 #             a=a+1
-#         print(text1)
+#         #print(text1)
         
-        for result in results:
-            if(a==ran):
-                ch=(result.find('h2')).find('a')
-                text2=ch['href']
-                print("LINK: "+ch['href']+"\n#")
-                print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
-                txts=result.find('p')
-                text1=txts.text
-                print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
-                print("# ___________________________________________________________\n#")
-                break
-            a=a+1
+                for result in results:
+                    if(a==ran):
+                        ch=(result.find('h2')).find('a')
+                        text2=ch['href']
+                        #print("LINK: "+ch['href']+"\n#")
+                        #print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+                        txts=result.find('p')
+                        text1=txts.text
+                        #print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+                        #print("# ___________________________________________________________\n#")
+                        break
+                    a=a+1
         
         
         
@@ -515,8 +574,8 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #                 else:
 #                     text1=text1+elem
 #                     d=d+1
-        text1=altertext(text1)
-        tcopy1=text1
+                text1=altertext(text1)
+                tcopy1=text1
     
 #         for descc in soup.find_all("div",{"class":"r"}):
 #             if(b==ran):
@@ -528,38 +587,40 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #                 break
 #             b=b+1
             
-        print(text1)    
-        print(text2)
-        if(text2!=''):
-            if(text1!=''):
-                r1=r1+text1+"\n\n"
-                r1=r1+text2
-            else:
-                r1=r1+text2
+                #print(text1)    
+                #print(text2)
+                if(text2!=''):
+                    if(text1!=''):
+                        r1=r1+text1+"\n\n"
+                        r1=r1+text2
+                    else:
+                        r1=r1+text2
 #             r1=r1+text1+" ("
 #             r1=r1+text2+")"
-        else:
-            r1=r1+text1
-        tcopy2=text2
+                else:
+                    r1=r1+text1
+                tcopy2=text2
     
 #     for desccc in soup.find_all("h3",{"class":"r"}):
 #         if(c==ran):
 #             text3=desccc.text
 #             break
 #         c=c+1
-#     print(text3)
+#     #print(text3)
 #     a=soup.find_all("span", class_="f")[0]
 #     b=soup.find_all("span", class_="st")[0]
 #     c=soup.find_all("div", class_="r")[0]
-#     print(a)
-#     print(b)
-#     print(c)
-    print("FREEEEEEEEEEEEEE2")
+#     #print(a)
+#     #print(b)
+#     #print(c)
+            #print("FREEEEEEEEEEEEEE2")
     #if(rcopy=='' or rcopy[:4]=='http'):
-    r1=emoji.emojize(':mag_right:', use_aliases=True)+" "+r1
-    if(1==1):
-        if(tcopy1=='' and tcopy2==''):
-            r1='Oops, I found 0 results for your search'
+            r1=emoji.emojize(':mag_right:', use_aliases=True)+" "+r1
+            if(1==1):
+                if(tcopy1=='' and tcopy2==''):
+                    r1='Oops, I found 0 results for your search'
+    else:
+        r1='Oops, I found 0 results for your search'
     return r1
 
 def altertext(text):
@@ -611,12 +672,12 @@ def makeWebhookResult(data, searchstring):
     
 #     articleUrl3 = data[0].get('formattedUrl')
 #     articleSnippet3 = data[0].get('snippet')
-    # print(json.dumps(item, indent=4))
+    # #print(json.dumps(item, indent=4))
 
    # speech = "*Please view these articles for latest information on " + searchstring + ":* " + "\n\n" + "1) "+ articleSnippet1+ "\n"+articleUrl1+ "\n\n" + "2) "+ articleSnippet2+ "\n"+articleUrl2
     speech=data
-    print("Response:")
-    print(speech)
+    #print("Response:")
+    #print(speech)
     if(r2==''):
         return {
             "fulfillmentText": speech,
@@ -638,6 +699,6 @@ def makeWebhookResult(data, searchstring):
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
 
-    print("Starting app on port %d" % port)
+    #print("Starting app on port %d" % port)
 
     app.run(debug=False, port=port, host='0.0.0.0')
