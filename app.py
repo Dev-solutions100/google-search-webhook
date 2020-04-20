@@ -256,9 +256,9 @@ def bored():
         trivia=random.choice(facts.triviaa)
         triv=trivia[0]
         if(trivia[1]=='false'):
-            vl='This is fake news!'
+            vl='This is a myth! Hence, not true.'
         else:
-            vl='This is actually true'
+            vl='This is actually true!'
 #         url = "numbersapi.com/random/trivia"
 #         respo = requests.request("GET", url)
 #         respo=respo.json()
