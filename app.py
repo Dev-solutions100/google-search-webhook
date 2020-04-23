@@ -117,7 +117,7 @@ def risk(data):
             for itm in respo:
                 itm1=itm.get("districtData")
                 for itm2 in itm1:
-                    if(itm2.get("district")==data.lower()):
+                    if(itm2.get("district").lower()==data.lower()):
                         i1=itm2.get("confirmed")
                         i2=itm2.get("recovered")
                         i3=itm2.get("deceased")
@@ -153,7 +153,7 @@ def state(data):
             i4=''
             itm=respo.get("statewise")
             for itm1 in itm:
-                if(itm1.get("state")==data.lower()):
+                if(itm1.get("state").lower()==data.lower()):
                     i1=itm2.get("confirmed")
                     i2=itm2.get("recovered")
                     i3=itm2.get("deceased")
