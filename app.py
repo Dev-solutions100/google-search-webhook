@@ -80,6 +80,10 @@ def processRequest(req):
         searchResults=suggestions()
     elif(json_params1=='News'):
         searchResults=news()
+    elif(json_params1=='Risk - custom'):
+        searchResults=risk(searchString)
+    elif(json_params1=='State'):
+        searchResults=state(searchString)
     else:
         searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
     #print("Search results are")
@@ -91,6 +95,79 @@ def processRequest(req):
     res = makeWebhookResult(searchResults, searchstring)
     return res
 
+def risk(data):
+    url = "https://api.covid19india.org/v2/state_district_wise.json"
+    err=0
+    try:
+        respo = requests.request("GET", url)
+#         print("FREEEEEEEEEEEEEE")
+#         print(respo.status_code)
+    except:
+        err=1
+    finally:
+        if(err==0):
+            ##print("FREEEEEEEEEEEEEE")
+            respo=respo.json()
+            ##print("FREEEEEEEEEEEEEE")
+            #l=len(respo)
+            i1=''
+            i2=''
+            i3=''
+            i4=''
+            for itm in respo:
+                itm1=itm.get("districtData")
+                for itm2 in itm1:
+                    if(itm2.get("district")==data.lower()):
+                        i1=itm2.get("confirmed")
+                        i2=itm2.get("recovered")
+                        i3=itm2.get("deceased")
+                        i4=itm2.get("district")
+            if(not(i1=='' and i2=='' and i3=='' and i4=='')):
+                r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
+                return r1
+            else:
+                r1="Please check the district/city's name (Ex: *Gautam Buddha Nagar*). Or try after sometime."
+                return r1
+        else:
+            r1="Please check the district/city's name (Ex: *Gautam Buddha Nagar*). Or try after sometime."
+            return r1
+        
+def state(data):
+    url = "https://api.covid19india.org/data.json"
+    err=0
+    try:
+        respo = requests.request("GET", url)
+#         print("FREEEEEEEEEEEEEE")
+#         print(respo.status_code)
+    except:
+        err=1
+    finally:
+        if(err==0):
+            ##print("FREEEEEEEEEEEEEE")
+            respo=respo.json()
+            ##print("FREEEEEEEEEEEEEE")
+            #l=len(respo)
+            i1=''
+            i2=''
+            i3=''
+            i4=''
+            itm=respo.get("statewise")
+            for itm1 in itm:
+                if(itm1.get("state")==data.lower()):
+                    i1=itm2.get("confirmed")
+                    i2=itm2.get("recovered")
+                    i3=itm2.get("deceased")
+                    i4=itm2.get("district")
+            if(not(i1=='' and i2=='' and i3=='' and i4=='')):
+                r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
+                return r1
+            else:
+                r1="Please check the state's name (Ex: *Uttar Pradesh*). Or try after sometime."
+                return r1
+        else:
+            r1="Please check the state's name (Ex: *Uttar Pradesh*). Or try after sometime."
+            return r1
+        
 def news():
     global r2
     r2=''
@@ -389,7 +466,7 @@ def maps_search():
 
 def maps_search1(data):
     global r2
-    if(data.lower()=="england" or data.lower()=="uk" or data.lower()=="britain"):
+    if(data.lower()=="england" or data.lower()=="uk" or data.lower()=="britain" or data.lower()=="great britain"):
         data="United Kingdom"
     if(data.lower()=="america" or data.lower()=="us" or data.lower()=="usa" or data.lower()=="united states of america"):
         data="US"
