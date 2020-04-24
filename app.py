@@ -82,7 +82,7 @@ def processRequest(req):
         searchResults=news()
     elif(json_params1=='Risk - custom'):
         searchResults=risk(searchString)
-    elif(json_params1=='State'):
+    elif(json_params1=='State - custom'):
         searchResults=state(searchString)
     else:
         searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
