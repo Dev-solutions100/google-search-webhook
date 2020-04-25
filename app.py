@@ -80,9 +80,9 @@ def processRequest(req):
         searchResults=suggestions()
     elif(json_params1=='News'):
         searchResults=news()
-    elif(json_params1=='Risk - custom'):
+    elif(json_params1=='Risk - custom' or json_params1=='City1'):
         searchResults=risk(searchString)
-    elif(json_params1=='State - custom'):
+    elif(json_params1=='State - custom' or json_params1=='State1'):
         searchResults=state(searchString)
     else:
         searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
@@ -123,7 +123,7 @@ def risk(data):
                         i3=itm2.get("deceased")
                         i4=itm2.get("district")
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
-                r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *16* to see Statewise Cases\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *13* to see Hotspot Cities\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
+                r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *13* to see Hotspot Cities\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
                 return r1
             else:
                 r1="Please check the district/city's name (Ex: *Gautam Buddha Nagar*). Or try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
@@ -159,13 +159,13 @@ def state(data):
                     i3=itm1.get("deaths")
                     i4=itm1.get("state")
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
-                r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *13* to see Hotspot Cities\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
+                r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *13* to see Hotspot Cities\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                 return r1
             else:
-                r1="Please check the state's name (Ex: *Uttar Pradesh*). Or try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
+                r1="Please check the state's name (Ex: *Uttar Pradesh*). Or try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                 return r1
         else:
-            r1="Please check the state's name (Ex: *Uttar Pradesh*). Or try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
+            r1="Please check the state's name (Ex: *Uttar Pradesh*). Or try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             return r1
         
 def news():
@@ -461,7 +461,7 @@ def maps_search():
                 i1=respo[l-1].get("Confirmed")
                 i2=respo[l-1].get("Recovered")
                 i3=respo[l-1].get("Deaths")
-            r1=flag.flagize(":IN:")+" *India (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally (Updated Daily)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+            r1=flag.flagize(":IN:")+" *India*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             return r1
 
 def maps_search1(data):
@@ -521,7 +521,7 @@ def maps_search1(data):
                 i2=respo[l-1].get("Recovered")
                 i3=respo[l-1].get("Deaths")
                 i4=respo[l-1].get("Country")
-                r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
+                r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
             except:
                 r1="Please check the country's name (Ex: *New Zealand*). Or try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *0* for Main Menu"
         else:
