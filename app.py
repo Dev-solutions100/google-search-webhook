@@ -72,7 +72,7 @@ def processRequest(req):
     my_cse_id = "005871159096424944872:s8zbwrmva57"
     if(json_params1=='Real Time Cases'):
         searchResults=maps_search()
-    elif(json_params1=='Real Time Cases - custom' or json_params1=='Country'):
+    elif(json_params1=='Real Time Cases - custom' or json_params1=='Country' or json_params1=='Country1'):
         searchResults=maps_search1(searchString)
     elif(json_params1=='Bored'):
         searchResults=bored()
