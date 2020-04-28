@@ -334,7 +334,7 @@ def bored():
 
     f = open('activities.json') 
     datas = json.load(f)
-    n=random.randint(0, 134)
+    n=random.randint(0, 99)
     activity=datas[n].get("activity")
     
     test_list = [1, 2]
