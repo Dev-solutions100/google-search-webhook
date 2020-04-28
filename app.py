@@ -96,17 +96,17 @@ def processRequest(req):
     return res
 
 def risk(data):
-    if(data=="Kanpur"):
+    if(data.lower()=="kanpur"):
         data="Kanpur Nagar"
-    if(data=="Noida" or data=="Greater Noida"):
+    if(data.lower()=="noida" or data.lower()=="greater noida"):
         data="Gautam Buddha Nagar"
-    if(data=="Bombay"):
+    if(data.lower()=="bombay"):
         data="Mumbai"
-    if(data=="Bangalore"):
+    if(data.lower()=="bangalore"):
         data="Bengaluru"
-    if(data=="Gurgaon"):
+    if(data.lower()=="gurgaon"):
         data="Gurugram"
-    if(data=="Delhi"):
+    if(data.lower()=="delhi"):
         data="New Delhi"
     url = "https://api.covid19india.org/v2/state_district_wise.json"
     err=0
