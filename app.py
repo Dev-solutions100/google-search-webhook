@@ -58,7 +58,7 @@ def processRequest(req):
             locat=req.get("loc")
             resp=risk(locat)
             return {
-            "messages": [{"text": resp}],
+            "messages": [{"text": resp,
             "quick_replies": [
             {
             "title":"Quiz",
@@ -67,7 +67,7 @@ def processRequest(req):
             {
             "title":"Precautions",
             "block_names": ["Myth_English"]
-            }]
+            }]}]
             }
     else:
         json_params1= req.get("queryResult").get("intent").get("displayName")
