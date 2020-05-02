@@ -54,7 +54,7 @@ def processRequest(req):
 #     if req.get("result").get("action") != "googleSearch":
 #         return {}
     if (req.get("sourcechatfuel")):
-        if(req.get("task")=="cases"):
+        if(req.get("task")=="news"):
             resp=news()
             return {
             "messages": [{"text": resp}]
