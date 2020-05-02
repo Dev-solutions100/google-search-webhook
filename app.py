@@ -118,6 +118,7 @@ def chatfuel():
         }
     
 def risk(data):
+    chng=0
     if(data.lower()=="kanpur"):
         data="Kanpur Nagar"
     if(data.lower()=="noida" or data.lower()=="greater noida"):
@@ -128,8 +129,9 @@ def risk(data):
         data="Bengaluru Urban"
     if(data.lower()=="gurgaon"):
         data="Gurugram"
-#     if(data.lower()=="delhi"):
-#         data="New Delhi"
+    if(data.lower()=="delhi"):
+        data="New Delhi"
+        chng=1
     if(data.lower()=="allahabad"):
         data="Prayagraj"
     if(data.lower()=="calcutta"):
@@ -163,7 +165,10 @@ def risk(data):
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
                 if(i4=='Gautam Buddha Nagar'):
                     i4='Noida'
-                r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *13* to see Hotspot Cities\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                if(chng==0):
+                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *13* to see Hotspot Cities\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                else:
+                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+"Reply *Delhi* for total cases in Delhi\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *13* to see Hotspot Cities\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                 return r1
             else:
                 r1="Please check the district/city's name (Ex: *North East Delhi*). Or maybe your area has no reported cases of coronavirus. You can also try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
