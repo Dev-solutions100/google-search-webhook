@@ -111,8 +111,8 @@ def risk(data):
         data="Gautam Buddha Nagar"
     if(data.lower()=="bombay"):
         data="Mumbai"
-    if(data.lower()=="bangalore"):
-        data="Bengaluru"
+    if(data.lower()=="bangalore" or data.lower()=="bengaluru"):
+        data="Bengaluru Urban"
     if(data.lower()=="gurgaon"):
         data="Gurugram"
 #     if(data.lower()=="delhi"):
