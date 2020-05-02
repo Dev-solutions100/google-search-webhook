@@ -57,7 +57,20 @@ def processRequest(req):
         if(req.get("task")=="news"):
             resp=news()
             return {
-            "messages": [{"text": resp}]
+            "messages": [{"text": resp,
+            "quick_replies": [
+            {
+            "title":"Mask Guidelines",
+            "block_names": ["Avoid_English"]
+            },
+            {
+            "title":"Surface",
+            "block_names": ["Symptoms_English"]
+            },
+            {
+            "title":"More",
+            "block_names": ["More_English"]
+            }]}]
             }
         if(req.get("task")=="cases"):
             locat=req.get("loc")
@@ -66,12 +79,16 @@ def processRequest(req):
             "messages": [{"text": resp,
             "quick_replies": [
             {
-            "title":"Quiz",
-            "block_names": ["Testing_English"]
+            "title":"Mask Guidelines",
+            "block_names": ["Avoid_English"]
             },
             {
-            "title":"Precautions",
-            "block_names": ["Myth_English"]
+            "title":"Surface",
+            "block_names": ["Symptoms_English"]
+            },
+            {
+            "title":"More",
+            "block_names": ["More_English"]
             }]}]
             }
     else:
