@@ -53,7 +53,7 @@ def processRequest(req):
 
 #     if req.get("result").get("action") != "googleSearch":
 #         return {}
-    if hasattr(req , 'sourcechatfuel'):
+    if (req.get("sourcechatfuel"):
         resp=chatfuel()
         return resp
     else:
@@ -101,7 +101,7 @@ def processRequest(req):
 
 def chatfuel():
     return {
-            "messages": [{"text": "Got it"}],
+            "messages": [{"text": "Got it"}]
         }
     
 def risk(data):
