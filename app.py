@@ -53,9 +53,13 @@ def processRequest(req):
 
 #     if req.get("result").get("action") != "googleSearch":
 #         return {}
-    json_params1= req.get("queryResult").get("intent").get("displayName")
-    json_params = req.get("queryResult").get("queryText")
-    searchstring = ''    # this creates the overall topic which covers user's raw query
+    if hasattr(req,sourcechatfuel):
+        resp=chatfuel()
+        return resp
+    else:
+        json_params1= req.get("queryResult").get("intent").get("displayName")
+        json_params = req.get("queryResult").get("queryText")
+        searchstring = ''    # this creates the overall topic which covers user's raw query
     
     #print("JSON params is")
     #print(json_params)
@@ -63,38 +67,43 @@ def processRequest(req):
 #     for value in json_params.values():
 #         searchstring += value
 #         searchstring += " "
-    searchstring=json_params
+        searchstring=json_params
     #print(searchstring)
-    searchString = searchstring
+        searchString = searchstring
 
     # KEYS SHOULDNT BE DISPLAYED
-    my_api_key = "AIzaSyCdGOE_FUNxilcAd4hge330m5qr6p9K0Rc"
-    my_cse_id = "005871159096424944872:s8zbwrmva57"
-    if(json_params1=='Real Time Cases'):
-        searchResults=maps_search()
-    elif(json_params1=='Real Time Cases - custom' or json_params1=='Country' or json_params1=='Country1'):
-        searchResults=maps_search1(searchString)
-    elif(json_params1=='Bored'):
-        searchResults=bored()
-    elif(json_params1=='Suggestions'):
-        searchResults=suggestions()
-    elif(json_params1=='News'):
-        searchResults=news()
-    elif(json_params1=='Risk - custom' or json_params1=='City1'):
-        searchResults=risk(searchString)
-    elif(json_params1=='State - custom' or json_params1=='State1' or json_params1=='State4 - custom'):
-        searchResults=state(searchString)
-    else:
-        searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
+        my_api_key = "AIzaSyCdGOE_FUNxilcAd4hge330m5qr6p9K0Rc"
+        my_cse_id = "005871159096424944872:s8zbwrmva57"
+        if(json_params1=='Real Time Cases'):
+            searchResults=maps_search()
+        elif(json_params1=='Real Time Cases - custom' or json_params1=='Country' or json_params1=='Country1'):
+            searchResults=maps_search1(searchString)
+        elif(json_params1=='Bored'):
+            searchResults=bored()
+        elif(json_params1=='Suggestions'):
+            searchResults=suggestions()
+        elif(json_params1=='News'):
+            searchResults=news()
+        elif(json_params1=='Risk - custom' or json_params1=='City1'):
+            searchResults=risk(searchString)
+        elif(json_params1=='State - custom' or json_params1=='State1' or json_params1=='State4 - custom'):
+            searchResults=state(searchString)
+        else:
+            searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1")    # search for the topic
     #print("Search results are")
     #print(searchResults)
     #print("DONE RESULTS")
-    if searchResults is None:
-        return{}
+        if searchResults is None:
+            return{}
 
-    res = makeWebhookResult(searchResults, searchstring)
-    return res
+        res = makeWebhookResult(searchResults, searchstring)
+        return res
 
+def chatfuel():
+    return {
+            "messages": [{"text": "Got it"}],
+        }
+    
 def risk(data):
     if(data.lower()=="kanpur"):
         data="Kanpur Nagar"
