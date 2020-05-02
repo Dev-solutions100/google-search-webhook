@@ -53,7 +53,7 @@ def processRequest(req):
 
 #     if req.get("result").get("action") != "googleSearch":
 #         return {}
-    if (req.get("sourcechatfuel"):
+    if (req.get("sourcechatfuel")):
         resp=chatfuel()
         return resp
     else:
