@@ -54,8 +54,20 @@ def processRequest(req):
 #     if req.get("result").get("action") != "googleSearch":
 #         return {}
     if (req.get("sourcechatfuel")):
-        resp=chatfuel()
-        return resp
+        if(req.get("task")=="cases"):
+            resp=risk()
+            return {
+            "messages": [{"text": resp}],
+            "quick_replies": [
+            {
+            "title":"Quiz",
+            "block_names": ["Testing_English"]
+            },
+            {
+            "title":"Precautions",
+            "block_names": ["Myth_English"]
+            }]
+            }
     else:
         json_params1= req.get("queryResult").get("intent").get("displayName")
         json_params = req.get("queryResult").get("queryText")
