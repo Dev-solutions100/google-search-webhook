@@ -55,6 +55,11 @@ def processRequest(req):
 #         return {}
     if (req.get("sourcechatfuel")):
         if(req.get("task")=="cases"):
+            resp=news()
+            return {
+            "messages": [{"text": resp}]
+            }
+        if(req.get("task")=="cases"):
             locat=req.get("loc")
             resp=risk(locat)
             return {
