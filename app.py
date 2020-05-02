@@ -53,7 +53,7 @@ def processRequest(req):
 
 #     if req.get("result").get("action") != "googleSearch":
 #         return {}
-    if hasattr(req,sourcechatfuel):
+    if hasattr(req , 'sourcechatfuel'):
         resp=chatfuel()
         return resp
     else:
