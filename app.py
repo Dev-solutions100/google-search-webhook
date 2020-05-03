@@ -248,7 +248,7 @@ def risk(data):
                             r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" This district is in *"+i5+"* zone"
                             r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                         else:
-                            r1="Sorry, this is *not a district*. Please *Google* the district in which your area is present and try again with the district name *only* (Ex: *Gautam Buddha Nagar*).\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with another *District/City/State/Country* to see its cases\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                            r1="Sorry, this is *not a district*. Please *Google* the district in which your area is present and try again with the district name *ONLY* (Ex: *Gautam Buddha Nagar*).\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with another *District/City/State/Country* to see its cases\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                     return r1
         else:
             r1="Oops, there was an error! Please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
