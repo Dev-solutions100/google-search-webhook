@@ -215,11 +215,11 @@ def risk(data):
                                 break
                         if(i5!=''):
                             if(i5=='Red'):
-                                r1=r1+"\n\n"+emoji.emojize(':red_circle:', use_aliases=True)+" Your district is in *"+i5+"* zone"
+                                r1=r1+"\n\n"+emoji.emojize(':red_circle:', use_aliases=True)+" This district is in *"+i5+"* zone"
                             if(i5=='Orange'):
-                                r1=r1+"\n\n"+emoji.emojize(':large_orange_diamond:', use_aliases=True)+" Your district is in *"+i5+"* zone"
+                                r1=r1+"\n\n"+emoji.emojize(':large_orange_diamond:', use_aliases=True)+" This district is in *"+i5+"* zone"
                             if(i5=='Green'):
-                                r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Your district is in *"+i5+"* zone"
+                                r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" This district is in *"+i5+"* zone"
                     r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                     return r1
             else:
@@ -241,7 +241,7 @@ def risk(data):
                                 break
                         if(i5!=''):
                             r1=flag.flagize(":IN:")+" *"+i6+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+"0"
-                            r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Your district is in *"+i5+"* zone"
+                            r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" This district is in *"+i5+"* zone"
                             r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                         else:
                             r1="Please check the district/city's name (Ex: *North East Delhi*). You can also try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
