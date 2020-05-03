@@ -134,10 +134,11 @@ def processRequest(req):
         res = makeWebhookResult(searchResults, searchstring)
         return res
 
-def chatfuel():
-    return {
-            "messages": [{"text": "Got it"}]
-        }
+# def chatfuel():
+#     return {
+#             "messages": [{"text": "Got it"}]
+#         }
+    
     
 def risk(data):
     chng=0
@@ -188,10 +189,33 @@ def risk(data):
                 if(i4=='Gautam Buddha Nagar'):
                     i4='Noida'
                 if(chng==0):
-                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *13* to see Hotspot Cities\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)
                 else:
-                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+"Reply *Delhi* for total cases in Delhi\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *13* to see Hotspot Cities\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
-                return r1
+                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply *Delhi* for total cases in Delhi"
+                
+                urll = "https://api.covid19india.org/zones.json"
+                err1=0
+                try:
+                    respo1 = requests.request("GET", urll)
+                except:
+                    err1=1
+                finally:
+                    if(err1==0):
+                        respo1=respo1.json()
+                        i5=''
+                        itm5=respo1.get("zones")
+                        for itm6 in itm5:
+                            if(itm6.get("district").lower()==data.lower()):
+                                i5=itm6.get("zone")
+                        if(i5!=''):
+                            if(i5=='Red'):
+                                r1=r1+"\n\n"+emoji.emojize(':red_circle:', use_aliases=True)+" Your district is in *"+i5+"* zone"
+                            if(i5=='Orange'):
+                                r1=r1+"\n\n"+emoji.emojize(':large_orange_diamond:', use_aliases=True)+" Your district is in *"+i5+"* zone"
+                            if(i5=='Green'):
+                                r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Your district is in *"+i5+"* zone"
+                    r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City* to see its cases"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                    return r1
             else:
                 r1="Please check the district/city's name (Ex: *North East Delhi*). Or maybe your area has no reported cases of coronavirus. You can also try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                 return r1
