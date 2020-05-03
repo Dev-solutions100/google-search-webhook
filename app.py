@@ -177,7 +177,10 @@ def risk(data):
             i2=''
             i3=''
             i4=''
+            brk=0
             for itm in respo:
+                if(brk==1):
+                    break
                 itm1=itm.get("districtData")
                 for itm2 in itm1:
                     if(itm2.get("district").lower()==data.lower()):
@@ -185,9 +188,11 @@ def risk(data):
                         i2=itm2.get("recovered")
                         i3=itm2.get("deceased")
                         i4=itm2.get("district")
+                        brk=1
+                        break
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
                 if(i4=='Gautam Buddha Nagar'):
-                    i4='Noida'
+                    i4='Gautam Buddha Nagar (Noida)'
                 if(chng==0):
                     r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)
                 else:
@@ -207,6 +212,7 @@ def risk(data):
                         for itm6 in itm5:
                             if(itm6.get("district").lower()==data.lower()):
                                 i5=itm6.get("zone")
+                                break
                         if(i5!=''):
                             if(i5=='Red'):
                                 r1=r1+"\n\n"+emoji.emojize(':red_circle:', use_aliases=True)+" Your district is in *"+i5+"* zone"
@@ -214,13 +220,34 @@ def risk(data):
                                 r1=r1+"\n\n"+emoji.emojize(':large_orange_diamond:', use_aliases=True)+" Your district is in *"+i5+"* zone"
                             if(i5=='Green'):
                                 r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Your district is in *"+i5+"* zone"
-                    r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City* to see its cases"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                    r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                     return r1
             else:
-                r1="Please check the district/city's name (Ex: *North East Delhi*). Or maybe your area has no reported cases of coronavirus. You can also try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
-                return r1
+                urll = "https://api.covid19india.org/zones.json"
+                err1=0
+                try:
+                    respo1 = requests.request("GET", urll)
+                except:
+                    err1=1
+                finally:
+                    if(err1==0):
+                        respo1=respo1.json()
+                        i5=''
+                        itm5=respo1.get("zones")
+                        for itm6 in itm5:
+                            if(itm6.get("district").lower()==data.lower()):
+                                i5=itm6.get("zone")
+                                i6=itm6.get("district")
+                                break
+                        if(i5!=''):
+                            r1=flag.flagize(":IN:")+" *"+i6+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+"0"
+                            r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Your district is in *"+i5+"* zone"
+                            r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                        else:
+                            r1="Please check the district/city's name (Ex: *North East Delhi*). You can also try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                    return r1
         else:
-            r1="Please check the district/city's name (Ex: *North East Delhi*). Or maybe your area has no reported cases of coronavirus. You can also try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+            r1="Please check the district/city's name (Ex: *North East Delhi*). You can also try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             return r1
         
 def state(data):
@@ -249,14 +276,15 @@ def state(data):
                     i2=itm1.get("recovered")
                     i3=itm1.get("deaths")
                     i4=itm1.get("state")
+                    break
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
-                r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *13* to see Hotspot Cities\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *State* to see its cases\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                 return r1
             else:
-                r1="Please check the state's name (Ex: *Uttar Pradesh*). Or try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                r1="Kindly check the state's name (Ex: *Uttar Pradesh*). Or please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                 return r1
         else:
-            r1="Please check the state's name (Ex: *Uttar Pradesh*). Or try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+            r1="Kindly check the state's name (Ex: *Uttar Pradesh*). Or please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             return r1
         
 def news():
@@ -614,9 +642,9 @@ def maps_search1(data):
                 i4=respo[l-1].get("Country")
                 r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             except:
-                r1="Please check the country's name (Ex: *New Zealand*). Or try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                r1="Kindly check the country's name (Ex: *New Zealand*). Or please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
         else:
-            r1="Please check the country's name (Ex: *New Zealand*). Or try after sometime.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+            r1="Kindly check the country's name (Ex: *New Zealand*). Or please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
         return r1
 
 def google_search(search_term, api_key, cse_id, **kwargs):
