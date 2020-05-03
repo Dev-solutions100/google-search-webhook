@@ -119,7 +119,7 @@ def processRequest(req):
             searchResults=suggestions()
         elif(json_params1=='News'):
             searchResults=news()
-        elif(json_params1=='Risk - custom' or json_params1=='City1'):
+        elif(json_params1=='Risk - custom' or json_params1=='City1' or json_params1=='Start - no - custom' or json_params1=='Start - yes - custom'):
             searchResults=risk(searchString)
         elif(json_params1=='State - custom' or json_params1=='State1' or json_params1=='State4 - custom'):
             searchResults=state(searchString)
