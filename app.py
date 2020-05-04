@@ -548,12 +548,9 @@ def suggestions():
 def maps_search():
     global r2
     err=0
-    #url = "https://api.covid19api.com/summary"
+    url = "https://api.covid19api.com/summary"
     try:
-        #respo = requests.request("GET", url)
-        g1="3,230,493"
-        g2="1,039,749"
-        g3="217,954"
+        respo = requests.request("GET", url)
     except:
         err=1
         g1="3,000,000+"
@@ -561,23 +558,17 @@ def maps_search():
         g3="200,000+"
     finally:
         if(err==0):
-            print("FREEEEEEEEEEEEEE")
-            
-            #respo=respo.json()
-            
+            #print("FREEEEEEEEEEEEEE")
+            respo=respo.json()
             #print(respo.get("Global").get("TotalConfirmed"))
             #print("FREEEEEEEEEEEEEE")
-            
-#             g1=respo.get("Global").get("TotalConfirmed")
-#             g2=respo.get("Global").get("TotalRecovered")
-#             g3=respo.get("Global").get("TotalDeaths")
+            g1=respo.get("Global").get("TotalConfirmed")
+            g2=respo.get("Global").get("TotalRecovered")
+            g3=respo.get("Global").get("TotalDeaths")
         err1=0
-        #url = "https://api.covid19api.com/total/dayone/country/india"
+        url = "https://api.covid19api.com/total/dayone/country/india"
         try:
-            #respo = requests.request("GET", url)
-            i1="39,700"
-            i2="10,819"
-            i3="1323"
+            respo = requests.request("GET", url)
         except:
             err1=1
             i1="40,000+"
@@ -585,14 +576,14 @@ def maps_search():
             i3="1000+"
         finally:
             if(err1==0):
-                #respo = requests.request("GET", url)
-                print("FREEEEEEEEEEEEEE")
-                #respo=respo.json()
+                respo = requests.request("GET", url)
                 ##print("FREEEEEEEEEEEEEE")
-                #l=len(respo)
-#                 i1=respo[l-1].get("Confirmed")
-#                 i2=respo[l-1].get("Recovered")
-#                 i3=respo[l-1].get("Deaths")
+                respo=respo.json()
+                ##print("FREEEEEEEEEEEEEE")
+                l=len(respo)
+                i1=respo[l-1].get("Confirmed")
+                i2=respo[l-1].get("Recovered")
+                i3=respo[l-1].get("Deaths")
             r1=flag.flagize(":IN:")+" *India*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             return r1
 
@@ -634,34 +625,26 @@ def maps_search1(data):
 #                 else:
 #                     data1=data1+ele.upper()
 #                     b=0
-    #url = "https://api.covid19api.com/total/dayone/country/"+text1
+    url = "https://api.covid19api.com/total/dayone/country/"+text1
     err=0
     try:
-        #respo = requests.request("GET", url)
-        print("FREEEEEEEEEEEEEE")
+        respo = requests.request("GET", url)
+#         print("FREEEEEEEEEEEEEE")
 #         print(respo.status_code)
     except:
         err=1
     finally:
         if(err==0):
-            print("FREEEEEEEEEEEEEE")
-            #respo=respo.json()
             ##print("FREEEEEEEEEEEEEE")
-            #l=len(respo)
+            respo=respo.json()
+            ##print("FREEEEEEEEEEEEEE")
+            l=len(respo)
             try:
-#                 i1=respo[l-1].get("Confirmed")
-#                 i2=respo[l-1].get("Recovered")
-#                 i3=respo[l-1].get("Deaths")
-#                 i4=respo[l-1].get("Country")
-                i1="N/A"
-                i2="N/A"
-                i3="N/A"
-                i4=data
-                if(i4.lower()=='india'):
-                    i1="39,700"
-                    i2="10,819"
-                    i3="1323"
-                r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*Country results are being updated, please try after sometime.*\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with India/State/District to see its cases\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                i1=respo[l-1].get("Confirmed")
+                i2=respo[l-1].get("Recovered")
+                i3=respo[l-1].get("Deaths")
+                i4=respo[l-1].get("Country")
+                r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             except:
                 r1="Please check the country's name (Ex: *New Zealand*) and try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
         else:
