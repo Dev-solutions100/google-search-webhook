@@ -548,7 +548,8 @@ def suggestions():
 def maps_search():
     global r2
     err=0
-    url = "https://api.covid19api.com/summary"
+#     url = "https://api.covid19api.com/summary"
+    url="https://corona.lmao.ninja/v2/continents"
     try:
         respo = requests.request("GET", url)
     except:
@@ -562,11 +563,19 @@ def maps_search():
             respo=respo.json()
             #print(respo.get("Global").get("TotalConfirmed"))
             #print("FREEEEEEEEEEEEEE")
-            g1=respo.get("Global").get("TotalConfirmed")
-            g2=respo.get("Global").get("TotalRecovered")
-            g3=respo.get("Global").get("TotalDeaths")
+            g1=0
+            g2=0
+            g3=0
+            for itm in respo:
+                g1=int(g1)+int(itm.get("cases"))
+                g2=int(g2)+int(itm.get("recovered"))
+                g3=int(g3)+int(itm.get("deaths"))
+#             g1=respo.get("Global").get("TotalConfirmed")
+#             g2=respo.get("Global").get("TotalRecovered")
+#             g3=respo.get("Global").get("TotalDeaths")
         err1=0
-        url = "https://api.covid19api.com/total/dayone/country/india"
+        #url="https://api.covid19api.com/total/dayone/country/india"
+        url = "https://corona.lmao.ninja/v2/countries/india"
         try:
             respo = requests.request("GET", url)
         except:
@@ -576,14 +585,17 @@ def maps_search():
             i3="1000+"
         finally:
             if(err1==0):
-                respo = requests.request("GET", url)
+#                 respo = requests.request("GET", url)
                 ##print("FREEEEEEEEEEEEEE")
                 respo=respo.json()
                 ##print("FREEEEEEEEEEEEEE")
-                l=len(respo)
-                i1=respo[l-1].get("Confirmed")
-                i2=respo[l-1].get("Recovered")
-                i3=respo[l-1].get("Deaths")
+#                 l=len(respo)
+#                 i1=respo[l-1].get("Confirmed")
+#                 i2=respo[l-1].get("Recovered")
+#                 i3=respo[l-1].get("Deaths")
+                i1=respo.get("cases")
+                i2=respo.get("recovered")
+                i3=respo.get("deaths")
             r1=flag.flagize(":IN:")+" *India*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             return r1
 
