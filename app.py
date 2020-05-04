@@ -589,10 +589,12 @@ def maps_search():
 
 def maps_search1(data):
     global r2
-    if(data.lower()=="england" or data.lower()=="uk" or data.lower()=="britain" or data.lower()=="great britain"):
-        data="United Kingdom"
+    if(data.lower()=="england" or data.lower()=="uk" or data.lower()=="britain" or data.lower()=="great britain" or data.lower()=="scotland"):
+#         data="United Kingdom"
+          data="uk"
     if(data.lower()=="america" or data.lower()=="us" or data.lower()=="usa" or data.lower()=="united states of america" or data.lower()=="united states"):
-        data="United States"
+        #data="United States"
+        data="usa"
 #     url = "https://api.covid19api.com/summary"
 #     respo = requests.request("GET", url)
 #     #print("FREEEEEEEEEEEEEE")
@@ -602,12 +604,14 @@ def maps_search1(data):
 #     g1=respo.get("Global").get("TotalConfirmed")
 #     g2=respo.get("Global").get("TotalRecovered")
 #     g3=respo.get("Global").get("TotalDeaths")
-    text1=''
-    for ele in data:
-        if(ele!=' '):
-            text1=text1+ele.lower()
-        else:
-            text1=text1+'-'
+
+#     text1=''
+#     for ele in data:
+#         if(ele!=' '):
+#             text1=text1+ele.lower()
+#         else:
+#             text1=text1+'-'
+            
 #     data1=''
 #     a=0
 #     b=0
@@ -625,7 +629,9 @@ def maps_search1(data):
 #                 else:
 #                     data1=data1+ele.upper()
 #                     b=0
-    url = "https://api.covid19api.com/total/dayone/country/"+text1
+
+#     url = "https://api.covid19api.com/total/dayone/country/"+text1
+    url=https://corona.lmao.ninja/v2/countries
     err=0
     try:
         respo = requests.request("GET", url)
@@ -639,13 +645,24 @@ def maps_search1(data):
             respo=respo.json()
             ##print("FREEEEEEEEEEEEEE")
             l=len(respo)
-            try:
-                i1=respo[l-1].get("Confirmed")
-                i2=respo[l-1].get("Recovered")
-                i3=respo[l-1].get("Deaths")
-                i4=respo[l-1].get("Country")
+            i1=''
+            i2=''
+            i3=''
+            i4=''
+            for itm in respo:
+                if(itm.get("country").lower()==data.lower()):
+                    i1=itm.get("cases")
+                    i2=itm.get("recovered")
+                    i3=itm.get("deaths")
+                    i4=itm.get("country")
+                    break
+            if(not(i1=='' and i2=='' and i3=='' and i4=='')):
+#                 i1=respo[l-1].get("Confirmed")
+#                 i2=respo[l-1].get("Recovered")
+#                 i3=respo[l-1].get("Deaths")
+#                 i4=respo[l-1].get("Country")
                 r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
-            except:
+            else:
                 r1="Please check the country's name (Ex: *New Zealand*) and try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
         else:
             r1="Oops, there was an error! Please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
