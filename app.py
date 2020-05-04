@@ -631,7 +631,7 @@ def maps_search1(data):
 #                     b=0
 
 #     url = "https://api.covid19api.com/total/dayone/country/"+text1
-    url=https://corona.lmao.ninja/v2/countries
+    url="https://corona.lmao.ninja/v2/countries"
     err=0
     try:
         respo = requests.request("GET", url)
