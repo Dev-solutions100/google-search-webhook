@@ -116,10 +116,12 @@ def processRequest(req):
             num=2
             searchResults=maps_search(num)
         elif(json_params1=='Real Time Cases - custom' or json_params1=='Country' or json_params1=='Country1'):
-            searchString=req.get("queryResult").get("parameters").get("geo-country")
+            if(req.get("queryResult").get("parameters").get("geo-country")!=''):
+                searchString=req.get("queryResult").get("parameters").get("geo-country")
             searchResults=maps_search1(searchString,num)
         elif(json_params1=='Real Time Cases - custom-Hindi'):
-            searchString=req.get("queryResult").get("parameters").get("geo-country")
+            if(req.get("queryResult").get("parameters").get("geo-country")!=''):
+                searchString=req.get("queryResult").get("parameters").get("geo-country")
             num=2
             searchResults=maps_search1(searchString,num)
         elif(json_params1=='Bored'):
@@ -134,17 +136,21 @@ def processRequest(req):
             num=2
             searchResults=news(num)
         elif(json_params1=='Risk - custom' or json_params1=='City1' or json_params1=='Start - no - custom' or json_params1=='Start - yes - custom'):
-            searchString=req.get("queryResult").get("parameters").get("geo-city")
+            if(req.get("queryResult").get("parameters").get("geo-city")!=''):
+                searchString=req.get("queryResult").get("parameters").get("geo-city")
             searchResults=risk(searchString,num)
         elif(json_params1=='Risk - custom-Hindi' or json_params1=='City1-Hindi' or json_params1=='LocYes' or json_params1=='LocNo'):
-            searchString=req.get("queryResult").get("parameters").get("geo-city")
+            if(req.get("queryResult").get("parameters").get("geo-city")!=''):
+                searchString=req.get("queryResult").get("parameters").get("geo-city")
             num=2
             searchResults=risk(searchString,num)
         elif(json_params1=='State - custom' or json_params1=='State1' or json_params1=='State4 - custom'):
-            searchString=req.get("queryResult").get("parameters").get("geo-state")
+            if(req.get("queryResult").get("parameters").get("geo-state")!=''):
+                searchString=req.get("queryResult").get("parameters").get("geo-state")
             searchResults=state(searchString,num)
         elif(json_params1=='State1-Hindi' or json_params1=='State2-Hindi'):
-            searchString=req.get("queryResult").get("parameters").get("geo-state")
+            if(req.get("queryResult").get("parameters").get("geo-state")!=''):
+                searchString=req.get("queryResult").get("parameters").get("geo-state")
             num=2
             searchResults=state(searchString,num)
         elif(json_params1=='Default-Hindi'):
