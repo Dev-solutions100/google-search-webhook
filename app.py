@@ -116,14 +116,16 @@ def processRequest(req):
             num=2
             searchResults=maps_search(num)
         elif(json_params1=='Real Time Cases - custom' or json_params1=='Country' or json_params1=='Country1'):
+            searchString=req.get("queryResult").get("parameters").get("geo-country")
             searchResults=maps_search1(searchString,num)
         elif(json_params1=='Real Time Cases - custom-Hindi'):
+            searchString=req.get("queryResult").get("parameters").get("geo-country")
             num=2
             searchResults=maps_search1(searchString,num)
         elif(json_params1=='Bored'):
             searchResults=bored()
-        elif(json_params1=='Bored-Hindi'):
-            searchResults=boredh()
+#         elif(json_params1=='Bored-Hindi'):
+#             searchResults=boredh()
         elif(json_params1=='Suggestions'):
             searchResults=suggestions()
         elif(json_params1=='News'):
@@ -132,20 +134,24 @@ def processRequest(req):
             num=2
             searchResults=news(num)
         elif(json_params1=='Risk - custom' or json_params1=='City1' or json_params1=='Start - no - custom' or json_params1=='Start - yes - custom'):
+            searchString=req.get("queryResult").get("parameters").get("geo-city")
             searchResults=risk(searchString,num)
         elif(json_params1=='Risk - custom-Hindi' or json_params1=='City1-Hindi' or json_params1=='Start - no - custom-Hindi' or json_params1=='Start - yes - custom-Hindi'):
+            searchString=req.get("queryResult").get("parameters").get("geo-city")
             num=2
             searchResults=risk(searchString,num)
         elif(json_params1=='State - custom' or json_params1=='State1' or json_params1=='State4 - custom'):
+            searchString=req.get("queryResult").get("parameters").get("geo-state")
             searchResults=state(searchString,num)
         elif(json_params1=='State1-Hindi' or json_params1=='State2-Hindi'):
+            searchString=req.get("queryResult").get("parameters").get("geo-state")
             num=2
             searchResults=state(searchString,num)
         elif(json_params1=='Default-Hindi'):
             num=2
-            searchResults=google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1",num)
+            searchResults=google_search(searchString,num)
         else:
-            searchResults = google_search(searchString, my_api_key, my_cse_id, num=3, dateRestrict="d1",num)    # search for the topic
+            searchResults = google_search(searchString,num)    # search for the topic
     #print("Search results are")
     #print(searchResults)
     #print("DONE RESULTS")
@@ -302,7 +308,7 @@ def risk(data,num):
                     return r1
         else:
             if(num==1):
-                 r1="Oops, there was an error! Please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                r1="Oops, there was an error! Please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             else:
                 r1="कृपया पुन: प्रयास करें\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के सेंड करें"
             return r1        
@@ -525,12 +531,7 @@ def news(num):
                         else:
                             r1=r1+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"और खबरों के लिए *15* लिख के सेंड करें\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के सेंड करें"
                         return r1
-    
-    
-def boredh():
-    
-    
-    
+
 
 def bored():
 #     arr=["recreational", "social", "diy", "charity", "cooking", "relaxation", "music"]
@@ -642,7 +643,7 @@ def suggestions():
         r1="*Here are your suggestions:*\n\n"+emoji.emojize(':clapper:', use_aliases=True)+" *Movie:* "+movie+" ("+str(yr)+", "+gen+")"+"\n"+emoji.emojize(':notes:', use_aliases=True)+" *Song:* "+song+" - By "+artist+"\n"+emoji.emojize(':blue_book:', use_aliases=True)+" *Book:* "+book+" (By - "+author+", Rating - "+str(rating)+")\n"+emoji.emojize(':tv:', use_aliases=True)+" *Tv-Series:* "+tvseries+"\n\n"+emoji.emojize(':dart:', use_aliases=True)+" *Want to play quiz? Reply 11*\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *6* to get more Suggestions\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
     return r1
     
-def maps_search():
+def maps_search(num):
     global r2
     err=0
 #     url = "https://api.covid19api.com/summary"
@@ -699,11 +700,11 @@ def maps_search():
                 r1=flag.flagize(":IN:")+" *भारत*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *दुनिया*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" कुल मौतें: "+str(g3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी देश के मामले देखने के लिए उसका नाम अंग्रेजी में लिख कर सेंड करे (उदाहरण: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के सेंड करें"
             return r1
 
-def maps_search1(data):
+def maps_search1(data,num):
     global r2
     if(data.lower()=="england" or data.lower()=="uk" or data.lower()=="britain" or data.lower()=="great britain" or data.lower()=="scotland"):
 #         data="United Kingdom"
-          data="uk"
+        data="uk"
     if(data.lower()=="america" or data.lower()=="us" or data.lower()=="usa" or data.lower()=="united states of america" or data.lower()=="united states"):
         #data="United States"
         data="usa"
@@ -789,7 +790,7 @@ def maps_search1(data):
                 r1=emoji.emojize(':mag_right:', use_aliases=True)+' कृपया पुन: प्रयास करें\n\n'+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के सेंड करें"
         return r1
 
-def google_search(search_term, api_key, cse_id, **kwargs):
+def google_search(search_term, num):
     global r2
     r2=''
 #     service = build("customsearch", "v1", developerKey=api_key)
