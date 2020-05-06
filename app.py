@@ -419,7 +419,7 @@ def news():
                             else:
                                 r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text2
                         else:
-                            r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global उदहारण :* "+text1
+                            r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text1
                         tcopy4=text2
         
         
@@ -427,7 +427,7 @@ def news():
                             if(tcopy1=='' and tcopy2=='' and tcopy3=='' and tcopy4==''):
                                 r1=emoji.emojize(':mag_right:', use_aliases=True)+' Oops, I found zero results for your search. You can always try again!\n\n'+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             
-                        r1=r1+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *15* for more News\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                        r1=r1+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *15* for more News  उदहारण \n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
                         return r1
     
     
