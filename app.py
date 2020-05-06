@@ -136,7 +136,7 @@ def processRequest(req):
         elif(json_params1=='Risk - custom' or json_params1=='City1' or json_params1=='Start - no - custom' or json_params1=='Start - yes - custom'):
             searchString=req.get("queryResult").get("parameters").get("geo-city")
             searchResults=risk(searchString,num)
-        elif(json_params1=='Risk - custom-Hindi' or json_params1=='City1-Hindi' or json_params1=='Start - no - custom-Hindi' or json_params1=='Start - yes - custom-Hindi'):
+        elif(json_params1=='Risk - custom-Hindi' or json_params1=='City1-Hindi' or json_params1=='LocYes' or json_params1=='LocNo'):
             searchString=req.get("queryResult").get("parameters").get("geo-city")
             num=2
             searchResults=risk(searchString,num)
