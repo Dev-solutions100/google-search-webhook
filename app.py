@@ -419,7 +419,7 @@ def news():
                             else:
                                 r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text2
                         else:
-                            r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text1
+                            r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global उदहारण :* "+text1
                         tcopy4=text2
         
         
