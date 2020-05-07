@@ -153,7 +153,7 @@ def processRequest(req):
                 if(req.get("queryResult").get("parameters").get("geo-state")!=''):
                     searchString=req.get("queryResult").get("parameters").get("geo-state")
             searchResults=state(searchString,num)
-        elif(json_params1=='State1-Hindi' or json_params1=='State2-Hindi'):
+        elif(json_params1=='State1-Hindi' or json_params1=='State2-Hindi' or json_params1=='State5-Hindi'):
             if(req.get("queryResult").get("parameters").get("geo-state")):
                 if(req.get("queryResult").get("parameters").get("geo-state")!=''):
                     searchString=req.get("queryResult").get("parameters").get("geo-state")
