@@ -382,7 +382,7 @@ def news(num):
         if(num==1):
             textsearch="Coronavirus India"
         else:
-            textsearch="कोरोनावायरस भारत"
+            textsearch="Coronavirus India Hindi"
         sitesearch='https://www.bing.com/news/search?q='+textsearch
         #headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
         if(num==1):
@@ -460,7 +460,7 @@ def news(num):
                 if(num==1):
                     textsearch="Coronavirus Global"
                 else:
-                    textsearch="वैश्विक कोरोनोवायरस"
+                    textsearch="Coronavirus Global Hindi"
                 sitesearch='https://www.bing.com/news/search?q='+textsearch
         #headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
                 if(num==1):
@@ -858,7 +858,7 @@ def google_search(search_term, num):
         
         
         if(num==2):
-            search_term=search_term+" Hindi"
+            search_term=search_term+"in Hindi"
         sitesearch='https://www.bing.com/search?q='+search_term
         #headers={'User-Agent':'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'}
         if(num==1):
