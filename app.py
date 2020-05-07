@@ -519,6 +519,7 @@ def news(num):
                                     r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text1+" ("
                                 else:
                                     r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *दुनिया:* "+text1+" ("
+                                r1=r1+text2+")"
                             else:
                                 if(num==1):
                                     r1=r1+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Global:* "+text2
