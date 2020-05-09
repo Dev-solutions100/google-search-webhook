@@ -263,13 +263,13 @@ def risk(data,num):
                 print(itm9)
                 print("KKKKKKKKKK")
                 for itmt in itm9:
-                    print(itmt)
-                    print("OKKKKK")
+#                     print(itmt)
+#                     print("OKKKKK")
                     if(num20==1):
                         break
                     for itml in itmt:
-                        print(itml)
-                        print("FREEE")
+#                         print(itml)
+#                         print("FREEE")
                         if(itml.lower()==data.lower()):
                             l=len(itml)
                             if(l>=2):
