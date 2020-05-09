@@ -335,9 +335,11 @@ def state(data,num):
         r1=maps_search1(data,num)
         return r1
     r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with *20* to change to *Hindi*"+"\n\n"
-    if(data.lower()=="surat"):
-        r1=risk(data,num)
+    if(data.lower()=="surat thani"):
+        r1=risk("surat",num)
         return r1
+    if(data.lower()=="dadra and nagar haveli"):
+        data="Dadra and Nagar Haveli and Daman and Diu"
     url = "https://api.covid19india.org/data.json"
     err=0
     try:
@@ -854,7 +856,7 @@ def maps_search(num):
 
 def maps_search1(data,num):
     global r2
-    if(data.lower()=="england" or data.lower()=="uk" or data.lower()=="britain" or data.lower()=="great britain" or data.lower()=="scotland"):
+    if(data.lower()=="england" or data.lower()=="uk" or data.lower()=="britain" or data.lower()=="great britain" or data.lower()=="scotland" or data.lower()=="united kingdom"):
 #         data="United Kingdom"
         data="uk"
     if(data.lower()=="america" or data.lower()=="us" or data.lower()=="usa" or data.lower()=="united states of america" or data.lower()=="united states"):
