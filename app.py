@@ -926,8 +926,8 @@ def maps_search1(data,num):
 #                 i4=respo[l-1].get("Country")
              
                 urlc="https://disease.sh/v2/countries"
-                headers={'yesterday':'1'}
-                respo = requests.request("GET", url,headers=headers)
+                headers={'yesterday':1}
+                respo = requests.request("GET",url,headers=headers)
                 respo=respo.json()
                 for itm in respo:
                     if(itm.get("country").lower()==data.lower()):
