@@ -933,6 +933,7 @@ def maps_search1(data,num):
                 respos=respos.json()
                 for itmt in respos:
                     if(itmt.get("country").lower()==data.lower()):
+                        print(itmt)
                         infoc=itmt.get("todayCases")
                         infod=itmt.get("todayDeaths")
     
