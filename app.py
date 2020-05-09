@@ -184,6 +184,8 @@ def risk(data,num):
     chng=0
     if(data.lower()=="murgo"):
         data="ladakh"
+        r1=state("ladakh",num)
+        return r1
     if(data.lower()=="kanpur"):
         data="Kanpur Nagar"
     if(data.lower()=="madras"):
