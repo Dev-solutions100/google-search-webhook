@@ -254,8 +254,35 @@ def risk(data,num):
                         r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)
                     else:
                         r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" दिल्ली के सारे मामले जानने के लिए *दिल्ली* लिखकर सेंड करे"
-                
+                urlc="https://api.covid19india.org/districts_daily.json"
                 urll = "https://api.covid19india.org/zones.json"
+                num20=0
+                respo1 = requests.request("GET", urlc)
+                respo1=respo1.json()
+                respo1=respo1.get("districtsDaily")
+                for itmt in respo1:
+                    if(num20==1):
+                        break
+                    for itml in itmt:
+                        if(itml.lower()==data.lower()):
+                            l=len(itml)
+                            itmm=itml[l-1]
+                            itmc=itmm["confirmed"]
+                            itmd=itmm["deceased"]
+                            itmr=itmm["recovered"]
+                            num20=1
+                            break
+                                
+                    if(num20==1):
+                        r1e="\n\n*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(itmd)
+                        r1h="\n\n*पिछले 24 घंटों में:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(itmd)
+                    else:
+                        r1e=''
+                        r1h=''
+                if(num==1):
+                    r1=r1+r1e
+                else:
+                    r1=r1+r1h
                 err1=0
                 try:
                     respo1 = requests.request("GET", urll)
@@ -286,6 +313,11 @@ def risk(data,num):
                                     r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" This district is in *"+i5+"* zone"
                                 else:
                                     r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" यह जिला ग्रीन क्षेत्र में हैं"
+                    
+                    
+                                
+                                
+                    
                     if(num==1):
                         r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+r6+emoji.emojize(':dart:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"+"\n"
                     else:
@@ -310,11 +342,11 @@ def risk(data,num):
                                 break
                         if(i5!=''):
                             if(num==1):
-                                r1=flag.flagize(":IN:")+" *"+i6+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+"0"
+                                r1=flag.flagize(":IN:")+" *"+i6+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+"0"+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(0)
                                 r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" This district is in *"+i5+"* zone"
                                 r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+r6+emoji.emojize(':dart:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"
                             else:
-                                r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+"0"
+                                r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+"0"+"\n\n"+"*पिछले 24 घंटों में:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(0)
                                 r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" यह जिला ग्रीन क्षेत्र में हैं"
                                 r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते"+"\n\n"+emoji.emojize(':dart:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"और मामले देखने के लिए *जिला/शहर/राज्य/देश* के नाम को लिखकर भेजें (उदाहरण: *नोएडा*)"
                         else:
