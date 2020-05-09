@@ -926,13 +926,14 @@ def maps_search1(data,num):
 #                 i4=respo[l-1].get("Country")
              
                 urlc="https://disease.sh/v2/countries"
-                headers={'yesterday':1}
-                respo = requests.request("GET",url,headers=headers)
-                respo=respo.json()
-                for itm in respo:
-                    if(itm.get("country").lower()==data.lower()):
-                        infoc=itm.get("todayCases")
-                        infod=itm.get("todayDeaths")
+                headers={'yesterday':'1'}
+                respos = requests.request("GET",url,headers=headers)
+                print(respos)
+                respos=respos.json()
+                for itmt in respos:
+                    if(itmt.get("country").lower()==data.lower()):
+                        infoc=itmt.get("todayCases")
+                        infod=itmt.get("todayDeaths")
     
                 if(num==1):
                     r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *Total tests done:* "+str(infot)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
