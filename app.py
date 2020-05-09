@@ -262,7 +262,6 @@ def risk(data,num):
                 itm9=respo1.get("districtsDaily")
                 print(itm9)
                 print("KKKKKKKKKK")
-                itm9=itm9.json()
                 for itmt in itm9:
 #                     print(itmt)
 #                     print("OKKKKK")
