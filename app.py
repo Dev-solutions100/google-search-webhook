@@ -261,7 +261,7 @@ def risk(data,num):
                 respo1=respo1.json()
                 respo1=respo1.get("districtsDaily")
                 for itmt in respo1:
-                    print("itmt")
+                    print(itmt)
                     print("OKKKKK")
                     if(num20==1):
                         break
