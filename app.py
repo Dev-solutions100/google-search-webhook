@@ -482,8 +482,10 @@ def state(data,num):
                 
                 infod=respo1[l-1]
                 infod=infod[stt]
-                infor=respo1[l-2].get("stt")
-                infoc=respo1[l-3].get("stt")
+                infor=respo1[l-2]
+                infor=infor[stt]
+                infoc=respo1[l-3]
+                infoc=infoc[stt]
                 
                 
                 
