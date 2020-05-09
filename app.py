@@ -365,7 +365,6 @@ def state(data,num):
                 respo = requests.request("GET", urlsec)
                 respo=respo.json()
                 respo1=respo.get("states_daily")
-                respo1=respo1.json()
                 l=len(respo1)
                 if(i4.lower()=='uttar pradesh'):
                     stt='up'
