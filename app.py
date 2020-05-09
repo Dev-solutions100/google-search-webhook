@@ -263,19 +263,21 @@ def risk(data,num):
 #                 print(itm9)
 #                 print("KKKKKKKKKK")
                 for itmt in itm9.keys():
-                    print(itm9[itmt])
-                    print("OKKKKK")
+#                     print(itm9[itmt])
+#                     print("OKKKKK")
                     if(num20==1):
                         break
-                    for itml in itmt:
+                    itm10=itm9[itmt]
+                    for itml in itm10.keys():
 #                         print(itml)
 #                         print("FREEE")
                         if(itml.lower()==data.lower()):
-                            l=len(itml)
+                            itm11=itm10[itml]
+                            l=len(itm11)
                             if(l>=2):
-                                itmm=itml[l-2]
+                                itmm=itm11[l-2]
                             else:
-                                itmm=itml[l-1]
+                                itmm=itm11[l-1]
                             itmc=itmm["confirmed"]
                             itmd=itmm["deceased"]
                             itmr=itmm["recovered"]
