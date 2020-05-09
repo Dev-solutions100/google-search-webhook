@@ -180,7 +180,7 @@ def processRequest(req):
     
     
 def risk(data,num):
-    r6="\n\n"+emoji.emojize(':recycle:', use_aliases=True)+" Reply with 20 to change to *Hindi*"+"\n\n"
+    r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with 20 to change to *Hindi*"+"\n\n"
     chng=0
     if(data.lower()=="murgo"):
         data="ladakh"
@@ -331,7 +331,7 @@ def risk(data,num):
             return r1        
         
 def state(data,num):
-    r6="\n\n"+emoji.emojize(':recycle:', use_aliases=True)+" Reply with 20 to change to *Hindi*"+"\n\n"
+    r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with 20 to change to *Hindi*"+"\n\n"
     if(data.lower()=="surat"):
         r1=risk("Surat",num)
         return r1
