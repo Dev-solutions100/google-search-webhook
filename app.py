@@ -926,8 +926,8 @@ def maps_search1(data,num):
 #                 i4=respo[l-1].get("Country")
              
                 urlc="https://disease.sh/v2/countries"
-                headers={'yesterday':str(str(1))}
-                respos = requests.request("GET",url,headers=headers)
+                headers={'yesterday':str(1)}
+                respos = requests.request("GET",urlc,headers=headers)
                 print("FFFFFFFFFFFFFFFFFFFFFF")
                 print(respos)
                 respos=respos.json()
