@@ -260,11 +260,11 @@ def risk(data,num):
                 respo1 = requests.request("GET", urlc)
                 respo1=respo1.json()
                 itm9=respo1.get("districtsDaily")
-                print(itm9)
-                print("KKKKKKKKKK")
-                for itmt in itm9:
-#                     print(itmt)
-#                     print("OKKKKK")
+#                 print(itm9)
+#                 print("KKKKKKKKKK")
+                for itmt in itm9.keys():
+                    print(itm9[itmt])
+                    print("OKKKKK")
                     if(num20==1):
                         break
                     for itml in itmt:
