@@ -331,9 +331,12 @@ def risk(data,num):
             return r1        
         
 def state(data,num):
+    if(data.lower()=="england" or data.lower()=="scotland"):
+        r1=maps_search1(data,num)
+        return r1
     r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with *20* to change to *Hindi*"+"\n\n"
     if(data.lower()=="surat"):
-        r1=risk("Surat",num)
+        r1=risk(data,num)
         return r1
     url = "https://api.covid19india.org/data.json"
     err=0
