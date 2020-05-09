@@ -361,9 +361,11 @@ def state(data,num):
                     break
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
                 
-                urlsec=https://api.covid19india.org/states_daily.json
+                urlsec="https://api.covid19india.org/states_daily.json"
                 respo = requests.request("GET", urlsec)
+                respo=respo.json()
                 respo1=respo.get("states_daily")
+                respo1=respo1.json()
                 l=len(respo1)
                 if(i4.lower()=='uttar pradesh'):
                     stt='up'
