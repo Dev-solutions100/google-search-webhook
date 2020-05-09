@@ -927,6 +927,7 @@ def maps_search1(data,num):
              
                 urlc="https://disease.sh/v2/countries?yesterday=true"
                 respo = requests.request("GET", url)
+                respo=respo.json()
                 for itm in respo:
                     if(itm.get("country").lower()==data.lower()):
                         infoc=itm.get("todayCases")
