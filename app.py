@@ -182,6 +182,8 @@ def processRequest(req):
 def risk(data,num):
     r6="\n\n"+emoji.emojize(':recycle:', use_aliases=True)+" Reply with 20 to change to *Hindi*"+"\n\n"
     chng=0
+    if(data.lower()=="murgo"):
+        data="ladakh"
     if(data.lower()=="kanpur"):
         data="Kanpur Nagar"
     if(data.lower()=="madras"):
@@ -199,8 +201,8 @@ def risk(data,num):
     if(data.lower()=="gurgaon"):
         data="Gurugram"
     if(data.lower()=="delhi"):
-        data="New Delhi"
-        chng=1
+        r1=state("Delhi",num)
+        return r1
     if(data.lower()=="allahabad"):
         data="Prayagraj"
     if(data.lower()=="calcutta"):
@@ -285,7 +287,7 @@ def risk(data,num):
                     if(num==1):
                         r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+r6+emoji.emojize(':point_right:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"+"\n"
                     else:
-                        r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते"+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"और मामले देखने के लिए *जिला/शहर/राज्य/देश* का नाम लिख के भेजें (उदाहरण: *नोएडा*)"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
+                        r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते"+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"और मामले देखने के लिए *जिला/शहर/राज्य/देश* का नाम लिख के भेजें (उदाहरण: *नोएडा*)"
                     return r1
             else:
                 urll = "https://api.covid19india.org/zones.json"
@@ -308,11 +310,11 @@ def risk(data,num):
                             if(num==1):
                                 r1=flag.flagize(":IN:")+" *"+i6+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+"0"
                                 r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" This district is in *"+i5+"* zone"
-                                r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+r6+emoji.emojize(':point_right:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                                r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+r6+emoji.emojize(':point_right:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"
                             else:
                                 r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+"0"
                                 r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" यह जिला ग्रीन क्षेत्र में हैं"
-                                r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते"+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"और मामले देखने के लिए *जिला/शहर/राज्य/देश* के नाम को लिखकर भेजें (उदाहरण: *नोएडा*)"+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
+                                r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते"+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"और मामले देखने के लिए *जिला/शहर/राज्य/देश* के नाम को लिखकर भेजें (उदाहरण: *नोएडा*)"
                         else:
                             if(num==1):
                                 r1="Oops, *"+data+"* is *not a district!* You can *Google* up your district or check the district's name and try again (Ex: *Gautam Buddha Nagar*)."+r6+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with another *District/City/State/Country* to see its cases\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
@@ -358,10 +360,133 @@ def state(data,num):
                     i4=itm1.get("state")
                     break
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
+                
+                urlsec=https://api.covid19india.org/states_daily.json
+                respo = requests.request("GET", urlsec)
+                respo1=respo.get("states_daily")
+                l=len(respo1)
+                if(i4.lower()=='uttar pradesh'):
+                    stt='up'
+                
+                if(i4.lower()=='west bengal'):
+                    stt='wb'
+                
+                if(i4.lower()=='maharashtra'):
+                    stt='mh'
+                
+                if(i4.lower()=='gujarat'):
+                    stt='gj'
+                
+                if(i4.lower()=='tamil nadu'):
+                    stt='tn'
+                
+                if(i4.lower()=='delhi'):
+                    stt='dl'
+                
+                if(i4.lower()=='rajasthan'):
+                    stt='rj'
+                
+                if(i4.lower()=='madhya pradesh'):
+                    stt='mp'
+                
+                if(i4.lower()=='andhra pradesh'):
+                    stt='ap'
+                
+                if(i4.lower()=='punjab'):
+                    stt='pb'
+                
+                if(i4.lower()=='telangana'):
+                    stt='tg'
+                
+                if(i4.lower()=='jammu and kashmir'):
+                    stt='jk'
+                
+                if(i4.lower()=='karnataka'):
+                    stt='ka'
+                
+                if(i4.lower()=='haryana'):
+                    stt='hr'
+                
+                if(i4.lower()=='kerala'):
+                    stt='kl'
+                
+                if(i4.lower()=='bihar'):
+                    stt='br'
+                
+                if(i4.lower()=='odisha'):
+                    stt='or'
+                
+                if(i4.lower()=='chandigarh'):
+                    stt='ch'
+                
+                if(i4.lower()=='jharkhand'):
+                    stt='jh'
+                
+                if(i4.lower()=='tripura'):
+                    stt='tr'
+                
+                if(i4.lower()=='uttarakhand'):
+                    stt='ut'
+                
+                if(i4.lower()=='chhattisgarh'):
+                    stt='ct'
+                
+                if(i4.lower()=='assam'):
+                    stt='as'
+                
+                if(i4.lower()=='himachal pradesh'):
+                    stt='hp'
+                
+                if(i4.lower()=='ladakh'):
+                    stt='la'
+                
+                if(i4.lower()=='andaman and nicobar islands'):
+                    stt='an'
+                
+                if(i4.lower()=='meghalaya'):
+                    stt='ml'
+                
+                if(i4.lower()=='puducherry'):
+                    stt='py'
+                
+                if(i4.lower()=='goa'):
+                    stt='ga'
+                
+                if(i4.lower()=='manipur'):
+                    stt='mn'
+                
+                if(i4.lower()=='mizoram'):
+                    stt='mz'
+                
+                if(i4.lower()=='arunachal pradesh'):
+                    stt='ar'
+                
+                if(i4.lower()=='dadra and nagar haveli and daman and diu'):
+                    stt='dn'
+                
+                if(i4.lower()=='nagaland'):
+                    stt='nl'
+                
+                if(i4.lower()=='daman and diu'):
+                    stt='dd'
+                
+                if(i4.lower()=='lakshadweep'):
+                    stt='ld'
+                
+                if(i4.lower()=='sikkim'):
+                    stt='sk'
+                
+                
+                infod=respo1[l-1].get("stt")
+                infor=respo1[l-2].get("stt")
+                infoc=respo1[l-3].get("stt")
+                
+                
+                
                 if(num==1):
-                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+r6+emoji.emojize(':point_right:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *State* to see its cases\n"
+                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours:\n\n*"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(infor)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+r6+emoji.emojize(':point_right:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *State* to see its cases\n"
                 else:
-                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी राज्य के मामले देखने के लिए उसका नाम लिख कर सेंड करे (उदाहरण: *उत्तर प्रदेश*)\n\n"
+                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+"*पिछले 24 घंटों में:\n\n*"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(infor)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(infod)+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी राज्य के मामले देखने के लिए उसका नाम लिख कर सेंड करे (उदाहरण: *उत्तर प्रदेश*)\n\n"
                 return r1
             else:
                 if(num==1):
@@ -786,6 +911,9 @@ def maps_search1(data,num):
                     i2=itm.get("recovered")
                     i3=itm.get("deaths")
                     i4=itm.get("country")
+                    infoc=itm.get("todayCases")
+                    infod=itm.get("todayDeaths")
+                    infot=itm.get("tests")
                     break
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
 #                 i1=respo[l-1].get("Confirmed")
@@ -793,17 +921,17 @@ def maps_search1(data,num):
 #                 i3=respo[l-1].get("Deaths")
 #                 i4=respo[l-1].get("Country")
                 if(num==1):
-                    r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                    r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *Total tests done:* "+str(infot)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
                 else:
-                    r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी देश के मामले देखने के लिए उसका नाम लिख कर भेजें (उदाहरण: *इटली*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
+                    r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *कुल टेस्ट्स:* "+str(infot)+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी देश के मामले देखने के लिए उसका नाम लिख कर भेजें (उदाहरण: *इटली*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
             else:
                 if(num==1):
-                    r1="Please check the country's name (Ex: *New Zealand*) and try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                    r1="Please check the country's name (Ex: *New Zealand*) and try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
                 else:
                     r1="कृपया देश का नाम चेक करें (उदाहरण: *इटली*) और पुन: प्रयास करें.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
         else:
             if(num==1):
-                r1="Oops, there was an error! Please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
+                r1="Oops, there was an error! Please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
             else:
                 r1=emoji.emojize(':mag_right:', use_aliases=True)+' कृपया पुन: प्रयास करें\n\n'+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
         return r1
