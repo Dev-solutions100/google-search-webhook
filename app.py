@@ -260,7 +260,8 @@ def risk(data,num):
                 respo1 = requests.request("GET", urlc)
                 respo1=respo1.json()
                 itm9=respo1.get("districtsDaily")
-                print(respo1)
+                print(itm9)
+                print("KKKKKKKKKK")
                 for itmt in itm9:
                     print(itmt)
                     print("OKKKKK")
