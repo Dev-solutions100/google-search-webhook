@@ -260,6 +260,7 @@ def risk(data,num):
                 respo1 = requests.request("GET", urlc)
                 respo1=respo1.json()
                 respo1=respo1.get("districtsDaily")
+                print(respo1)
                 for itmt in respo1:
                     print(itmt)
                     print("OKKKKK")
@@ -270,7 +271,10 @@ def risk(data,num):
                         print("FREEE")
                         if(itml.lower()==data.lower()):
                             l=len(itml)
-                            itmm=itml[l-1]
+                            if(l>=2):
+                                itmm=itml[l-2]
+                            else:
+                                itmm=itml[l-1]
                             itmc=itmm["confirmed"]
                             itmd=itmm["deceased"]
                             itmr=itmm["recovered"]
