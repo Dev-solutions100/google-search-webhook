@@ -259,9 +259,9 @@ def risk(data,num):
                 num20=0
                 respo1 = requests.request("GET", urlc)
                 respo1=respo1.json()
-                respo1=respo1.get("districtsDaily")
+                itm9=respo1.get("districtsDaily")
                 print(respo1)
-                for itmt in respo1:
+                for itmt in itm9:
                     print(itmt)
                     print("OKKKKK")
                     if(num20==1):
