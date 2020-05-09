@@ -330,7 +330,7 @@ def risk(data,num):
         
 def state(data,num):
     r6="\n\n"+emoji.emojize(':recycle:', use_aliases=True)+" Reply with 20 to change to *Hindi*"+"\n\n"
-    if(data.lower()==surat):
+    if(data.lower()=="surat"):
         r1=risk("Surat",num)
         return r1
     url = "https://api.covid19india.org/data.json"
