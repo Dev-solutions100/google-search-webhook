@@ -180,7 +180,7 @@ def processRequest(req):
     
     
 def risk(data,num):
-    r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with 20 to change to *Hindi*"+"\n\n"
+    r6="\n\n"+emoji.emojize(':dart:', use_aliases=True)+" Reply with 20 to change to *Hindi*"+"\n\n"
     chng=0
     if(data.lower()=="murgo"):
         data="ladakh"
@@ -331,7 +331,7 @@ def risk(data,num):
             return r1        
         
 def state(data,num):
-    r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with 20 to change to *Hindi*"+"\n\n"
+    r6="\n\n"+emoji.emojize(':dart:', use_aliases=True)+" Reply with 20 to change to *Hindi*"+"\n\n"
     if(data.lower()=="surat"):
         r1=risk("Surat",num)
         return r1
@@ -480,16 +480,17 @@ def state(data,num):
                     stt='sk'
                 
                 
-                infod=respo1[l-1].get("stt")
+                infod=respo1[l-1]
+                infod=infod["stt"]
                 infor=respo1[l-2].get("stt")
                 infoc=respo1[l-3].get("stt")
                 
                 
                 
                 if(num==1):
-                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours:\n\n*"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(infor)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+r6+emoji.emojize(':point_right:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *State* to see its cases\n"
+                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(infor)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+r6+emoji.emojize(':point_right:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *State* to see its cases\n"
                 else:
-                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+"*पिछले 24 घंटों में:\n\n*"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(infor)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(infod)+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी राज्य के मामले देखने के लिए उसका नाम लिख कर सेंड करे (उदाहरण: *उत्तर प्रदेश*)\n\n"
+                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+"*पिछले 24 घंटों में:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(infor)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(infod)+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी राज्य के मामले देखने के लिए उसका नाम लिख कर सेंड करे (उदाहरण: *उत्तर प्रदेश*)\n\n"
                 return r1
             else:
                 if(num==1):
