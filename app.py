@@ -274,14 +274,19 @@ def risk(data,num):
                         if(itml.lower()==data.lower()):
                             itm11=itm10[itml]
                             l=len(itm11)
-                            if(l>=2):
+                            if(l>=3):
                                 itmm=itm11[l-2]
-                            else:
-                                itmm=itm11[l-1]
-                            itmc=itmm["confirmed"]
-                            itmd=itmm["deceased"]
-                            itmr=itmm["recovered"]
-                            num20=1
+                                itmc1=itmm["confirmed"]
+                                itmd1=itmm["deceased"]
+                                itmr1=itmm["recovered"]
+                                itmm=itm11[l-3]
+                                itmc2=itmm["confirmed"]
+                                itmd2=itmm["deceased"]
+                                itmr2=itmm["recovered"]
+                                itmc=itmc1-itmc2
+                                itmd=itmd1-itmd2
+                                itmr=itmr1-itmr2
+                                num20=1
                             break
                                 
                     if(num20==1):
