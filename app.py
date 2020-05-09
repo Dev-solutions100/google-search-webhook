@@ -264,6 +264,7 @@ def risk(data,num):
                     if(num20==1):
                         break
                     for itml in itmt:
+                        print(itml)
                         if(itml.lower()==data.lower()):
                             l=len(itml)
                             itmm=itml[l-1]
