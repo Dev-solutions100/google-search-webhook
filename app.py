@@ -1287,7 +1287,7 @@ def makeWebhookResult(data, searchstring):
     if(r2==''):
         return {
             "fulfillmentText": speech,
-            "fulfillmentMessages": [{"text": {"text": [speech]}},{"text": {"text": [speech1]},"platform":"TELEGRAM"},{"text": {"text": [speech1]},"platform":"FACEBOOK"},{"text": {"text": [speech2]},"platform":"TELEPHONY"}],
+            "fulfillmentMessages": [{"text": {"text": [speech]}},{"text": {"text": [speech1]},"platform":"TELEGRAM"},{"text": {"text": [speech1]},"platform":"FACEBOOK"}],
             # "data": data,
             # "contextOut": [],
             "source": "google-search-webhook"
