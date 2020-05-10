@@ -1256,12 +1256,13 @@ def makeWebhookResult(data, searchstring):
 
    # speech = "*Please view these articles for latest information on " + searchstring + ":* " + "\n\n" + "1) "+ articleSnippet1+ "\n"+articleUrl1+ "\n\n" + "2) "+ articleSnippet2+ "\n"+articleUrl2
     speech=data
+    speech1="yo"
     #print("Response:")
     #print(speech)
     if(r2==''):
         return {
             "fulfillmentText": speech,
-            "fulfillmentMessages": [{"text": {"text": [speech]}},{"text": {"text": [speech]},"platform":"TELEGRAM"}],
+            "fulfillmentMessages": [{"text": {"text": [speech]}},{"text": {"text": [speech1]},"platform":"TELEGRAM"}],
             # "data": data,
             # "contextOut": [],
             "source": "google-search-webhook"
