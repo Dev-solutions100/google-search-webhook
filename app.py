@@ -1256,13 +1256,38 @@ def makeWebhookResult(data, searchstring):
 
    # speech = "*Please view these articles for latest information on " + searchstring + ":* " + "\n\n" + "1) "+ articleSnippet1+ "\n"+articleUrl1+ "\n\n" + "2) "+ articleSnippet2+ "\n"+articleUrl2
     speech=data
-    speech1="yo"
+    speech1=speech
+    speech1=speech1.replace('*','')
+    
+    speech2=speech
+    speech2=speech2.replace('*',' ')
+    speech2=speech2.replace('/',' ')
+    speech2=speech2.replace('?',' ')
+    speech2=speech2.replace(':',' ')
+    speech2=speech2.replace('!',' ')
+    speech2=speech2.replace(',',' ')
+    speech2=speech2.replace('&',' and ')
+    speech2=speech2.replace('(',' ')
+    speech2=speech2.replace(')',' ')
+    speech2=speech2.replace('-',' ')
+    speech2=speech2.replace('.',' ')
+    speech2=speech2.replace('\n',' ')
+    speech2=speech2.replace(flag.flagize(":IN:"),' ')
+    speech2=speech2.replace(emoji.emojize(':bar_chart:', use_aliases=True),' ')
+    speech2=speech2.replace(emoji.emojize(':chart_with_upwards_trend:', use_aliases=True),' ')
+    speech2=speech2.replace(emoji.emojize(':chart_with_downwards_trend:', use_aliases=True),' ')
+    speech2=speech2.replace(emoji.emojize(':arrow_up:', use_aliases=True),' ')
+    speech2=speech2.replace(emoji.emojize(':white_check_mark:', use_aliases=True),' ')
+    speech2=speech2.replace(emoji.emojize(':round_pushpin:', use_aliases=True),' ')
+    speech2=speech2.replace(emoji.emojize(':globe_with_meridians:', use_aliases=True),' ')
+    speech2=speech2.replace('...',' ')
+    
     #print("Response:")
     #print(speech)
     if(r2==''):
         return {
             "fulfillmentText": speech,
-            "fulfillmentMessages": [{"text": {"text": [speech]}},{"text": {"text": [speech1]},"platform":"TELEGRAM"}],
+            "fulfillmentMessages": [{"text": {"text": [speech]}},{"text": {"text": [speech1]},"platform":"TELEGRAM"},{"text": {"text": [speech1]},"platform":"FACEBOOK"},{"text": {"text": [speech2]},"platform":"TELEPHONY"}],
             # "data": data,
             # "contextOut": [],
             "source": "google-search-webhook"
