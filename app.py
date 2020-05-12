@@ -31,7 +31,7 @@ import facts
 app = Flask(__name__)
 
 r2=''
-
+chek=0
 @app.route('/hook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
@@ -180,6 +180,7 @@ def processRequest(req):
     
     
 def risk(data,num):
+    chek=1
     r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with *20* to change to *Hindi*"+"\n\n"
     chng=0
     if(data.lower()=="murgo"):
@@ -387,6 +388,7 @@ def risk(data,num):
             return r1        
         
 def state(data,num):
+    chek=1
     if(data.lower()=="england" or data.lower()=="scotland"):
         r1=maps_search1(data,num)
         return r1
@@ -911,6 +913,7 @@ def maps_search(num):
             return r1
 
 def maps_search1(data,num):
+    chek=1
     global r2
     if(data.lower()=="england" or data.lower()=="uk" or data.lower()=="britain" or data.lower()=="great britain" or data.lower()=="scotland" or data.lower()=="united kingdom"):
 #         data="United Kingdom"
@@ -1266,12 +1269,19 @@ def makeWebhookResult(data, searchstring):
     speech=data
     speech1=speech
     speech1=speech1.replace('*','')
-    
     speech2=speech
+    if(chek==0):
+        speech2='Sorry but I did not get you'
+    else:
+        pos=speech2.find("Share")
+        if(pos==-1):
+            speech2='Sorry but data for it is not there <break time="0.3" /> please try another location'
+        else:
+            speech2=speech2[0:pos]
     speech2=speech2.replace('*',' ')
     speech2=speech2.replace('/',' ')
     speech2=speech2.replace('?',' ')
-    speech2=speech2.replace(':',' ')
+    speech2=speech2.replace(':',' <break time="0.2" /> ')
     speech2=speech2.replace('!',' ')
     speech2=speech2.replace(',',' ')
     speech2=speech2.replace('&',' and ')
@@ -1279,7 +1289,7 @@ def makeWebhookResult(data, searchstring):
     speech2=speech2.replace(')',' ')
     speech2=speech2.replace('-',' ')
     speech2=speech2.replace('.',' ')
-    speech2=speech2.replace('\n',' ')
+    speech2=speech2.replace('\n',' <break time="0.3" /> ')
     speech2=speech2.replace(flag.flagize(":IN:"),' ')
     speech2=speech2.replace(emoji.emojize(':bar_chart:', use_aliases=True),' ')
     speech2=speech2.replace(emoji.emojize(':chart_with_upwards_trend:', use_aliases=True),' ')
