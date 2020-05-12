@@ -1248,6 +1248,7 @@ def altertext(text):
         return str
 
 def makeWebhookResult(data, searchstring):
+    global chek
     global r2
     if (data is None):
         return {
