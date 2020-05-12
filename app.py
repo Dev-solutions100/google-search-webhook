@@ -1279,7 +1279,7 @@ def makeWebhookResult(data, searchstring):
     else:
         pos=speech2.find("Share")
         if(pos==-1):
-            speech2='Sorry but data for it is not there <break time="0.3" /> please try another location'
+            speech2='Sorry but data for it is not there or the name is wrong <break time="0.3" /> please try another location'
         else:
             speech2=speech2[0:pos]
     speech2=speech2.replace('*',' ')
