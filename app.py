@@ -286,6 +286,12 @@ def risk(data,num):
                                 itmc=itmc1-itmc2
                                 itmd=itmd1-itmd2
                                 itmr=itmr1-itmr2
+                                if(itmc<0):
+                                    itmc=0
+                                if(itmd<0):
+                                    itmd=0
+                                if(itmr<0):
+                                    itmr=0
                                 num20=1
                             break
                                 
