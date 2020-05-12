@@ -188,6 +188,8 @@ def risk(data,num):
         return r1
     if(data.lower()=="kanpur"):
         data="Kanpur Nagar"
+    if(data.lower()=="bagalur"):
+        data="Bengaluru Rural"
     if(data.lower()=="madras"):
         data="chennai"
     if(data.lower()=="noida" or data.lower()=="greater noida"):
