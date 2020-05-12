@@ -180,6 +180,7 @@ def processRequest(req):
     
     
 def risk(data,num):
+    global chek
     chek=1
     r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with *20* to change to *Hindi*"+"\n\n"
     chng=0
@@ -388,6 +389,7 @@ def risk(data,num):
             return r1        
         
 def state(data,num):
+    global chek
     chek=1
     if(data.lower()=="england" or data.lower()=="scotland"):
         r1=maps_search1(data,num)
@@ -913,6 +915,7 @@ def maps_search(num):
             return r1
 
 def maps_search1(data,num):
+    global chek
     chek=1
     global r2
     if(data.lower()=="england" or data.lower()=="uk" or data.lower()=="britain" or data.lower()=="great britain" or data.lower()=="scotland" or data.lower()=="united kingdom"):
