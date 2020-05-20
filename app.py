@@ -1303,6 +1303,8 @@ def makeWebhookResult(data, searchstring):
     speech2=speech2.replace(emoji.emojize(':round_pushpin:', use_aliases=True),' ')
     speech2=speech2.replace(emoji.emojize(':globe_with_meridians:', use_aliases=True),' ')
     speech2=speech2.replace(emoji.emojize(':syringe:', use_aliases=True),' ')
+    speech2=speech2.replace(emoji.emojize(':large_orange_diamond:', use_aliases=True),' ')
+    speech2=speech2.replace(emoji.emojize(':red_circle:', use_aliases=True),' ')
     speech2=speech2.replace('...',' ')
     strtele="<speak>"+speech2+"</speak>"
     
