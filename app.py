@@ -182,7 +182,8 @@ def processRequest(req):
 def risk(data,num):
     global chek
     chek=1
-    r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with *20* to change to *Hindi*"+"\n\n"
+    #r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with *20* to change to *Hindi*"+"\n\n"
+    r6="\n\n"
     chng=0
     if(data.lower()=="murgo"):
         data="ladakh"
@@ -249,13 +250,13 @@ def risk(data,num):
                     i4='Gautam Buddha Nagar (Noida)'
                 if(num==1):
                     if(chng==0):
-                        r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)
+                        r1=flag.flagize(":IN:")+" *"+i4+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)
                     else:
                         r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply *Delhi* for total cases in Delhi"
                 
                 if(num==2):
                     if(chng==0):
-                        r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)
+                        r1=flag.flagize(":IN:")+" (रियल टाइम)*"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)
                     else:
                         r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" दिल्ली के सारे मामले जानने के लिए *दिल्ली* लिखकर सेंड करे"
                 urlc="https://api.covid19india.org/districts_daily.json"
@@ -283,6 +284,14 @@ def risk(data,num):
                                 itmc1=itmm["confirmed"]
                                 itmd1=itmm["deceased"]
                                 itmr1=itmm["recovered"]
+                                dat1=itmm["date"]
+                                dat1=str(dat1)
+                                dat1=dat1.split("-")
+                                arr4=["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"]
+                                dat5=(int(dat1[1]))-1
+                                dat9=arr4[dat5]
+                                dat2=int(dat1[2])
+                                datestr=str(dat2)+" "+dat9
                                 itmm=itm11[l-3]
                                 itmc2=itmm["confirmed"]
                                 itmd2=itmm["deceased"]
@@ -300,8 +309,8 @@ def risk(data,num):
                             break
                                 
                     if(num20==1):
-                        r1e="\n\n*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(itmd)
-                        r1h="\n\n*पिछले 24 घंटों में:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(itmd)
+                        r1e="\n\n*In last 24 hours ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(itmd)
+                        r1h="\n\n*पिछले 24 घंटों में ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(itmd)
                     else:
                         r1e=''
                         r1h=''
@@ -345,7 +354,7 @@ def risk(data,num):
                                 
                     
                     if(num==1):
-                        r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+r6+emoji.emojize(':dart:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"+"\n"
+                        r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+r6+emoji.emojize(':dart:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *20* to change to *Hindi*"
                     else:
                         r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते"+"\n\n"+emoji.emojize(':dart:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"और मामले देखने के लिए *जिला/शहर/राज्य/देश* का नाम लिख के भेजें (उदाहरण: *नोएडा*)"
                     return r1
@@ -368,11 +377,11 @@ def risk(data,num):
                                 break
                         if(i5!=''):
                             if(num==1):
-                                r1=flag.flagize(":IN:")+" *"+i6+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+"0"+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(0)
+                                r1=flag.flagize(":IN:")+" *"+i6+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+"0"+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(0)
                                 r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" This district is in *"+i5+"* zone"
-                                r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+r6+emoji.emojize(':dart:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"
+                                r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+r6+emoji.emojize(':dart:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *District/City/State/Country* to see its cases"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *20* to change to *Hindi*" 
                             else:
-                                r1=flag.flagize(":IN:")+" *"+i6+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+"0"+"\n\n"+"*पिछले 24 घंटों में:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(0)
+                                r1=flag.flagize(":IN:")+" *"+i6+" (रियल टाइम)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+"0"+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+"0"+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+"0"+"\n\n"+"*पिछले 24 घंटों में:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(0)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(0)
                                 r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" यह जिला ग्रीन क्षेत्र में हैं"
                                 r1=r1+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते"+"\n\n"+emoji.emojize(':dart:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"और मामले देखने के लिए *जिला/शहर/राज्य/देश* के नाम को लिखकर भेजें (उदाहरण: *नोएडा*)"
                         else:
@@ -394,7 +403,8 @@ def state(data,num):
     if(data.lower()=="england" or data.lower()=="scotland"):
         r1=maps_search1(data,num)
         return r1
-    r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with *20* to change to *Hindi*"+"\n\n"
+    #r6="\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" Reply with *20* to change to *Hindi*"+"\n\n"
+    r6="\n\n"
     if(data.lower()=="surat thani"):
         r1=risk("surat",num)
         return r1
@@ -546,6 +556,10 @@ def state(data,num):
                 
                 
                 infod=respo1[l-1]
+                dt4=infod["date"]
+                dt4=str(dt4)
+                dt4=dt4.split("-")
+                dtstr=dt4[0]+" "+dt4[1]
                 infod=infod[stt]
                 infor=respo1[l-2]
                 infor=infor[stt]
@@ -555,9 +569,9 @@ def state(data,num):
                 
                 
                 if(num==1):
-                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(infor)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+r6+emoji.emojize(':dart:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *State* to see its cases\n"
+                    r1=flag.flagize(":IN:")+" (Real Time)*"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours ("+dtstr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(infor)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+r6+emoji.emojize(':dart:', use_aliases=True)+" Want to see what more I can do? Reply with *0*!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a *State* to see its cases"+"\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with *20* to change to *Hindi*"
                 else:
-                    r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+"*पिछले 24 घंटों में:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(infor)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(infod)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते\n\n"+emoji.emojize(':dart:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी राज्य के मामले देखने के लिए उसका नाम लिख कर सेंड करे (उदाहरण: *उत्तर प्रदेश*)\n\n"
+                    r1=flag.flagize(":IN:")+" (रियल टाइम)*"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+"*पिछले 24 घंटों में ("+dtstr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(infor)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(infod)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते\n\n"+emoji.emojize(':dart:', use_aliases=True)+" देखना चाहते है कि मैं और क्या-क्या कर सकता हूं? *0* लिखकर भेजें!\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी राज्य के मामले देखने के लिए उसका नाम लिख कर सेंड करे (उदाहरण: *उत्तर प्रदेश*)"
                 return r1
             else:
                 if(num==1):
@@ -1005,9 +1019,9 @@ def maps_search1(data,num):
                         infod=itmt.get("todayDeaths")
     
                 if(num==1):
-                    r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *Total tests done:* "+str(infot)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
+                    r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *Total tests done:* "+str(infot)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
                 else:
-                    r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+"*पिछले 24 घंटों में:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(infod)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *कुल टेस्ट्स:* "+str(infot)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी देश के मामले देखने के लिए उसका नाम लिख कर भेजें (उदाहरण: *इटली*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
+                    r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+" (रियल टाइम)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+"*पिछले 24 घंटों में:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(infod)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *कुल टेस्ट्स:* "+str(infot)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी देश के मामले देखने के लिए उसका नाम लिख कर भेजें (उदाहरण: *इटली*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
             else:
                 if(num==1):
                     r1="Please check the country's name (Ex: *New Zealand*) and try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
