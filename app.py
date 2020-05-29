@@ -7,7 +7,6 @@ import requests
 from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
 from urllib.error import HTTPError
-from crontabs import Cron, Tab
 
 import emoji
 import flag
@@ -30,15 +29,6 @@ import facts
 
 # Flask app should start in global layout
 app = Flask(__name__)
-
-def my_job():
-    file1 = open("test.txt", "a")  # append mode 
-    file1.write("Today \n") 
-    file1.close()
-
-
-# Will run with a 10 second interval synced to the top of the minute
-Cron().schedule(Tab(name='run_my_job').every(seconds=10).run(my_job)).go()
 
 r2=''
 chek=0
