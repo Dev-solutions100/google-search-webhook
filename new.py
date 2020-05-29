@@ -1,3 +1,5 @@
+import os
+import requests
 from crontabs import Cron, Tab
 
 def my_job():
@@ -8,3 +10,10 @@ def my_job():
 
 # Will run with a 10 second interval synced to the top of the minute
 Cron().schedule(Tab(name='run_my_job').every(seconds=10).run(my_job)).go()
+
+if __name__ == '__main__':
+    port = int(os.getenv('PORT', 5000))
+
+    #print("Starting app on port %d" % port)
+
+    app.run(debug=False, port=port, host='0.0.0.0')
