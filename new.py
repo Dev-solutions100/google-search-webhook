@@ -1,0 +1,10 @@
+from crontabs import Cron, Tab
+
+def my_job():
+    file1 = open("test.txt", "a")  # append mode 
+    file1.write("Today \n") 
+    file1.close()
+
+
+# Will run with a 10 second interval synced to the top of the minute
+Cron().schedule(Tab(name='run_my_job').every(seconds=10).run(my_job)).go()
