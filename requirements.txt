@@ -4,5 +4,4 @@ future==0.16.0
 google_api_python_client==1.6.2
 emoji==0.5.4
 emoji-country-flag==1.2.1
-crontabs==0.1.4
 beautifulsoup4
