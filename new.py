@@ -5,10 +5,8 @@ from crontabs import Cron, Tab
 import time
 import github
 
-str="test"
 
 def my_job():
-    global str
 #     file1 = open("test.txt", "a")  # append mode 
 #     file1.write("Today \n") 
 #     file1.close()
@@ -20,13 +18,23 @@ def my_job():
     g=github.Github("Dev-solutions100","kk202050")
     repo=g.get_user().get_repo("google-search-webhook")
     contents=repo.get_contents("test.txt")
-    str=str+" test"
-    repo.update_file(contents.path,"ok",str,contents.sha)
+#     str=str+" test"
+    url = "https://api.covid19india.org/v2/state_district_wise.json"
+    err=0
+    try:
+        respo = requests.request("GET", url)
+#         print("FREEEEEEEEEEEEEE")
+#         print(respo.status_code)
+    except:
+        err=1
+    finally:
+        if(err==0):
+            repo.update_file(contents.path,"Updated",str(respo),contents.sha)
 #     file1 = open("test.txt", "w")  # append mode 
 #     file1.write("Today") 
 #     file1.close()
 
-    print('abcd1234')
+        print('abcd1234')
 
 
 # Will run with a 10 second interval synced to the top of the minute
@@ -40,7 +48,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=36000)
+    scheduler.add_job(my_job, 'interval', seconds=30)
     scheduler.start()
 
     while True:
