@@ -21,7 +21,7 @@ def my_job():
 
 
 # Will run with a 10 second interval synced to the top of the minute
-#Cron().schedule(Tab(name='run_my_job').every(seconds=10).run(my_job)).go()
+Cron().schedule(Tab(name='run_my_job').every(seconds=10).run(my_job)).go()
 
 if __name__ == '__main__':
     #port = int(os.getenv('PORT', 5000))
@@ -30,12 +30,12 @@ if __name__ == '__main__':
 
     #app.run(debug=False, port=port, host='0.0.0.0')
     
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=10)
-    scheduler.start()
+#     scheduler = BackgroundScheduler()
+#     scheduler.add_job(my_job, 'interval', seconds=10)
+#     scheduler.start()
 
-    while True:
-        time.sleep(5)
+#     while True:
+#         time.sleep(5)
         
     port = int(os.getenv('PORT', 5000))
 
