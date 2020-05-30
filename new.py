@@ -3,6 +3,9 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import requests
 from crontabs import Cron, Tab
 import time
+import github
+
+str="test"
 
 def my_job():
 #     file1 = open("test.txt", "a")  # append mode 
@@ -12,10 +15,15 @@ def my_job():
 #     with open("./test.txt", "w") as file1:  # append mode 
 #         file1.write("Today") 
 #     file1.close()
-
-    file1 = open("test.txt", "w")  # append mode 
-    file1.write("Today") 
-    file1.close()
+    
+    g=github.Github("Dev-solutions100","kk202050")
+    repo=g.get_user().get_repo("google-search-webhook")
+    contents=repo.get_contents("test.txt")
+    str=str+" test"
+    repo.update_file(contents.path,"ok",str,contents.sha)
+#     file1 = open("test.txt", "w")  # append mode 
+#     file1.write("Today") 
+#     file1.close()
 
     print('abcd1234')
 
