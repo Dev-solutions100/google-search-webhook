@@ -30,7 +30,7 @@ def my_job():
     finally:
         if(err==0):
             respo=respo.json()
-            repo.update_file(contents.path,"Updated",respo,contents.sha)
+            repo.update_file(contents.path,"Updated",str(respo),contents.sha)
 #     file1 = open("test.txt", "w")  # append mode 
 #     file1.write("Today") 
 #     file1.close()
