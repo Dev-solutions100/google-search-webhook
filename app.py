@@ -217,7 +217,8 @@ def risk(data,num):
     url = "https://api.covid19india.org/v2/state_district_wise.json"
     err=0
     try:
-        respo = requests.request("GET", url)
+        err=0
+#        respo = requests.request("GET", url)
 #         print("FREEEEEEEEEEEEEE")
 #         print(respo.status_code)
     except:
@@ -225,7 +226,9 @@ def risk(data,num):
     finally:
         if(err==0):
             ##print("FREEEEEEEEEEEEEE")
-            respo=respo.json()
+            fl = open('test.txt') 
+            respo = json.load(fl)
+            #respo=respo.json()
             ##print("FREEEEEEEEEEEEEE")
             #l=len(respo)
             i1=''
