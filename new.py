@@ -8,6 +8,7 @@ import github
 str="test"
 
 def my_job():
+    global str
 #     file1 = open("test.txt", "a")  # append mode 
 #     file1.write("Today \n") 
 #     file1.close()
