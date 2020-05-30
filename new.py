@@ -9,7 +9,7 @@ def my_job():
 #     file1.write("Today \n") 
 #     file1.close()
 
-    with open("test.txt", "w") as file1:  # append mode 
+    with open("./test.txt", "w") as file1:  # append mode 
         file1.write("Today") 
 #     file1.close()
 
