@@ -8,6 +8,15 @@ def my_job():
 #     file1 = open("test.txt", "a")  # append mode 
 #     file1.write("Today \n") 
 #     file1.close()
+
+#     file1 = open("test.txt", "a")  # append mode 
+#     file1.write("Today \n") 
+#     file1.close()
+
+    file1 = open("test.txt", "w")  # append mode 
+    file1.write("Today") 
+    file1.close()
+
     print('abc123')
 
 
@@ -22,7 +31,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=3600)
+    scheduler.add_job(my_job, 'interval', seconds=10)
     scheduler.start()
 
     while True:
