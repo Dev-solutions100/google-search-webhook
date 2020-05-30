@@ -5,9 +5,10 @@ from crontabs import Cron, Tab
 import time
 
 def my_job():
-    file1 = open("test.txt", "a")  # append mode 
-    file1.write("Today \n") 
-    file1.close()
+#     file1 = open("test.txt", "a")  # append mode 
+#     file1.write("Today \n") 
+#     file1.close()
+    print('abc123')
 
 
 # Will run with a 10 second interval synced to the top of the minute
