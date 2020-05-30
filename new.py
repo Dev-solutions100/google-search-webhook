@@ -22,3 +22,6 @@ if __name__ == '__main__':
     scheduler = BackgroundScheduler()
     scheduler.add_job(my_job, 'interval', seconds=10)
     scheduler.start()
+    
+    while True:
+            time.sleep(5)
