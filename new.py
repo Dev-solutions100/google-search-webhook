@@ -21,5 +21,4 @@ if __name__ == '__main__':
     
     scheduler = BackgroundScheduler()
     scheduler.add_job(my_job, 'interval', seconds=10)
-    scheduler.add
     scheduler.start()
