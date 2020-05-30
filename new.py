@@ -20,7 +20,6 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.configure(timezone=utc)
     scheduler.add_job(my_job, 'interval', seconds=10)
     scheduler.add
     scheduler.start()
