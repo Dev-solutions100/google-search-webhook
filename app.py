@@ -912,7 +912,10 @@ def maps_search(num):
     finally:
         if(err==0):
             flll = open('continent.txt').read()
+            fll=fll.replace('\']','\"]')
+            fll=fll.replace('[\'','[\"')
             respo = json.loads(flll)
+            
             #print("FREEEEEEEEEEEEEE")
             #respo=respo.json()
             #print(respo.get("Global").get("TotalConfirmed"))
