@@ -104,7 +104,7 @@ def my_job():
             respo=respo.replace(', \'',', \"')
             respo=respo.replace('\',','\",')
             respo=respo.replace('None','\"0\"')
-            respo=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"')
+            respo=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo)
             
 #             respo4=respo4.replace('\"','\'')
 #             respo4=respo4.replace('{\'','{\"')
