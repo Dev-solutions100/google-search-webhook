@@ -265,8 +265,10 @@ def risk(data,num):
                 urlc="https://api.covid19india.org/districts_daily.json"
                 urll = "https://api.covid19india.org/zones.json"
                 num20=0
-                respo1 = requests.request("GET", urlc)
-                respo1=respo1.json()
+                #respo1 = requests.request("GET", urlc)
+                flll = open('dailydistrict.txt').read()
+                respo1 = json.loads(flll)
+                #respo1=respo1.json()
                 itm9=respo1.get("districtsDaily")
 #                 print(itm9)
 #                 print("KKKKKKKKKK")
@@ -323,12 +325,15 @@ def risk(data,num):
                     r1=r1+r1h
                 err1=0
                 try:
-                    respo1 = requests.request("GET", urll)
+                    err1=0
+                    #respo1 = requests.request("GET", urll)
                 except:
                     err1=1
                 finally:
                     if(err1==0):
-                        respo1=respo1.json()
+                        fllll = open('zone.txt').read()
+                        respo1 = json.loads(fllll)
+                        #respo1=respo1.json()
                         i5=''
                         itm5=respo1.get("zones")
                         for itm6 in itm5:
@@ -457,8 +462,10 @@ def state(data,num):
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
                 
                 urlsec="https://api.covid19india.org/states_daily.json"
-                respo = requests.request("GET", urlsec)
-                respo=respo.json()
+                flll = open('dailystate.txt').read()
+                respo = json.loads(flll)
+                #respo = requests.request("GET", urlsec)
+                #respo=respo.json()
                 respo1=respo.get("states_daily")
                 l=len(respo1)
                 if(i4.lower()=='uttar pradesh'):
@@ -825,7 +832,7 @@ def bored():
     url = "https://icanhazdadjoke.com/slack"
     err=0
     try:
-        respo = requests.request("GET", url, headers=headers)
+        respo = requests.request("GET", url, headers=headers, timeout=3)
     except:
         err=1
     finally:
@@ -895,7 +902,8 @@ def maps_search(num):
 #     url = "https://api.covid19api.com/summary"
     url="https://corona.lmao.ninja/v2/continents"
     try:
-        respo = requests.request("GET", url, timeout=3)
+        err=0
+        #respo = requests.request("GET", url, timeout=3)
     except:
         err=1
         g1="6,000,000+"
@@ -903,8 +911,10 @@ def maps_search(num):
         g3="300,000+"
     finally:
         if(err==0):
+            flll = open('continent.txt').read()
+            respo = json.loads(flll)
             #print("FREEEEEEEEEEEEEE")
-            respo=respo.json()
+            #respo=respo.json()
             #print(respo.get("Global").get("TotalConfirmed"))
             #print("FREEEEEEEEEEEEEE")
             g1=0
@@ -921,7 +931,8 @@ def maps_search(num):
         #url="https://api.covid19api.com/total/dayone/country/india"
         url = "https://corona.lmao.ninja/v2/countries/india"
         try:
-            respo = requests.request("GET", url, timeout=3)
+            err1=0
+            #respo = requests.request("GET", url, timeout=3)
         except:
             err1=1
             i1="1,50,000+"
@@ -931,15 +942,28 @@ def maps_search(num):
             if(err1==0):
 #                 respo = requests.request("GET", url)
                 ##print("FREEEEEEEEEEEEEE")
-                respo=respo.json()
+                #respo=respo.json()
                 ##print("FREEEEEEEEEEEEEE")
 #                 l=len(respo)
 #                 i1=respo[l-1].get("Confirmed")
 #                 i2=respo[l-1].get("Recovered")
 #                 i3=respo[l-1].get("Deaths")
-                i1=respo.get("cases")
-                i2=respo.get("recovered")
-                i3=respo.get("deaths")
+#                 i1=respo.get("cases")
+#                 i2=respo.get("recovered")
+#                 i3=respo.get("deaths")
+            fl = open('country.txt').read()
+            respo = json.loads(fl)
+            #respo=respo.json()
+            ##print("FREEEEEEEEEEEEEE")
+            l=len(respo)
+            i1=''
+            i2=''
+            i3=''
+            for itm in respo:
+                if(itm.get("country").lower()=="india"):
+                    i1=itm.get("cases")
+                    i2=itm.get("recovered")
+                    i3=itm.get("deaths")
             if(num==1):
                 r1=flag.flagize(":IN:")+" *India*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             else:
@@ -1029,10 +1053,12 @@ def maps_search1(data,num):
              
                 urlc="https://disease.sh/v2/countries?yesterday=true"
                 headers={'yesterday':'true'}
-                respos = requests.request("GET",urlc)
-                print("FFFFFFFFFFFFFFFFFFFFFF")
-                print(respos)
-                respos=respos.json()
+                #respos = requests.request("GET",urlc)
+                #print("FFFFFFFFFFFFFFFFFFFFFF")
+                #print(respos)
+                #respos=respos.json()
+                flll = open('countryyesterday.txt').read()
+                respos = json.loads(flll)
                 for itmt in respos:
                     if(itmt.get("country").lower()==data.lower()):
                         print(itmt)
