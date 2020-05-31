@@ -1044,6 +1044,7 @@ def maps_search1(data,num):
             for itm in respo:
                 if(itm.get("country").lower()==data.lower()):
                     i1=itm.get("cases")
+                    i1=f'{value:,}'
                     i2=itm.get("recovered")
                     i3=itm.get("deaths")
                     i4=itm.get("country")
