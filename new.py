@@ -44,6 +44,10 @@ def my_job():
             respo2=respo2.json()
             respo3=respo3.json()
             respo2=str(respo2)
+            respo=str(respo)
+            respo3=str(respo3)
+            respo1=str(respo1)
+            
             respo2=respo2.replace('\"','\'')
             respo2=respo2.replace('{\'','{\"')
             respo2=respo2.replace('\'}','\"}')
@@ -51,11 +55,36 @@ def my_job():
             respo2=respo2.replace(': \'',': \"')
             respo2=respo2.replace(', \'',', \"')
             respo2=respo2.replace('\',','\",')
+            
+            respo1=respo1.replace('\"','\'')
+            respo1=respo1.replace('{\'','{\"')
+            respo1=respo1.replace('\'}','\"}')
+            respo1=respo1.replace('\':','\":')
+            respo1=respo1.replace(': \'',': \"')
+            respo1=respo1.replace(', \'',', \"')
+            respo1=respo1.replace('\',','\",')
+            
+            respo3=respo3.replace('\"','\'')
+            respo3=respo3.replace('{\'','{\"')
+            respo3=respo3.replace('\'}','\"}')
+            respo3=respo3.replace('\':','\":')
+            respo3=respo3.replace(': \'',': \"')
+            respo3=respo3.replace(', \'',', \"')
+            respo3=respo3.replace('\',','\",')
+            
+            respo=respo.replace('\"','\'')
+            respo=respo.replace('{\'','{\"')
+            respo=respo.replace('\'}','\"}')
+            respo=respo.replace('\':','\":')
+            respo=respo.replace(': \'',': \"')
+            respo=respo.replace(', \'',', \"')
+            respo=respo.replace('\',','\",')
+            
             try:
-                repo.update_file(contents.path,"Updated",str(respo),contents.sha)
-                repo.update_file(contents1.path,"Updated",str(respo1),contents1.sha)
+                repo.update_file(contents.path,"Updated",respo,contents.sha)
+                repo.update_file(contents1.path,"Updated",respo1,contents1.sha)
                 repo.update_file(contents2.path,"Updated",respo2,contents2.sha)
-                repo.update_file(contents3.path,"Updated",str(respo3),contents3.sha)
+                repo.update_file(contents3.path,"Updated",respo3,contents3.sha)
             except:
                 ck=1
 #     file1 = open("test.txt", "w")  # append mode 
