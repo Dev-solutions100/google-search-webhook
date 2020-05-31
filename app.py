@@ -365,12 +365,15 @@ def risk(data,num):
                 urll = "https://api.covid19india.org/zones.json"
                 err1=0
                 try:
-                    respo1 = requests.request("GET", urll)
+                    #respo1 = requests.request("GET", urll)
+                    err1=0
                 except:
                     err1=1
                 finally:
                     if(err1==0):
-                        respo1=respo1.json()
+                        fll = open('zone.txt').read().replace("\'", "\"")
+                        respo1 = json.loads(fll)
+                        #respo1=respo1.json()
                         i5=''
                         itm5=respo1.get("zones")
                         for itm6 in itm5:
@@ -416,7 +419,8 @@ def state(data,num):
     url = "https://api.covid19india.org/data.json"
     err=0
     try:
-        respo = requests.request("GET", url)
+        err=0
+        #respo = requests.request("GET", url)
 #         print("FREEEEEEEEEEEEEE")
 #         print(respo.status_code)
     except:
@@ -424,7 +428,9 @@ def state(data,num):
     finally:
         if(err==0):
             ##print("FREEEEEEEEEEEEEE")
-            respo=respo.json()
+            fl = open('state.txt').read().replace("\'", "\"")
+            respo = json.loads(fl)
+            #respo=respo.json()
             ##print("FREEEEEEEEEEEEEE")
             #l=len(respo)
             i1=''
@@ -880,12 +886,12 @@ def maps_search(num):
 #     url = "https://api.covid19api.com/summary"
     url="https://corona.lmao.ninja/v2/continents"
     try:
-        respo = requests.request("GET", url)
+        respo = requests.request("GET", url, timeout=3)
     except:
         err=1
-        g1="3,000,000+"
-        g2="1,000,000+"
-        g3="200,000+"
+        g1="6,000,000+"
+        g2="2,500,000+"
+        g3="300,000+"
     finally:
         if(err==0):
             #print("FREEEEEEEEEEEEEE")
@@ -906,12 +912,12 @@ def maps_search(num):
         #url="https://api.covid19api.com/total/dayone/country/india"
         url = "https://corona.lmao.ninja/v2/countries/india"
         try:
-            respo = requests.request("GET", url)
+            respo = requests.request("GET", url, timeout=3)
         except:
             err1=1
-            i1="40,000+"
-            i2="10,000+"
-            i3="1000+"
+            i1="1,50,000+"
+            i2="80,000+"
+            i3="5,000+"
         finally:
             if(err1==0):
 #                 respo = requests.request("GET", url)
@@ -980,7 +986,8 @@ def maps_search1(data,num):
     url="https://corona.lmao.ninja/v2/countries"
     err=0
     try:
-        respo = requests.request("GET", url)
+        err=0
+        #respo = requests.request("GET", url)
 #         print("FREEEEEEEEEEEEEE")
 #         print(respo.status_code)
     except:
@@ -988,7 +995,9 @@ def maps_search1(data,num):
     finally:
         if(err==0):
             ##print("FREEEEEEEEEEEEEE")
-            respo=respo.json()
+            fl = open('country.txt').read().replace("\'", "\"")
+            respo = json.loads(fl)
+            #respo=respo.json()
             ##print("FREEEEEEEEEEEEEE")
             l=len(respo)
             i1=''
