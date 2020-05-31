@@ -912,8 +912,8 @@ def maps_search(num):
     finally:
         if(err==0):
             flll = open('continent.txt').read()
-            fll=fll.replace('\']','\"]')
-            fll=fll.replace('[\'','[\"')
+            flll=flll.replace('\']','\"]')
+            flll=flll.replace('[\'','[\"')
             respo = json.loads(flll)
             
             #print("FREEEEEEEEEEEEEE")
