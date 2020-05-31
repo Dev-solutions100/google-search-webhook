@@ -76,7 +76,7 @@ def my_job():
             respo2=respo2.replace(': \'',': \"')
             respo2=respo2.replace(', \'',', \"')
             respo2=respo2.replace('\',','\",')
-            respo2=respo2.replace('None','\"0\"')
+            respo2=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo2)
             
             respo1=respo1.replace('\"','\'')
             respo1=respo1.replace('{\'','{\"')
@@ -85,7 +85,7 @@ def my_job():
             respo1=respo1.replace(': \'',': \"')
             respo1=respo1.replace(', \'',', \"')
             respo1=respo1.replace('\',','\",')
-            respo1=respo1.replace('None','\"0\"')
+            respo1=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo1)
             
             respo3=respo3.replace('\"','\'')
             respo3=respo3.replace('{\'','{\"')
@@ -94,7 +94,7 @@ def my_job():
             respo3=respo3.replace(': \'',': \"')
             respo3=respo3.replace(', \'',', \"')
             respo3=respo3.replace('\',','\",')
-            respo3=respo3.replace('None','\"0\"')
+            respo3=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo3)
             
             respo=respo.replace('\"','\'')
             respo=respo.replace('{\'','{\"')
@@ -113,7 +113,7 @@ def my_job():
 #             respo4=respo4.replace(': \'',': \"')
 #             respo4=respo4.replace(', \'',', \"')
 #             respo4=respo4.replace('\',','\",')
-#             respo4=respo4.replace('None','\"0\"')
+#             respo4=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo4)
             
             respo5=respo5.replace('\"','\'')
             respo5=respo5.replace('{\'','{\"')
@@ -122,7 +122,7 @@ def my_job():
             respo5=respo5.replace(': \'',': \"')
             respo5=respo5.replace(', \'',', \"')
             respo5=respo5.replace('\',','\",')
-            respo5=respo5.replace('None','\"0\"')
+            respo5=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo5)
             
             respo6=respo6.replace('\"','\'')
             respo6=respo6.replace('{\'','{\"')
@@ -133,7 +133,7 @@ def my_job():
             respo6=respo6.replace('\',','\",')
             respo6=respo6.replace('\']','\"]')
             respo6=respo6.replace('[\'','[\"')
-            respo6=respo6.replace('None','\"0\"')
+            respo6=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo6)
             
             respo7=respo7.replace('\"','\'')
             respo7=respo7.replace('{\'','{\"')
@@ -142,7 +142,7 @@ def my_job():
             respo7=respo7.replace(': \'',': \"')
             respo7=respo7.replace(', \'',', \"')
             respo7=respo7.replace('\',','\",')
-            respo7=respo7.replace('None','\"0\"')
+            respo7=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo7)
             
             try:
                 repo.update_file(contents.path,"Updated",respo,contents.sha)
