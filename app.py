@@ -243,11 +243,11 @@ def risk(data,num):
                 for itm2 in itm1:
                     if(itm2.get("district").lower()==data.lower()):
                         i1=itm2.get("confirmed")
-                        i1=f'{i1:,}'
+                        i1=f'{int(i1):,}'
                         i2=itm2.get("recovered")
-                        i2=f'{i2:,}'
+                        i2=f'{int(i2):,}'
                         i3=itm2.get("deceased")
-                        i3=f'{i3:,}'
+                        i3=f'{int(i3):,}'
                         i4=itm2.get("district")
                         brk=1
                         break
@@ -307,9 +307,9 @@ def risk(data,num):
                                 itmc=itmc1-itmc2
                                 itmd=itmd1-itmd2
                                 itmr=itmr1-itmr2
-                                itmc=f'{itmc:,}'
-                                itmd=f'{itmd:,}'
-                                itmr=f'{itmr:,}'
+                                itmc=f'{int(itmc):,}'
+                                itmd=f'{int(itmd):,}'
+                                itmr=f'{int(itmr):,}'
                                 if(itmc<0):
                                     itmc=0
                                 if(itmd<0):
