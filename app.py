@@ -243,8 +243,11 @@ def risk(data,num):
                 for itm2 in itm1:
                     if(itm2.get("district").lower()==data.lower()):
                         i1=itm2.get("confirmed")
+                        i1=f'{i1:,}'
                         i2=itm2.get("recovered")
+                        i2=f'{i2:,}'
                         i3=itm2.get("deceased")
+                        i3=f'{i3:,}'
                         i4=itm2.get("district")
                         brk=1
                         break
@@ -304,6 +307,9 @@ def risk(data,num):
                                 itmc=itmc1-itmc2
                                 itmd=itmd1-itmd2
                                 itmr=itmr1-itmr2
+                                itmc=f'{itmc:,}'
+                                itmd=f'{itmd:,}'
+                                itmr=f'{itmr:,}'
                                 if(itmc<0):
                                     itmc=0
                                 if(itmd<0):
@@ -455,8 +461,11 @@ def state(data,num):
             for itm1 in itm:
                 if(itm1.get("state").lower()==data.lower()):
                     i1=itm1.get("confirmed")
+                    i1=f'{i1:,}'
                     i2=itm1.get("recovered")
+                    i2=f'{i2:,}'
                     i3=itm1.get("deaths")
+                    i3=f'{i3:,}'
                     i4=itm1.get("state")
                     break
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
@@ -591,6 +600,9 @@ def state(data,num):
                 infoc=respo1[l-3]
                 infoc=infoc[stt]
                 
+                infoc=f'{infoc:,}'
+                infod=f'{infod:,}'
+                infor=f'{infor:,}'
                 
                 
                 if(num==1):
@@ -925,8 +937,11 @@ def maps_search(num):
             g3=0
             for itm in respo:
                 g1=int(g1)+int(itm.get("cases"))
+                g1=f'{g1:,}'
                 g2=int(g2)+int(itm.get("recovered"))
+                g2=f'{g2:,}'
                 g3=int(g3)+int(itm.get("deaths"))
+                g3=f'{g3:,}'
 #             g1=respo.get("Global").get("TotalConfirmed")
 #             g2=respo.get("Global").get("TotalRecovered")
 #             g3=respo.get("Global").get("TotalDeaths")
@@ -965,8 +980,11 @@ def maps_search(num):
                 for itm in respo:
                     if(itm.get("country").lower()=="india"):
                         i1=itm.get("cases")
+                        i1=f'{i1:,}'
                         i2=itm.get("recovered")
+                        i2=f'{i2:,}'
                         i3=itm.get("deaths")
+                        i3=f'{i3:,}'
             if(num==1):
                 r1=flag.flagize(":IN:")+" *India*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             else:
@@ -1046,7 +1064,9 @@ def maps_search1(data,num):
                     i1=itm.get("cases")
                     i1=f'{i1:,}'
                     i2=itm.get("recovered")
+                    i2=f'{i2:,}'
                     i3=itm.get("deaths")
+                    i3=f'{i3:,}'
                     i4=itm.get("country")
                     flg=itm.get("countryInfo").get("iso2")
                     flg=":"+str(flg)+":"
@@ -1070,7 +1090,9 @@ def maps_search1(data,num):
                     if(itmt.get("country").lower()==data.lower()):
                         print(itmt)
                         infoc=itmt.get("todayCases")
+                        infoc=f'{infoc:,}'
                         infod=itmt.get("todayDeaths")
+                        infod=f'{infod:,}'
     
                 if(num==1):
                     #r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *Total tests done:* "+str(infot)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
