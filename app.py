@@ -265,10 +265,10 @@ def risk(data,num):
                 urlc="https://api.covid19india.org/districts_daily.json"
                 urll = "https://api.covid19india.org/zones.json"
                 num20=0
-                #respo1 = requests.request("GET", urlc)
-                flll = open('dailydistrict.txt').read()
-                respo1 = json.loads(flll)
-                #respo1=respo1.json()
+                respo1 = requests.request("GET", urlc)
+                #flll = open('dailydistrict.txt').read()
+                #respo1 = json.loads(flll)
+                respo1=respo1.json()
                 itm9=respo1.get("districtsDaily")
 #                 print(itm9)
 #                 print("KKKKKKKKKK")
