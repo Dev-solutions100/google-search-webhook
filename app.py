@@ -428,7 +428,15 @@ def state(data,num):
     finally:
         if(err==0):
             ##print("FREEEEEEEEEEEEEE")
-            fl = open('state.txt').read().replace("\'", "\"")
+            fl = open('state.txt').read()
+            
+            fl=fl.replace('{\'','{\"')
+            fl=fl.replace('\'}','\"}')
+            fl=fl.replace('\':','\":')
+            fl=fl.replace(': \'',': \"')
+            fl=fl.replace(', \'',', \"')
+            fl=fl.replace('\',','\",')
+            
             respo = json.loads(fl)
             #respo=respo.json()
             ##print("FREEEEEEEEEEEEEE")
