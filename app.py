@@ -1048,7 +1048,7 @@ def maps_search1(data,num):
                     i3=itm.get("deaths")
                     i4=itm.get("country")
                     flg=itm.get("iso2")
-                    flg=":"+flg+":"
+                    flg=":"+str(flg)+":"
                     infot=itm.get("tests")
                     break
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
