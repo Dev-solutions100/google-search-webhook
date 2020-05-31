@@ -1047,7 +1047,7 @@ def maps_search1(data,num):
                     i2=itm.get("recovered")
                     i3=itm.get("deaths")
                     i4=itm.get("country")
-                    flg=itm.get("iso2")
+                    flg=itm.get("countryInfo").get("iso2")
                     flg=":"+str(flg)+":"
                     infot=itm.get("tests")
                     break
