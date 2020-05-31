@@ -4,6 +4,7 @@ import requests
 from crontabs import Cron, Tab
 import time
 import github
+import re
 
 
 def my_job():
@@ -103,6 +104,7 @@ def my_job():
             respo=respo.replace(', \'',', \"')
             respo=respo.replace('\',','\",')
             respo=respo.replace('None','\"0\"')
+            respo=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"')
             
 #             respo4=respo4.replace('\"','\'')
 #             respo4=respo4.replace('{\'','{\"')
@@ -171,7 +173,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=3600)
+    scheduler.add_job(my_job, 'interval', seconds=30)
     scheduler.start()
 
     while True:
