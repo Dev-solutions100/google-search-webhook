@@ -21,7 +21,7 @@ def my_job():
     contents1=repo.get_contents("zone.txt")
     contents2=repo.get_contents("state.txt")
     contents3=repo.get_contents("country.txt")
-    contents4=repo.get_contents("dailydistrict.txt")
+    #contents4=repo.get_contents("dailydistrict.txt")
     contents5=repo.get_contents("dailystate.txt")
     contents6=repo.get_contents("continent.txt")
     contents7=repo.get_contents("countryyesterday.txt")
@@ -30,7 +30,7 @@ def my_job():
     url1= "https://api.covid19india.org/zones.json"
     url2= "https://api.covid19india.org/data.json"
     url3= "https://corona.lmao.ninja/v2/countries"
-    url4= "https://api.covid19india.org/districts_daily.json"
+    #url4= "https://api.covid19india.org/districts_daily.json"
     url5= "https://api.covid19india.org/states_daily.json"
     url6= "https://corona.lmao.ninja/v2/continents"
     url7= "https://disease.sh/v2/countries?yesterday=true"
@@ -41,7 +41,7 @@ def my_job():
         respo1 = requests.request("GET", url1, timeout=5)
         respo2 = requests.request("GET", url2, timeout=5)
         respo3 = requests.request("GET", url3, timeout=5)
-        respo4 = requests.request("GET", url4, timeout=5)
+        #respo4 = requests.request("GET", url4, timeout=5)
         respo5 = requests.request("GET", url5, timeout=5)
         respo6 = requests.request("GET", url6, timeout=5)
         respo7 = requests.request("GET", url7, timeout=5)
@@ -55,7 +55,7 @@ def my_job():
             respo1=respo1.json()
             respo2=respo2.json()
             respo3=respo3.json()
-            respo4=respo4.json()
+            #respo4=respo4.json()
             respo5=respo5.json()
             respo6=respo6.json()
             respo7=respo7.json()
@@ -63,7 +63,7 @@ def my_job():
             respo=str(respo)
             respo3=str(respo3)
             respo1=str(respo1)
-            respo4=str(respo4)
+            #respo4=str(respo4)
             respo5=str(respo5)
             respo6=str(respo6)
             respo7=str(respo7)
@@ -104,14 +104,14 @@ def my_job():
             respo=respo.replace('\',','\",')
             respo=respo.replace('None','\"0\"')
             
-            respo4=respo4.replace('\"','\'')
-            respo4=respo4.replace('{\'','{\"')
-            respo4=respo4.replace('\'}','\"}')
-            respo4=respo4.replace('\':','\":')
-            respo4=respo4.replace(': \'',': \"')
-            respo4=respo4.replace(', \'',', \"')
-            respo4=respo4.replace('\',','\",')
-            respo4=respo4.replace('None','\"0\"')
+#             respo4=respo4.replace('\"','\'')
+#             respo4=respo4.replace('{\'','{\"')
+#             respo4=respo4.replace('\'}','\"}')
+#             respo4=respo4.replace('\':','\":')
+#             respo4=respo4.replace(': \'',': \"')
+#             respo4=respo4.replace(', \'',', \"')
+#             respo4=respo4.replace('\',','\",')
+#             respo4=respo4.replace('None','\"0\"')
             
             respo5=respo5.replace('\"','\'')
             respo5=respo5.replace('{\'','{\"')
@@ -147,7 +147,7 @@ def my_job():
                 repo.update_file(contents1.path,"Updated",respo1,contents1.sha)
                 repo.update_file(contents2.path,"Updated",respo2,contents2.sha)
                 repo.update_file(contents3.path,"Updated",respo3,contents3.sha)
-                repo.update_file(contents4.path,"Updated",respo4,contents4.sha)
+                #repo.update_file(contents4.path,"Updated",respo4,contents4.sha)
                 repo.update_file(contents5.path,"Updated",respo5,contents5.sha)
                 repo.update_file(contents6.path,"Updated",respo6,contents6.sha)
                 repo.update_file(contents7.path,"Updated",respo7,contents7.sha)
