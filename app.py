@@ -226,9 +226,8 @@ def risk(data,num):
     finally:
         if(err==0):
             ##print("FREEEEEEEEEEEEEE")
-            fl = open('test.txt') 
-            fl = fl.replace("\'", "\"")
-            respo = json.loads(json.dumps(fl))
+            fl = open('test.txt').read().replace("\'", "\"")
+            respo = json.loads(fl)
             #respo=fl.json()
             ##print("FREEEEEEEEEEEEEE")
             #l=len(respo)
