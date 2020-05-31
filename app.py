@@ -461,11 +461,11 @@ def state(data,num):
             for itm1 in itm:
                 if(itm1.get("state").lower()==data.lower()):
                     i1=itm1.get("confirmed")
-                    i1=f'{i1:,}'
+                    i1=f'{int(i1):,}'
                     i2=itm1.get("recovered")
-                    i2=f'{i2:,}'
+                    i2=f'{int(i2):,}'
                     i3=itm1.get("deaths")
-                    i3=f'{i3:,}'
+                    i3=f'{int(i3):,}'
                     i4=itm1.get("state")
                     break
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
@@ -600,9 +600,9 @@ def state(data,num):
                 infoc=respo1[l-3]
                 infoc=infoc[stt]
                 
-                infoc=f'{infoc:,}'
-                infod=f'{infod:,}'
-                infor=f'{infor:,}'
+                infoc=f'{int(infoc):,}'
+                infod=f'{int(infod):,}'
+                infor=f'{int(infor):,}'
                 
                 
                 if(num==1):
@@ -937,11 +937,12 @@ def maps_search(num):
             g3=0
             for itm in respo:
                 g1=int(g1)+int(itm.get("cases"))
-                g1=f'{g1:,}'
                 g2=int(g2)+int(itm.get("recovered"))
-                g2=f'{g2:,}'
                 g3=int(g3)+int(itm.get("deaths"))
-                g3=f'{g3:,}'
+            g1=f'{g1:,}'
+            g2=f'{g2:,}'
+            g3=f'{g3:,}'
+             
 #             g1=respo.get("Global").get("TotalConfirmed")
 #             g2=respo.get("Global").get("TotalRecovered")
 #             g3=respo.get("Global").get("TotalDeaths")
