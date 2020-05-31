@@ -17,7 +17,7 @@ def my_job():
     
     g=github.Github("Dev-solutions100","kk202050")
     repo=g.get_user().get_repo("google-search-webhook")
-    contents=repo.get_contents("testing.json")
+    contents=repo.get_contents("test.txt")
 #     str=str+" test"
     url = "https://api.covid19india.org/v2/state_district_wise.json"
     err=0
