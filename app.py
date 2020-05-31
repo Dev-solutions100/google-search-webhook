@@ -226,7 +226,7 @@ def risk(data,num):
     finally:
         if(err==0):
             ##print("FREEEEEEEEEEEEEE")
-            fl = open('test.txt').read().replace("\'", "\"")
+            fl = open('test.txt').read()
             respo = json.loads(fl)
             #respo=fl.json()
             ##print("FREEEEEEEEEEEEEE")
@@ -371,7 +371,7 @@ def risk(data,num):
                     err1=1
                 finally:
                     if(err1==0):
-                        fll = open('zone.txt').read().replace("\'", "\"")
+                        fll = open('zone.txt').read()
                         respo1 = json.loads(fll)
                         #respo1=respo1.json()
                         i5=''
@@ -1004,7 +1004,7 @@ def maps_search1(data,num):
     finally:
         if(err==0):
             ##print("FREEEEEEEEEEEEEE")
-            fl = open('country.txt').read().replace("\'", "\"")
+            fl = open('country.txt').read()
             respo = json.loads(fl)
             #respo=respo.json()
             ##print("FREEEEEEEEEEEEEE")
