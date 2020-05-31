@@ -55,6 +55,7 @@ def my_job():
             respo2=respo2.replace(': \'',': \"')
             respo2=respo2.replace(', \'',', \"')
             respo2=respo2.replace('\',','\",')
+            respo2=respo2.replace('None','\"0\"')
             
             respo1=respo1.replace('\"','\'')
             respo1=respo1.replace('{\'','{\"')
@@ -63,6 +64,7 @@ def my_job():
             respo1=respo1.replace(': \'',': \"')
             respo1=respo1.replace(', \'',', \"')
             respo1=respo1.replace('\',','\",')
+            respo1=respo1.replace('None','\"0\"')
             
             respo3=respo3.replace('\"','\'')
             respo3=respo3.replace('{\'','{\"')
@@ -80,6 +82,7 @@ def my_job():
             respo=respo.replace(': \'',': \"')
             respo=respo.replace(', \'',', \"')
             respo=respo.replace('\',','\",')
+            respo=respo.replace('None','\"0\"')
             
             try:
                 repo.update_file(contents.path,"Updated",respo,contents.sha)
@@ -106,7 +109,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=60)
+    scheduler.add_job(my_job, 'interval', seconds=3600)
     scheduler.start()
 
     while True:
