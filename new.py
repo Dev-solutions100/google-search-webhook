@@ -43,10 +43,18 @@ def my_job():
             respo1=respo1.json()
             respo2=respo2.json()
             respo3=respo3.json()
+            respo2=str(respo2)
+            respo2=respo2.replace('\"','\'')
+            respo2=respo2.replace('{\'','{\"')
+            respo2=respo2.replace('\'}','\"}')
+            respo2=respo2.replace('\':','\":')
+            respo2=respo2.replace(': \'',': \"')
+            respo2=respo2.replace(', \'',', \"')
+            respo2=respo2.replace('\',','\",')
             try:
                 repo.update_file(contents.path,"Updated",str(respo),contents.sha)
                 repo.update_file(contents1.path,"Updated",str(respo1),contents1.sha)
-                repo.update_file(contents2.path,"Updated",str(respo2),contents2.sha)
+                repo.update_file(contents2.path,"Updated",respo2,contents2.sha)
                 repo.update_file(contents3.path,"Updated",str(respo3),contents3.sha)
             except:
                 ck=1
@@ -68,7 +76,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=3600)
+    scheduler.add_job(my_job, 'interval', seconds=60)
     scheduler.start()
 
     while True:
