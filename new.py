@@ -71,7 +71,7 @@ def my_job():
             respo3=respo3.replace(': \'',': \"')
             respo3=respo3.replace(', \'',', \"')
             respo3=respo3.replace('\',','\",')
-            respo3=respo3.replace('None','0')
+            respo3=respo3.replace('None','\"0\"')
             
             respo=respo.replace('\"','\'')
             respo=respo.replace('{\'','{\"')
