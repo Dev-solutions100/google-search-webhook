@@ -951,19 +951,19 @@ def maps_search(num):
 #                 i1=respo.get("cases")
 #                 i2=respo.get("recovered")
 #                 i3=respo.get("deaths")
-            fl = open('country.txt').read()
-            respo = json.loads(fl)
+                fl = open('country.txt').read()
+                respo = json.loads(fl)
             #respo=respo.json()
             ##print("FREEEEEEEEEEEEEE")
-            l=len(respo)
-            i1=''
-            i2=''
-            i3=''
-            for itm in respo:
-                if(itm.get("country").lower()=="india"):
-                    i1=itm.get("cases")
-                    i2=itm.get("recovered")
-                    i3=itm.get("deaths")
+                l=len(respo)
+                i1=''
+                i2=''
+                i3=''
+                for itm in respo:
+                    if(itm.get("country").lower()=="india"):
+                        i1=itm.get("cases")
+                        i2=itm.get("recovered")
+                        i3=itm.get("deaths")
             if(num==1):
                 r1=flag.flagize(":IN:")+" *India*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+"Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *Globally*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(g1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(g2)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total deaths: "+str(g3)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi"+"\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with a country's name to see its cases (Example: *Italy*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* for Main Menu"
             else:
