@@ -105,7 +105,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=60)
+    scheduler.add_job(my_job, 'interval', seconds=3600)
     scheduler.start()
 
     while True:
