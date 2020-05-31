@@ -430,6 +430,7 @@ def state(data,num):
             ##print("FREEEEEEEEEEEEEE")
             fl = open('state.txt').read()
             
+            fl=fl.replace('\"','\'')
             fl=fl.replace('{\'','{\"')
             fl=fl.replace('\'}','\"}')
             fl=fl.replace('\':','\":')
