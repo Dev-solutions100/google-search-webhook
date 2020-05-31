@@ -307,15 +307,15 @@ def risk(data,num):
                                 itmc=itmc1-itmc2
                                 itmd=itmd1-itmd2
                                 itmr=itmr1-itmr2
-                                itmc=f'{int(itmc):,}'
-                                itmd=f'{int(itmd):,}'
-                                itmr=f'{int(itmr):,}'
                                 if(itmc<0):
                                     itmc=0
                                 if(itmd<0):
                                     itmd=0
                                 if(itmr<0):
                                     itmr=0
+                                itmc=f'{int(itmc):,}'
+                                itmd=f'{int(itmd):,}'
+                                itmr=f'{int(itmr):,}'
                                 num20=1
                             break
                                 
