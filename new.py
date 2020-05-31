@@ -94,7 +94,8 @@ def my_job():
             respo3=respo3.replace(': \'',': \"')
             respo3=respo3.replace(', \'',', \"')
             respo3=respo3.replace('\',','\",')
-            respo3=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo3)
+            #respo3=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo3)
+            respo3=respo3.replace('None','\"0\"')
             
             respo=respo.replace('\"','\'')
             respo=respo.replace('{\'','{\"')
@@ -133,7 +134,8 @@ def my_job():
             respo6=respo6.replace('\',','\",')
             respo6=respo6.replace('\']','\"]')
             respo6=respo6.replace('[\'','[\"')
-            respo6=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo6)
+            #respo6=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo6)
+            respo6=respo6.replace('None','\"0\"')
             
             respo7=respo7.replace('\"','\'')
             respo7=respo7.replace('{\'','{\"')
@@ -142,7 +144,8 @@ def my_job():
             respo7=respo7.replace(': \'',': \"')
             respo7=respo7.replace(', \'',', \"')
             respo7=respo7.replace('\',','\",')
-            respo7=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo7)
+            #respo7=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo7)
+            respo7=respo7.replace('None','\"0\"')
             
             try:
                 repo.update_file(contents.path,"Updated",respo,contents.sha)
@@ -173,7 +176,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=3600)
+    scheduler.add_job(my_job, 'interval', seconds=30)
     scheduler.start()
 
     while True:
