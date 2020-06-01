@@ -1072,6 +1072,7 @@ def maps_search1(data,num):
                     flg=itm.get("countryInfo").get("iso2")
                     flg=":"+str(flg)+":"
                     infot=itm.get("tests")
+                    infot=f'{infot:,}'
                     break
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
 #                 i1=respo[l-1].get("Confirmed")
