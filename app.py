@@ -200,9 +200,9 @@ def predicted(data,num):
         if(data==value):
             cntry=key
             break
-    print("FFFFFFFFFFF")
-    print(cntry)
-    print(data)
+#     print("FFFFFFFFFFF")
+#     print(cntry)
+#     print(data)
     url="https://covid19-api.org/api/prediction/"+str(cntry)
     err=0
     try:
@@ -213,17 +213,19 @@ def predicted(data,num):
     finally:
         if(err==0):
             ##print("FREEEEEEEEEEEEEE")
-            fl = open('countryyesterday.txt').read()
-            respo1 = json.loads(fl)
+#             fl = open('countryyesterday.txt').read()
+#             respo1 = json.loads(fl)
             respo=respo.json()
             i1=''
             flg=''
-            for itm in respo1:
-                if(itm.get("country").lower()==data1.lower()):
-                    i1=itm.get("cases")
-                    flg=itm.get("countryInfo").get("iso2")
-                    flg=":"+str(flg)+":"
-                    break
+#             for itm in respo1:
+#                 if(itm.get("country").lower()==data1.lower()):
+#                     i1=itm.get("cases")
+#                     flg=itm.get("countryInfo").get("iso2")
+#                     flg=":"+str(flg)+":"
+#                     break
+            i1=9999999
+            flg=":"+str(cntry)+":"
             if(not(i1=='')):
 #                 i1=respo[l-1].get("Confirmed")
 #                 i2=respo[l-1].get("Recovered")
