@@ -112,6 +112,11 @@ def processRequest(req):
         num=1
         if(json_params1=='Real Time Cases'):
             searchResults=maps_search(num)
+        elif(json_params1=='Predicted'):
+            if(req.get("queryResult").get("parameters").get("geo-country")):
+                if(req.get("queryResult").get("parameters").get("geo-country")!=''):
+                    searchString=req.get("queryResult").get("parameters").get("geo-country")
+            searchResults=predicted(searchString,num)
         elif(json_params1=='Real Time Cases-Hindi'):
             num=2
             searchResults=maps_search(num)
