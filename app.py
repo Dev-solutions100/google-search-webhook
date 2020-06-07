@@ -190,10 +190,10 @@ def predicted(data,num):
     data1=data
     if(data.lower()=="england" or data.lower()=="uk" or data.lower()=="britain" or data.lower()=="great britain" or data.lower()=="scotland" or data.lower()=="united kingdom"):
         data="United Kingdom"
-        data1="uk"
+        data1="UK"
     if(data.lower()=="america" or data.lower()=="us" or data.lower()=="usa" or data.lower()=="united states of america" or data.lower()=="united states"):
         data="United States"
-        data1="usa"
+        data1="USA"
     f = open('iso.json') 
     datas = json.load(f)
     for key,value in datas.items():
