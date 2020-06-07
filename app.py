@@ -197,7 +197,9 @@ def predicted(data,num):
     f = open('iso.json') 
     datas = json.load(f)
     cntry=datas.get(data)
-    url="https://covid19-api.org/api/prediction/"+cntry
+    print("FFFFFFFFFFF")
+    print(cntry)
+    url="https://covid19-api.org/api/prediction/"+str(cntry)
     err=0
     try:
         err=0
