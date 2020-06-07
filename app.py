@@ -196,14 +196,18 @@ def predicted(data,num):
         data1="usa"
     f = open('iso.json') 
     datas = json.load(f)
-    cntry=datas.get(data)
+    for key,value in datas.items():
+        if(data==value):
+            cntry=key
+            break
     print("FFFFFFFFFFF")
     print(cntry)
+    print(data)
     url="https://covid19-api.org/api/prediction/"+str(cntry)
     err=0
     try:
         err=0
-        respo = requests.request("GET", url,timeout=3)
+        respo = requests.request("GET", url,timeout=3.5)
     except:
         err=1
     finally:
