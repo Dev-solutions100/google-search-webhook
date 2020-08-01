@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from __future__ import #print_function
+from __future__ import print_function
 from future.standard_library import install_aliases
 install_aliases()
 import requests
@@ -23,7 +23,7 @@ from flask import request
 from flask import make_response
 
 from googleapiclient.discovery import build
-import p#print
+import pprint
 import duckduckgo
 import facts
 
