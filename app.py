@@ -1228,7 +1228,7 @@ def maps_search1(data,num):
                         infoc=f'{infoc:,}'
                         infod=itmt.get("todayDeaths")
                         infod=f'{infod:,}'
-                        infot2=itm.get("tests")
+                        infot2=itmt.get("tests")
                 infot4=int(infot)-int(infot2)
                 infot5=f'{infot4:,}'
                 if(num==1):
