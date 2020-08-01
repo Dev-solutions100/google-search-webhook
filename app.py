@@ -1206,7 +1206,6 @@ def maps_search1(data,num):
                     flg=itm.get("countryInfo").get("iso2")
                     flg=":"+str(flg)+":"
                     infot=itm.get("tests")
-                    infot=f'{infot:,}'
                     break
             if(not(i1=='' and i2=='' and i3=='' and i4=='')):
 #                 i1=respo[l-1].get("Confirmed")
@@ -1230,7 +1229,7 @@ def maps_search1(data,num):
                         infod=itmt.get("todayDeaths")
                         infod=f'{infod:,}'
                         infot2=itm.get("tests")
-                infot4=int(infot.replace(',',''))-int(infot2.replace(',',''))
+                infot4=int(infot)-int(infot2)
                 infot5=f'{infot4:,}'
                 if(num==1):
                     #r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *Total tests done:* "+str(infot)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi *(Or forward this message to your friends & family)*\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
