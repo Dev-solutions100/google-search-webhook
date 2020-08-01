@@ -403,11 +403,13 @@ def risk(data,num):
                                     itm11=itm10[itml]
                                     itmm=itm11['delta']
                                     itmm2=itm11['meta']
+                                    itmm5=itm11['total']
                                     itmm4=itmm2['tested']
                         
                                     itmc1=itmm["confirmed"]
                                     itmd1=itmm["deceased"]
                                     itmr1=itmm["recovered"]
+                                    testing_data=itmm5["tested"]
                                     dat1=itmm4["last_updated"]
                                     dat1=str(dat1)
                                     dat1=dat1.split("-")
@@ -432,6 +434,7 @@ def risk(data,num):
                                     itmc=f'{int(itmc):,}'
                                     itmd=f'{int(itmd):,}'
                                     itmr=f'{int(itmr):,}'
+                                    testing4=f'{int(testing_data):,}'
                                     num20=1
                                     break
                                 
@@ -441,6 +444,9 @@ def risk(data,num):
                 else:
                     r1e=''
                     r1h=''
+                if(testing4!=''):
+                    r1e=r1e+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *Total tests done:* "+str(testing4)
+                    r1h=r1h+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *कुल टेस्ट्स:* "+str(testing4)
                 if(num==1):
                     r1=r1+r1e
                 else:
