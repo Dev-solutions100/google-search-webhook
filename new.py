@@ -180,7 +180,7 @@ def my_job():
 #     file1.write("Today") 
 #     file1.close()
             finally:
-                #print('abcd1234')
+                print('abcd1234')
 
 
 # Will run with a 10 second interval synced to the top of the minute
