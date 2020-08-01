@@ -386,11 +386,14 @@ def risk(data,num):
 #                 print("KKKKKKKKKK")
                 for itmt in itm9.keys():
 #                     print(itm9[itmt])
-#                     print("OKKKKK")
+                    print("OKKKKK")
                     if(num20==1):
                         break
+                    print(itmt)
                     if(itmt=='districts'):
                         itm10=itm9[itmt]
+                        print("2")
+                        print(itm10)
                         for itml in itm10.keys():
 #                         print(itml)
 #                         print("FREEE")
