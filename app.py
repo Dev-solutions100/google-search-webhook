@@ -374,14 +374,14 @@ def risk(data,num):
                         r1=flag.flagize(":IN:")+" *"+i4+" (रियल टाइम)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)
                     else:
                         r1=flag.flagize(":IN:")+" *"+i4+"*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+emoji.emojize(':point_right:', use_aliases=True)+" दिल्ली के सारे मामले जानने के लिए *दिल्ली* लिखकर सेंड करे"
-                urlc="https://api.covid19india.org/districts_daily.json"
+                urlc="https://api.covid19india.org/v4/data.json"
                 urll = "https://api.covid19india.org/zones.json"
                 num20=0
                 respo1 = requests.request("GET", urlc)
                 #flll = open('dailydistrict.txt').read()
                 #respo1 = json.loads(flll)
                 respo1=respo1.json()
-                itm9=respo1.get("districtsDaily")
+                itm9=respo1
 #                 print(itm9)
 #                 print("KKKKKKKKKK")
                 for itmt in itm9.keys():
@@ -389,19 +389,21 @@ def risk(data,num):
 #                     print("OKKKKK")
                     if(num20==1):
                         break
-                    itm10=itm9[itmt]
-                    for itml in itm10.keys():
+                    if(itmt=='districts'):
+                        itm10=itm9[itmt]
+                        for itml in itm10.keys():
 #                         print(itml)
 #                         print("FREEE")
-                        if(itml.lower()==data.lower()):
-                            itm11=itm10[itml]
-                            l=len(itm11)
-                            if(l>=3):
-                                itmm=itm11[l-2]
+                            if(itml.lower()==data.lower()):
+                                itm11=itm10[itml]
+                                itmm=itm11['delta']
+                                itmm2=itm11['meta']
+                                itmm4=itmm2['tested']
+                        
                                 itmc1=itmm["confirmed"]
                                 itmd1=itmm["deceased"]
                                 itmr1=itmm["recovered"]
-                                dat1=itmm["date"]
+                                dat1=itmm4["last_updated"]
                                 dat1=str(dat1)
                                 dat1=dat1.split("-")
                                 arr4=["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"]
@@ -409,24 +411,24 @@ def risk(data,num):
                                 dat9=arr4[dat5]
                                 dat2=int(dat1[2])
                                 datestr=str(dat2)+" "+dat9
-                                itmm=itm11[l-3]
-                                itmc2=itmm["confirmed"]
-                                itmd2=itmm["deceased"]
-                                itmr2=itmm["recovered"]
-                                itmc=itmc1-itmc2
-                                itmd=itmd1-itmd2
-                                itmr=itmr1-itmr2
-                                if(itmc<0):
-                                    itmc=0
-                                if(itmd<0):
-                                    itmd=0
-                                if(itmr<0):
-                                    itmr=0
+#                                 itmm=itm11[l-3]
+#                                 itmc2=itmm["confirmed"]
+#                                 itmd2=itmm["deceased"]
+#                                 itmr2=itmm["recovered"]
+                                itmc=itmc1
+                                itmd=itmd1
+                                itmr=itmr1
+#                                 if(itmc<0):
+#                                     itmc=0
+#                                 if(itmd<0):
+#                                     itmd=0
+#                                 if(itmr<0):
+#                                     itmr=0
                                 itmc=f'{int(itmc):,}'
                                 itmd=f'{int(itmd):,}'
                                 itmr=f'{int(itmr):,}'
                                 num20=1
-                            break
+                                break
                                 
                     if(num20==1):
                         r1e="\n\n*In last 24 hours ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(itmd)
