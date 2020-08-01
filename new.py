@@ -163,6 +163,7 @@ def my_job():
             respo8=respo8.replace('\']','\"]')
             respo8=respo8.replace('[\'','[\"')
             respo8=respo8.replace('None','\"0\"')
+            respo8=respo8.replace('Reason given : \"','Reason given : \'')
             
             try:
                 repo.update_file(contents.path,"Updated",respo,contents.sha)
