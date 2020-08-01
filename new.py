@@ -76,6 +76,7 @@ def my_job():
             respo2=respo2.replace(': \'',': \"')
             respo2=respo2.replace(', \'',', \"')
             respo2=respo2.replace('\',','\",')
+            respo2=respo2.replace('Reason given : "','Reason given : \'')
             respo2=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo2)
             
             respo1=respo1.replace('\"','\'')
