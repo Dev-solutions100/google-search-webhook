@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from __future__ import print_function
+from __future__ import #print_function
 from future.standard_library import install_aliases
 install_aliases()
 import requests
@@ -23,7 +23,7 @@ from flask import request
 from flask import make_response
 
 from googleapiclient.discovery import build
-import pprint
+import p#print
 import duckduckgo
 import facts
 
@@ -36,13 +36,13 @@ chek=0
 def webhook():
     req = request.get_json(silent=True, force=True)
 
-    #print("Request:")
-    #print(json.dumps(req, indent=4))
+    ##print("Request:")
+    ##print(json.dumps(req, indent=4))
 
     res = processRequest(req)
 
     res = json.dumps(res, indent=4)
-    # #print(res)
+    # ##print(res)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
@@ -96,14 +96,14 @@ def processRequest(req):
         json_params = req.get("queryResult").get("queryText")
         searchstring = ''    # this creates the overall topic which covers user's raw query
     
-    #print("JSON params is")
-    #print(json_params)
-    #print("DONE")
+    ##print("JSON params is")
+    ##print(json_params)
+    ##print("DONE")
 #     for value in json_params.values():
 #         searchstring += value
 #         searchstring += " "
         searchstring=json_params
-    #print(searchstring)
+    ##print(searchstring)
         searchString = searchstring
 
     # KEYS SHOULDNT BE DISPLAYED
@@ -169,9 +169,9 @@ def processRequest(req):
             searchResults=google_search(searchString,num)
         else:
             searchResults = google_search(searchString,num)    # search for the topic
-    #print("Search results are")
-    #print(searchResults)
-    #print("DONE RESULTS")
+    ##print("Search results are")
+    ##print(searchResults)
+    ##print("DONE RESULTS")
         if searchResults is None:
             return{}
 
@@ -200,9 +200,9 @@ def predicted(data,num):
         if(data==value):
             cntry=key
             break
-#     print("FFFFFFFFFFF")
-#     print(cntry)
-#     print(data)
+#     #print("FFFFFFFFFFF")
+#     #print(cntry)
+#     #print(data)
     url="https://covid19-api.org/api/prediction/"+str(cntry)
     err=0
     try:
@@ -212,7 +212,7 @@ def predicted(data,num):
         err=1
     finally:
         if(err==0):
-            ##print("FREEEEEEEEEEEEEE")
+            ###print("FREEEEEEEEEEEEEE")
 #             fl = open('countryyesterday.txt').read()
 #             respo1 = json.loads(fl)
             respo=respo.json()
@@ -328,17 +328,17 @@ def risk(data,num):
     try:
         err=0
 #        respo = requests.request("GET", url)
-#         print("FREEEEEEEEEEEEEE")
-#         print(respo.status_code)
+#         #print("FREEEEEEEEEEEEEE")
+#         #print(respo.status_code)
     except:
         err=1
     finally:
         if(err==0):
-            ##print("FREEEEEEEEEEEEEE")
+            ###print("FREEEEEEEEEEEEEE")
             fl = open('test.txt').read()
             respo = json.loads(fl)
             #respo=fl.json()
-            ##print("FREEEEEEEEEEEEEE")
+            ###print("FREEEEEEEEEEEEEE")
             #l=len(respo)
             i1=''
             i2=''
@@ -377,28 +377,30 @@ def risk(data,num):
                 urlc="https://api.covid19india.org/v4/data.json"
                 urll = "https://api.covid19india.org/zones.json"
                 num20=0
-                respo1 = requests.request("GET", urlc)
+                ##respo1 = requests.request("GET", urlc)
                 #flll = open('dailydistrict.txt').read()
                 #respo1 = json.loads(flll)
-                respo1=respo1.json()
+                ##respo1=respo1.json()
+                fl2 = open('dailyalldata.txt').read()
+                respo1 = json.loads(fl2)
                 itm9=respo1
-#                 print(itm9)
-#                 print("KKKKKKKKKK")
+#                 #print(itm9)
+#                 #print("KKKKKKKKKK")
                 for itmt in itm9.keys():
-#                     print(itm9[itmt])
-                    print("OKKKKK")
+#                     #print(itm9[itmt])
+#                     #print("OKKKKK")
                     if(num20==1):
                         break
-                    print(itmt)
+#                     #print(itmt)
                     itm50=itm9[itmt]
                     for itmt51 in itm50:
                         if(itmt51=='districts'):
                             itm10=itm50[itmt51]
-                            print("2")
-                            print(itm10)
+#                             #print("2")
+#                             #print(itm10)
                             for itml in itm10.keys():
-#                         print(itml)
-#                         print("FREEE")
+#                         #print(itml)
+#                         #print("FREEE")
                                 if(itml.lower()==data.lower()):
                                     itm11=itm10[itml]
                                     itmm=itm11['delta']
@@ -554,13 +556,13 @@ def state(data,num):
     try:
         err=0
         #respo = requests.request("GET", url)
-#         print("FREEEEEEEEEEEEEE")
-#         print(respo.status_code)
+#         #print("FREEEEEEEEEEEEEE")
+#         #print(respo.status_code)
     except:
         err=1
     finally:
         if(err==0):
-            ##print("FREEEEEEEEEEEEEE")
+            ###print("FREEEEEEEEEEEEEE")
             fl = open('state.txt').read()
             
 #             fl=fl.replace('\"','\'')
@@ -573,7 +575,7 @@ def state(data,num):
             
             respo = json.loads(fl)
             #respo=respo.json()
-            ##print("FREEEEEEEEEEEEEE")
+            ###print("FREEEEEEEEEEEEEE")
             #l=len(respo)
             i1=''
             i2=''
@@ -765,7 +767,7 @@ def news(num):
             headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
         err=0
         try:
-            source_code = requests.get(sitesearch,headers=headers)
+            source_code = requests.get(sitesearch,headers=headers,timeout=3)
         except:
             err=1
             tcopy1=''
@@ -773,8 +775,8 @@ def news(num):
         finally:
             if(err==0):
                 plain_text = source_code.text
-                #print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
-        ##print(plain_text)
+                ##print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
+        ###print(plain_text)
                 soup1 = BeautifulSoup(plain_text, "html.parser")
 #         [s.extract() for s in soup1('div' { "class" : "t_s" })]
 #         unwantedTags = ['strong', 'cite']
@@ -783,7 +785,7 @@ def news(num):
 #                 match.replaceWithChildren()
             
                 results = soup1.findAll('div',{ "class" : "t_s" })
-                #print("FREEEEEEEEEEEEEE2")
+                ##print("FREEEEEEEEEEEEEE2")
                 a=1
                 b=1
                 c=1
@@ -797,18 +799,18 @@ def news(num):
                     if(a==ran):
                         ch=(result.find('div',{ "class" : "t_t" })).find('a')
                         text2=ch['href']
-                        #print("LINK: "+ch['href']+"\n#")
-                        #print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+                        ##print("LINK: "+ch['href']+"\n#")
+                        ##print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
                         ch1=result.find('div',{ "class" : "snippet" })
                         text1=ch1['title']
-                        #print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
-                        #print("# ___________________________________________________________\n#")
+                        ##print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+                        ##print("# ___________________________________________________________\n#")
                         break
                     a=a+1
                 tcopy1=text1
             
-                #print(text1)    
-                #print(text2)
+                ##print(text1)    
+                ##print(text2)
                 if(text2!=''):
                     if(text1!=''):
                         if(num==1):
@@ -827,7 +829,7 @@ def news(num):
                     else:
                         r1=r1+flag.flagize(":IN:")+" *भारत:* "+text1
                 tcopy2=text2
-                #print("FREEEEEEEEEEEEEE2")
+                ##print("FREEEEEEEEEEEEEE2")
             
                 tcopy3='123#*'
                 tcopy4='789#*'
@@ -851,8 +853,8 @@ def news(num):
                 finally:
                     if(err1==0):
                         plain_text = source_code.text
-                        #print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
-        ##print(plain_text)
+                        ##print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
+        ###print(plain_text)
                         soup1 = BeautifulSoup(plain_text, "html.parser")
         #         [s.extract() for s in soup1('div' { "class" : "t_s" })]
         #         unwantedTags = ['strong', 'cite']
@@ -860,7 +862,7 @@ def news(num):
         #             for match in soup1.findAll(tag):
         #                 match.replaceWithChildren()
                         results = soup1.findAll('div',{ "class" : "t_s" })
-                        #print("FREEEEEEEEEEEEEE2")
+                        ##print("FREEEEEEEEEEEEEE2")
                         a=1
                         b=1
                         c=1
@@ -873,18 +875,18 @@ def news(num):
                             if(a==ran):
                                 ch=(result.find('div',{ "class" : "t_t" })).find('a')
                                 text2=ch['href']
-                                #print("LINK: "+ch['href']+"\n#")
-                                #print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+                                ##print("LINK: "+ch['href']+"\n#")
+                                ##print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
                                 ch1=result.find('div',{ "class" : "snippet" })
                                 text1=ch1['title']
-                                #print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
-                                #print("# ___________________________________________________________\n#")
+                                ##print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+                                ##print("# ___________________________________________________________\n#")
                                 break
                             a=a+1
-                        #print(text1)
+                        ##print(text1)
         
                         tcopy3=text1
-                        #print(text2)
+                        ##print(text2)
                         if(r1!=''):
                             r1=r1+"\n\n"
                         if(text2!=''):
@@ -955,12 +957,12 @@ def bored():
     quote=datas[n].get("content")
     author=datas[n].get("author")
 
-#     #print("JOKE")
-#     #print(joke)
-#     #print(activity)
-#     #print(fact)
-#     #print(quote)
-#     #print(author)
+#     ##print("JOKE")
+#     ##print(joke)
+#     ##print(activity)
+#     ##print(fact)
+#     ##print(quote)
+#     ##print(author)
     
     headers={'User-Agent':'My Library (https://github.com/Dev-solutions100/google-search-webhook)'}
     url = "https://icanhazdadjoke.com/slack"
@@ -1050,10 +1052,10 @@ def maps_search(num):
             flll=flll.replace('[\'','[\"')
             respo = json.loads(flll)
             
-            #print("FREEEEEEEEEEEEEE")
+            ##print("FREEEEEEEEEEEEEE")
             #respo=respo.json()
-            #print(respo.get("Global").get("TotalConfirmed"))
-            #print("FREEEEEEEEEEEEEE")
+            ##print(respo.get("Global").get("TotalConfirmed"))
+            ##print("FREEEEEEEEEEEEEE")
             g1=0
             g2=0
             g3=0
@@ -1082,9 +1084,9 @@ def maps_search(num):
         finally:
             if(err1==0):
 #                 respo = requests.request("GET", url)
-                ##print("FREEEEEEEEEEEEEE")
+                ###print("FREEEEEEEEEEEEEE")
                 #respo=respo.json()
-                ##print("FREEEEEEEEEEEEEE")
+                ###print("FREEEEEEEEEEEEEE")
 #                 l=len(respo)
 #                 i1=respo[l-1].get("Confirmed")
 #                 i2=respo[l-1].get("Recovered")
@@ -1095,7 +1097,7 @@ def maps_search(num):
                 fl = open('country.txt').read()
                 respo = json.loads(fl)
             #respo=respo.json()
-            ##print("FREEEEEEEEEEEEEE")
+            ###print("FREEEEEEEEEEEEEE")
                 l=len(respo)
                 i1=''
                 i2=''
@@ -1126,10 +1128,10 @@ def maps_search1(data,num):
         data="usa"
 #     url = "https://api.covid19api.com/summary"
 #     respo = requests.request("GET", url)
-#     #print("FREEEEEEEEEEEEEE")
+#     ##print("FREEEEEEEEEEEEEE")
 #     respo=respo.json()
-#     #print(respo.get("Global").get("TotalConfirmed"))
-#     #print("FREEEEEEEEEEEEEE")
+#     ##print(respo.get("Global").get("TotalConfirmed"))
+#     ##print("FREEEEEEEEEEEEEE")
 #     g1=respo.get("Global").get("TotalConfirmed")
 #     g2=respo.get("Global").get("TotalRecovered")
 #     g3=respo.get("Global").get("TotalDeaths")
@@ -1165,17 +1167,17 @@ def maps_search1(data,num):
     try:
         err=0
         #respo = requests.request("GET", url)
-#         print("FREEEEEEEEEEEEEE")
-#         print(respo.status_code)
+#         #print("FREEEEEEEEEEEEEE")
+#         #print(respo.status_code)
     except:
         err=1
     finally:
         if(err==0):
-            ##print("FREEEEEEEEEEEEEE")
+            ###print("FREEEEEEEEEEEEEE")
             fl = open('country.txt').read()
             respo = json.loads(fl)
             #respo=respo.json()
-            ##print("FREEEEEEEEEEEEEE")
+            ###print("FREEEEEEEEEEEEEE")
             l=len(respo)
             i1=''
             i2=''
@@ -1205,14 +1207,14 @@ def maps_search1(data,num):
                 urlc="https://disease.sh/v2/countries?yesterday=true"
                 headers={'yesterday':'true'}
                 #respos = requests.request("GET",urlc)
-                #print("FFFFFFFFFFFFFFFFFFFFFF")
-                #print(respos)
+                ##print("FFFFFFFFFFFFFFFFFFFFFF")
+                ##print(respos)
                 #respos=respos.json()
                 flll = open('countryyesterday.txt').read()
                 respos = json.loads(flll)
                 for itmt in respos:
                     if(itmt.get("country").lower()==data.lower()):
-                        print(itmt)
+                        #print(itmt)
                         infoc=itmt.get("todayCases")
                         infoc=f'{infoc:,}'
                         infod=itmt.get("todayDeaths")
@@ -1249,9 +1251,9 @@ def google_search(search_term, num):
 #     'x-rapidapi-key': "1ddaa42a65mshea3707d18590b92p19f14ejsn10f668df0edc"
 #     }
 #     response = requests.request("GET", url, headers=headers, params=querystring)
-#     #print("FREEEEEEEEEEEEEE")
-#     #print(response.text)
-#     #print("FREEEEEEEEEEEEEE")
+#     ##print("FREEEEEEEEEEEEEE")
+#     ##print(response.text)
+#     ##print("FREEEEEEEEEEEEEE")
     
 #     url="https://api.duckduckgo.com/"
 #     querystring = {"no_redirect":"1","no_html":"1","skip_disambig":"1","q":search_term,"format":"json"}
@@ -1260,13 +1262,13 @@ def google_search(search_term, num):
 
     #r1 = duckduckgo.get_zci(search_term)
 #     r = duckduckgo.query(search_term)
-#    #print("FREEEEEEEEEEEEEE1")
-#     #print(r.results)
-#     #print(r.related)
-#     #print(r.answer)
+#    ##print("FREEEEEEEEEEEEEE1")
+#     ##print(r.results)
+#     ##print(r.related)
+#     ##print(r.answer)
 
-#     #print(r1)
-#     #print("FREEEEEEEEEEEEEE1")
+#     ##print(r1)
+#     ##print("FREEEEEEEEEEEEEE1")
 #     rcopy=r1
     r1=''
     tcopy1='123#*'
@@ -1286,8 +1288,8 @@ def google_search(search_term, num):
 #         headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'}
 #         source_code = requests.get(sitesearch,headers=headers)
 #         plain_text = source_code.text
-#         #print("OK")
-#         ##print(plain_text)
+#         ##print("OK")
+#         ###print(plain_text)
 #         soup = BeautifulSoup(plain_text, "html.parser")
         
         
@@ -1302,14 +1304,14 @@ def google_search(search_term, num):
 
         err=0
         try:
-            source_code = requests.get(sitesearch,headers=headers)
+            source_code = requests.get(sitesearch,headers=headers,timeout=3)
         except:
             err=1
         finally:
             if(err==0):
                 plain_text = source_code.text
-                #print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
-            ##print(plain_text)
+                ##print("OKKKKKKKKKKKKKKKKKKKKKKKKKK")
+            ###print(plain_text)
                 soup1 = BeautifulSoup(plain_text, "html.parser")
                 [s.extract() for s in soup1('span')]
                 unwantedTags = ['strong', 'cite']
@@ -1320,16 +1322,16 @@ def google_search(search_term, num):
                 results = soup1.findAll('li', { "class" : "b_algo" })
 #         for result in results:
 #             ch=(result.find('h2')).find('a')
-#             #print("LINK: "+ch['href']+"\n#")
-#             #print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
-#             #print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
-#             #print("# ___________________________________________________________\n#")
+#             ##print("LINK: "+ch['href']+"\n#")
+#             ##print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+#             ##print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+#             ##print("# ___________________________________________________________\n#")
         
         
 #     topics = parsed.findAll('div', {'id': 'zero_click_topics'})[0]
 #     results = topics.findAll('div', {'class': re.compile('results_*')})
-                #print("FREEEEEEEEEEEEEE2")
-    ##print(parsed)
+                ##print("FREEEEEEEEEEEEEE2")
+    ###print(parsed)
                 a=1
                 b=1
                 c=1
@@ -1344,18 +1346,18 @@ def google_search(search_term, num):
 #                 text1=desc.text
 #                 break
 #             a=a+1
-#         #print(text1)
+#         ##print(text1)
         
                 for result in results:
                     if(a==ran):
                         ch=(result.find('h2')).find('a')
                         text2=ch['href']
-                        #print("LINK: "+ch['href']+"\n#")
-                        #print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
+                        ##print("LINK: "+ch['href']+"\n#")
+                        ##print("# TITLE: " + str(result.find('h2')).replace(" ", " ") + "\n#")
                         txts=result.find('p')
                         text1=txts.text
-                        #print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
-                        #print("# ___________________________________________________________\n#")
+                        ##print("# DESCRIPTION: " + str(result.find('p')).replace(" ", " "))
+                        ##print("# ___________________________________________________________\n#")
                         break
                     a=a+1
         
@@ -1388,8 +1390,8 @@ def google_search(search_term, num):
 #                 break
 #             b=b+1
             
-                #print(text1)    
-                #print(text2)
+                ##print(text1)    
+                ##print(text2)
                 if(text2!=''):
                     if(text1!=''):
                         r1=r1+text1+"\n\n"
@@ -1407,14 +1409,14 @@ def google_search(search_term, num):
 #             text3=desccc.text
 #             break
 #         c=c+1
-#     #print(text3)
+#     ##print(text3)
 #     a=soup.find_all("span", class_="f")[0]
 #     b=soup.find_all("span", class_="st")[0]
 #     c=soup.find_all("div", class_="r")[0]
-#     #print(a)
-#     #print(b)
-#     #print(c)
-            #print("FREEEEEEEEEEEEEE2")
+#     ##print(a)
+#     ##print(b)
+#     ##print(c)
+            ##print("FREEEEEEEEEEEEEE2")
     #if(rcopy=='' or rcopy[:4]=='http'):
             if(num==1):
                 r1=emoji.emojize(':mag_right:', use_aliases=True)+" *I found this:* "+r1
@@ -1483,7 +1485,7 @@ def makeWebhookResult(data, searchstring):
     
 #     articleUrl3 = data[0].get('formattedUrl')
 #     articleSnippet3 = data[0].get('snippet')
-    # #print(json.dumps(item, indent=4))
+    # ##print(json.dumps(item, indent=4))
 
    # speech = "*Please view these articles for latest information on " + searchstring + ":* " + "\n\n" + "1) "+ articleSnippet1+ "\n"+articleUrl1+ "\n\n" + "2) "+ articleSnippet2+ "\n"+articleUrl2
     speech=data
@@ -1525,8 +1527,8 @@ def makeWebhookResult(data, searchstring):
     speech2=speech2.replace('...',' ')
     strtele="<speak>"+speech2+"</speak>"
     
-    #print("Response:")
-    #print(speech)
+    ##print("Response:")
+    ##print(speech)
     if(r2==''):
         return {
             "fulfillmentText": speech,
@@ -1548,6 +1550,6 @@ def makeWebhookResult(data, searchstring):
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
 
-    #print("Starting app on port %d" % port)
+    ##print("Starting app on port %d" % port)
 
     app.run(debug=False, port=port, host='0.0.0.0')
