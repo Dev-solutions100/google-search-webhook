@@ -390,55 +390,57 @@ def risk(data,num):
                     if(num20==1):
                         break
                     print(itmt)
-                    if(itmt=='districts'):
-                        itm10=itm9[itmt]
-                        print("2")
-                        print(itm10)
-                        for itml in itm10.keys():
+                    itm50=itm9[itmt]
+                    for itmt51 in itm50:
+                        if(itmt51=='districts'):
+                            itm10=itm50[itmt51]
+                            print("2")
+                            print(itm10)
+                            for itml in itm10.keys():
 #                         print(itml)
 #                         print("FREEE")
-                            if(itml.lower()==data.lower()):
-                                itm11=itm10[itml]
-                                itmm=itm11['delta']
-                                itmm2=itm11['meta']
-                                itmm4=itmm2['tested']
+                                if(itml.lower()==data.lower()):
+                                    itm11=itm10[itml]
+                                    itmm=itm11['delta']
+                                    itmm2=itm11['meta']
+                                    itmm4=itmm2['tested']
                         
-                                itmc1=itmm["confirmed"]
-                                itmd1=itmm["deceased"]
-                                itmr1=itmm["recovered"]
-                                dat1=itmm4["last_updated"]
-                                dat1=str(dat1)
-                                dat1=dat1.split("-")
-                                arr4=["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"]
-                                dat5=(int(dat1[1]))-1
-                                dat9=arr4[dat5]
-                                dat2=int(dat1[2])
-                                datestr=str(dat2)+" "+dat9
+                                    itmc1=itmm["confirmed"]
+                                    itmd1=itmm["deceased"]
+                                    itmr1=itmm["recovered"]
+                                    dat1=itmm4["last_updated"]
+                                    dat1=str(dat1)
+                                    dat1=dat1.split("-")
+                                    arr4=["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"]
+                                    dat5=(int(dat1[1]))-1
+                                    dat9=arr4[dat5]
+                                    dat2=int(dat1[2])
+                                    datestr=str(dat2)+" "+dat9
 #                                 itmm=itm11[l-3]
 #                                 itmc2=itmm["confirmed"]
 #                                 itmd2=itmm["deceased"]
 #                                 itmr2=itmm["recovered"]
-                                itmc=itmc1
-                                itmd=itmd1
-                                itmr=itmr1
+                                    itmc=itmc1
+                                    itmd=itmd1
+                                    itmr=itmr1
 #                                 if(itmc<0):
 #                                     itmc=0
 #                                 if(itmd<0):
 #                                     itmd=0
 #                                 if(itmr<0):
 #                                     itmr=0
-                                itmc=f'{int(itmc):,}'
-                                itmd=f'{int(itmd):,}'
-                                itmr=f'{int(itmr):,}'
-                                num20=1
-                                break
+                                    itmc=f'{int(itmc):,}'
+                                    itmd=f'{int(itmd):,}'
+                                    itmr=f'{int(itmr):,}'
+                                    num20=1
+                                    break
                                 
-                    if(num20==1):
-                        r1e="\n\n*In last 24 hours ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(itmd)
-                        r1h="\n\n*पिछले 24 घंटों में ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(itmd)
-                    else:
-                        r1e=''
-                        r1h=''
+                if(num20==1):
+                    r1e="\n\n*In last 24 hours ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(itmd)
+                    r1h="\n\n*पिछले 24 घंटों में ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(itmd)
+                else:
+                    r1e=''
+                    r1h=''
                 if(num==1):
                     r1=r1+r1e
                 else:
