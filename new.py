@@ -26,6 +26,7 @@ def my_job():
     contents5=repo.get_contents("dailystate.txt")
     contents6=repo.get_contents("continent.txt")
     contents7=repo.get_contents("countryyesterday.txt")
+    contents8=repo.get_contents("dailyalldata.txt")
 #     str=str+" test"
     url = "https://api.covid19india.org/v2/state_district_wise.json"
     url1= "https://api.covid19india.org/zones.json"
@@ -35,6 +36,7 @@ def my_job():
     url5= "https://api.covid19india.org/states_daily.json"
     url6= "https://corona.lmao.ninja/v2/continents"
     url7= "https://disease.sh/v2/countries?yesterday=true"
+    url8= "https://api.covid19india.org/v4/data.json"
     ck=0
     err=0
     try:
@@ -46,6 +48,7 @@ def my_job():
         respo5 = requests.request("GET", url5, timeout=5)
         respo6 = requests.request("GET", url6, timeout=5)
         respo7 = requests.request("GET", url7, timeout=5)
+        respo8 = requests.request("GET", url8, timeout=5)
 #         print("FREEEEEEEEEEEEEE")
 #         print(respo.status_code)
     except:
@@ -60,6 +63,7 @@ def my_job():
             respo5=respo5.json()
             respo6=respo6.json()
             respo7=respo7.json()
+            respo8=respo8.json()
             respo2=str(respo2)
             respo=str(respo)
             respo3=str(respo3)
@@ -68,6 +72,7 @@ def my_job():
             respo5=str(respo5)
             respo6=str(respo6)
             respo7=str(respo7)
+            respo8=str(respo8)
             
             respo2=respo2.replace('\"','\'')
             respo2=respo2.replace('{\'','{\"')
@@ -148,6 +153,17 @@ def my_job():
             #respo7=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo7)
             respo7=respo7.replace('None','\"0\"')
             
+            respo8=respo8.replace('\"','\'')
+            respo8=respo8.replace('{\'','{\"')
+            respo8=respo8.replace('\'}','\"}')
+            respo8=respo8.replace('\':','\":')
+            respo8=respo8.replace(': \'',': \"')
+            respo8=respo8.replace(', \'',', \"')
+            respo8=respo8.replace('\',','\",')
+            respo8=respo8.replace('\']','\"]')
+            respo8=respo8.replace('[\'','[\"')
+            respo8=respo8.replace('None','\"0\"')
+            
             try:
                 repo.update_file(contents.path,"Updated",respo,contents.sha)
                 repo.update_file(contents1.path,"Updated",respo1,contents1.sha)
@@ -157,6 +173,7 @@ def my_job():
                 repo.update_file(contents5.path,"Updated",respo5,contents5.sha)
                 repo.update_file(contents6.path,"Updated",respo6,contents6.sha)
                 repo.update_file(contents7.path,"Updated",respo7,contents7.sha)
+                repo.update_file(contents8.path,"Updated",respo8,contents8.sha)
             except:
                 ck=1
 #     file1 = open("test.txt", "w")  # append mode 
