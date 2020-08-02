@@ -40,6 +40,7 @@ def my_job():
     url7= "https://disease.sh/v2/countries?yesterday=true"
     url8= "https://api.covid19india.org/v4/data.json"
     url9= "https://api.covid19india.org/v4/data-"+str(yestdt)+".json"
+    print(url9)
     ck=0
     err=0
     try:
