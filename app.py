@@ -386,6 +386,9 @@ def risk(data,num):
                 itm9=respo1
 #                 #print(itm9)
 #                 #print("KKKKKKKKKK")
+                errno1=0
+                errno2=0
+                testing4=''
                 for itmt in itm9.keys():
 #                     #print(itm9[itmt])
 #                     #print("OKKKKK")
@@ -403,15 +406,24 @@ def risk(data,num):
 #                         #print("FREEE")
                                 if(itml.lower()==data.lower()):
                                     itm11=itm10[itml]
-                                    itmm=itm11['delta']
-                                    itmm2=itm11['meta']
-                                    itmm5=itm11['total']
-                                    itmm4=itmm2['tested']
-                        
-                                    itmc1=itmm["confirmed"]
-                                    itmd1=itmm["deceased"]
-                                    itmr1=itmm["recovered"]
-                                    testing_data=itmm5["tested"]
+                                    try:
+                                        itmm=itm11['delta']
+                                        itmc1=itmm["confirmed"]
+                                        itmd1=itmm["deceased"]
+                                        itmr1=itmm["recovered"]
+                                        itmc=itmc1
+                                        itmd=itmd1
+                                        itmr=itmr1
+                                        itmc=f'{int(itmc):,}'
+                                        itmd=f'{int(itmd):,}'
+                                        itmr=f'{int(itmr):,}'
+                                    catch:
+                                        errno1=1
+                                    try:
+                                        testing_data=itmm5["tested"]
+                                        testing4=f'{int(testing_data):,}'
+                                    catch:
+                                        errno2=1
                                     dat1=itmm4["last_updated"]
                                     dat1=str(dat1)
                                     dat1=dat1.split("-")
@@ -424,31 +436,31 @@ def risk(data,num):
 #                                 itmc2=itmm["confirmed"]
 #                                 itmd2=itmm["deceased"]
 #                                 itmr2=itmm["recovered"]
-                                    itmc=itmc1
-                                    itmd=itmd1
-                                    itmr=itmr1
 #                                 if(itmc<0):
 #                                     itmc=0
 #                                 if(itmd<0):
 #                                     itmd=0
 #                                 if(itmr<0):
 #                                     itmr=0
-                                    itmc=f'{int(itmc):,}'
-                                    itmd=f'{int(itmd):,}'
-                                    itmr=f'{int(itmr):,}'
-                                    testing4=f'{int(testing_data):,}'
+                                    
                                     num20=1
                                     break
-                                
+                r1e=''
+                r1h=''
                 if(num20==1):
-                    r1e="\n\n*Yesterday ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(itmd)
-                    r1h="\n\n*कल ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(itmd)
+                    if(errno1!=1):
+                        r1e="\n\n*Yesterday ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(itmd)
+                        r1h="\n\n*कल ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(itmd)
+                        errno1=0
                 else:
                     r1e=''
                     r1h=''
-                if(testing4!=''):
-                    r1e=r1e+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *Total tests done:* "+str(testing4)
-                    r1h=r1h+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *कुल टेस्ट्स:* "+str(testing4)
+                if(num20==1):
+                    if(errno2!=1):
+                        if(testing4!=''):
+                            r1e=r1e+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *Total tests done:* "+str(testing4)
+                            r1h=r1h+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *कुल टेस्ट्स:* "+str(testing4)
+                            errno2=0
                 if(num==1):
                     r1=r1+r1e
                 else:
