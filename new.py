@@ -38,8 +38,8 @@ def my_job():
         dcnt1=dcnt1+1
     yestdt2=datetime.date.today()-datetime.timedelta(days=dcnt2)
     yestdt=datetime.date.today()-datetime.timedelta(days=dcnt1)
-    print("DATE")
-    print(datetime.datetime.now())
+    #print("DATE")
+    #print(datetime.datetime.now())
     url = "https://api.covid19india.org/v2/state_district_wise.json"
     url1= "https://api.covid19india.org/zones.json"
     url2= "https://api.covid19india.org/data.json"
@@ -63,7 +63,7 @@ def my_job():
         respo7 = requests.request("GET", url7, timeout=5)
         respo8 = requests.request("GET", url8, timeout=5)
         if(respo8==''):
-            print('INCORRECT')
+            #print('INCORRECT')
             respo8 = requests.request("GET", 'https://api.covid19india.org/v4/data.json', timeout=5)
         respo9 = requests.request("GET", url9, timeout=5)
 #         print("FREEEEEEEEEEEEEE")
