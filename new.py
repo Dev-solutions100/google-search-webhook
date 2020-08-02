@@ -29,7 +29,10 @@ def my_job():
     contents8=repo.get_contents("dailyalldata.txt")
     contents9=repo.get_contents("dailyalldatayesterday.txt")
 #     str=str+" test"
+    yestdt2=datetime.date.today()-datetime.timedelta(days=2)
     yestdt=datetime.date.today()-datetime.timedelta(days=1)
+    print("DATE")
+    print(datetime.datetime.now())
     url = "https://api.covid19india.org/v2/state_district_wise.json"
     url1= "https://api.covid19india.org/zones.json"
     url2= "https://api.covid19india.org/data.json"
@@ -38,9 +41,8 @@ def my_job():
     url5= "https://api.covid19india.org/states_daily.json"
     url6= "https://corona.lmao.ninja/v2/continents"
     url7= "https://disease.sh/v2/countries?yesterday=true"
-    url8= "https://api.covid19india.org/v4/data.json"
-    url9= "https://api.covid19india.org/v4/data-"+str(yestdt)+".json"
-    print(url9)
+    url8= "https://api.covid19india.org/v4/data-"+str(yestdt)+".json"
+    url9= "https://api.covid19india.org/v4/data-"+str(yestdt2)+".json"
     ck=0
     err=0
     try:
@@ -215,7 +217,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=3000)
+    scheduler.add_job(my_job, 'interval', seconds=30)
     scheduler.start()
 
     while True:
