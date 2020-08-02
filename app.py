@@ -406,7 +406,7 @@ def risk(data,num):
 #                         #print("FREEE")
                                 if(itml.lower()==data.lower()):
                                     itm11=itm10[itml]
-            
+                                    itmm2=itm11['meta']
                                     try:
                                         itmm=itm11['delta']
                                         itmc1=itmm["confirmed"]
@@ -423,12 +423,14 @@ def risk(data,num):
                                         errno1=1
                                     
                                     try:
+                                        itmm5=itm11['total']
                                         testing_data=itmm5["tested"]
                                         testing4=f'{int(testing_data):,}'
                                     
                                     except:
                                         errno2=1
                                         
+                                    itmm4=itmm2['tested']    
                                     dat1=itmm4["last_updated"]
                                     dat1=str(dat1)
                                     dat1=dat1.split("-")
