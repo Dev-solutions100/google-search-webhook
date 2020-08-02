@@ -29,7 +29,7 @@ def my_job():
     contents8=repo.get_contents("dailyalldata.txt")
     contents9=repo.get_contents("dailyalldatayesterday.txt")
 #     str=str+" test"
-    var yestdt=datetime.date.today()-datetime.timedelta(days=1)
+    yestdt=datetime.date.today()-datetime.timedelta(days=1)
     url = "https://api.covid19india.org/v2/state_district_wise.json"
     url1= "https://api.covid19india.org/zones.json"
     url2= "https://api.covid19india.org/data.json"
