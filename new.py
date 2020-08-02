@@ -29,8 +29,15 @@ def my_job():
     contents8=repo.get_contents("dailyalldata.txt")
     contents9=repo.get_contents("dailyalldatayesterday.txt")
 #     str=str+" test"
-    yestdt2=datetime.date.today()-datetime.timedelta(days=2)
-    yestdt=datetime.date.today()-datetime.timedelta(days=1)
+    now1=datetime.datetime.now()
+ 
+    dcnt2=2
+    dcnt1=1
+    if(now1.hour<=6):
+        dcnt2=dcnt2+1
+        dcnt1=dcnt1+1
+    yestdt2=datetime.date.today()-datetime.timedelta(days=dcnt2)
+    yestdt=datetime.date.today()-datetime.timedelta(days=dcnt1)
     print("DATE")
     print(datetime.datetime.now())
     url = "https://api.covid19india.org/v2/state_district_wise.json"
@@ -55,6 +62,9 @@ def my_job():
         respo6 = requests.request("GET", url6, timeout=5)
         respo7 = requests.request("GET", url7, timeout=5)
         respo8 = requests.request("GET", url8, timeout=5)
+        if(respo8==''):
+            print('INCORRECT')
+            respo8 = requests.request("GET", 'https://api.covid19india.org/v4/data.json', timeout=5)
         respo9 = requests.request("GET", url9, timeout=5)
 #         print("FREEEEEEEEEEEEEE")
 #         print(respo.status_code)
@@ -217,7 +227,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=3000)
+    scheduler.add_job(my_job, 'interval', seconds=30)
     scheduler.start()
 
     while True:
