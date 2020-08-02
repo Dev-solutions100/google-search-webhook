@@ -5,7 +5,7 @@ from crontabs import Cron, Tab
 import time
 import github
 import re
-
+import datetime
 
 def my_job():
 #     file1 = open("test.txt", "a")  # append mode 
@@ -27,7 +27,9 @@ def my_job():
     contents6=repo.get_contents("continent.txt")
     contents7=repo.get_contents("countryyesterday.txt")
     contents8=repo.get_contents("dailyalldata.txt")
+    contents9=repo.get_contents("dailyalldatayesterday.txt")
 #     str=str+" test"
+    var yestdt=datetime.date.today()-datetime.timedelta(days=1)
     url = "https://api.covid19india.org/v2/state_district_wise.json"
     url1= "https://api.covid19india.org/zones.json"
     url2= "https://api.covid19india.org/data.json"
@@ -37,6 +39,7 @@ def my_job():
     url6= "https://corona.lmao.ninja/v2/continents"
     url7= "https://disease.sh/v2/countries?yesterday=true"
     url8= "https://api.covid19india.org/v4/data.json"
+    url9= "https://api.covid19india.org/v4/data-"+str(yestdt)+".json"
     ck=0
     err=0
     try:
@@ -49,6 +52,7 @@ def my_job():
         respo6 = requests.request("GET", url6, timeout=5)
         respo7 = requests.request("GET", url7, timeout=5)
         respo8 = requests.request("GET", url8, timeout=5)
+        respo9 = requests.request("GET", url9, timeout=5)
 #         print("FREEEEEEEEEEEEEE")
 #         print(respo.status_code)
     except:
@@ -64,6 +68,7 @@ def my_job():
             respo6=respo6.json()
             respo7=respo7.json()
             respo8=respo8.json()
+            respo9=respo9.json()
             respo2=str(respo2)
             respo=str(respo)
             respo3=str(respo3)
@@ -73,6 +78,7 @@ def my_job():
             respo6=str(respo6)
             respo7=str(respo7)
             respo8=str(respo8)
+            respo9=str(respo9)
             
             respo2=respo2.replace('\"','\'')
             respo2=respo2.replace('{\'','{\"')
@@ -165,6 +171,18 @@ def my_job():
             respo8=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo8)
             respo8=respo8.replace('Reason given : \"','Reason given : \'')
             
+            respo9=respo9.replace('\"','\'')
+            respo9=respo9.replace('{\'','{\"')
+            respo9=respo9.replace('\'}','\"}')
+            respo9=respo9.replace('\':','\":')
+            respo9=respo9.replace(': \'',': \"')
+            respo9=respo9.replace(', \'',', \"')
+            respo9=respo9.replace('\',','\",')
+            respo9=respo9.replace('\']','\"]')
+            respo9=respo9.replace('[\'','[\"')
+            respo9=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo9)
+            respo9=respo9.replace('Reason given : \"','Reason given : \'')
+            
             try:
                 repo.update_file(contents.path,"Updated",respo,contents.sha)
                 repo.update_file(contents1.path,"Updated",respo1,contents1.sha)
@@ -175,6 +193,7 @@ def my_job():
                 repo.update_file(contents6.path,"Updated",respo6,contents6.sha)
                 repo.update_file(contents7.path,"Updated",respo7,contents7.sha)
                 repo.update_file(contents8.path,"Updated",respo8,contents8.sha)
+                repo.update_file(contents9.path,"Updated",respo9,contents9.sha)
             except:
                 ck=1
 #     file1 = open("test.txt", "w")  # append mode 
@@ -195,7 +214,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=7200)
+    scheduler.add_job(my_job, 'interval', seconds=30)
     scheduler.start()
 
     while True:
