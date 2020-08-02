@@ -419,14 +419,14 @@ def risk(data,num):
                                         itmd=f'{int(itmd):,}'
                                         itmr=f'{int(itmr):,}'
                                     
-                                    catch:
+                                    except:
                                         errno1=1
                                     
                                     try:
                                         testing_data=itmm5["tested"]
                                         testing4=f'{int(testing_data):,}'
                                     
-                                    catch:
+                                    except:
                                         errno2=1
                                         
                                     dat1=itmm4["last_updated"]
