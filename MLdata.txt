@@ -1,0 +1,920 @@
+[
+  {
+    "location_unique": "Afghanistan",
+    "max_day_from_first_case": 152,
+    "population_density": 54.422,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Albania",
+    "max_day_from_first_case": 149,
+    "population_density": 104.871,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "United Arab Emirates",
+    "max_day_from_first_case": 191,
+    "population_density": 112.442,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Argentina",
+    "max_day_from_first_case": 154,
+    "population_density": 16.177,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Armenia",
+    "max_day_from_first_case": 148,
+    "population_density": 102.931,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Antigua and Barbuda",
+    "max_day_from_first_case": 138,
+    "population_density": 231.845,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Australia",
+    "max_day_from_first_case": 193,
+    "population_density": 3.202,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Austria",
+    "max_day_from_first_case": 161,
+    "population_density": 106.749,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Azerbaijan",
+    "max_day_from_first_case": 151,
+    "population_density": 119.309,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Burundi",
+    "max_day_from_first_case": 126,
+    "population_density": 423.062,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Belgium",
+    "max_day_from_first_case": 183,
+    "population_density": 375.564,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Benin",
+    "max_day_from_first_case": 141,
+    "population_density": 99.11,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Burkina Faso",
+    "max_day_from_first_case": 145,
+    "population_density": 70.151,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Bangladesh",
+    "max_day_from_first_case": 149,
+    "population_density": 1265.036,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Bulgaria",
+    "max_day_from_first_case": 148,
+    "population_density": 65.18,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Bahrain",
+    "max_day_from_first_case": 162,
+    "population_density": 1935.907,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Bahamas",
+    "max_day_from_first_case": 140,
+    "population_density": 39.497,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Bosnia and Herzegovina",
+    "max_day_from_first_case": 145,
+    "population_density": 68.496,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Belarus",
+    "max_day_from_first_case": 159,
+    "population_density": 46.858,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Belize",
+    "max_day_from_first_case": 134,
+    "population_density": 16.426,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Bolivia",
+    "max_day_from_first_case": 146,
+    "population_density": 10.202,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Brazil",
+    "max_day_from_first_case": 161,
+    "population_density": 25.04,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Barbados",
+    "max_day_from_first_case": 140,
+    "population_density": 664.463,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Brunei",
+    "max_day_from_first_case": 147,
+    "population_density": 81.347,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Bhutan",
+    "max_day_from_first_case": 144,
+    "population_density": 21.188,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Botswana",
+    "max_day_from_first_case": 126,
+    "population_density": 4.044,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Central African Republic",
+    "max_day_from_first_case": 142,
+    "population_density": 7.479,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Canada",
+    "max_day_from_first_case": 192,
+    "population_density": 4.037,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Switzerland",
+    "max_day_from_first_case": 161,
+    "population_density": 214.243,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Chile",
+    "max_day_from_first_case": 153,
+    "population_density": 24.282,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "China",
+    "max_day_from_first_case": 218,
+    "population_density": 147.674,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Cameroon",
+    "max_day_from_first_case": 145,
+    "population_density": 50.885,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Colombia",
+    "max_day_from_first_case": 151,
+    "population_density": 44.223,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Comoros",
+    "max_day_from_first_case": 95,
+    "population_density": 437.352,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Cape Verde",
+    "max_day_from_first_case": 137,
+    "population_density": 135.58,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Costa Rica",
+    "max_day_from_first_case": 150,
+    "population_density": 96.079,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Germany",
+    "max_day_from_first_case": 190,
+    "population_density": 237.016,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Djibouti",
+    "max_day_from_first_case": 139,
+    "population_density": 41.285,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Denmark",
+    "max_day_from_first_case": 160,
+    "population_density": 136.52,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Dominican Republic",
+    "max_day_from_first_case": 147,
+    "population_density": 222.873,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Algeria",
+    "max_day_from_first_case": 156,
+    "population_density": 17.348,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Ecuador",
+    "max_day_from_first_case": 152,
+    "population_density": 66.939,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Egypt",
+    "max_day_from_first_case": 168,
+    "population_density": 97.999,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Eritrea",
+    "max_day_from_first_case": 136,
+    "population_density": 44.304,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Spain",
+    "max_day_from_first_case": 185,
+    "population_density": 93.105,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Estonia",
+    "max_day_from_first_case": 159,
+    "population_density": 31.033,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Ethiopia",
+    "max_day_from_first_case": 144,
+    "population_density": 104.957,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Finland",
+    "max_day_from_first_case": 188,
+    "population_density": 18.136,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Fiji",
+    "max_day_from_first_case": 138,
+    "population_density": 49.562,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "France",
+    "max_day_from_first_case": 193,
+    "population_density": 122.578,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "United Kingdom",
+    "max_day_from_first_case": 186,
+    "population_density": 272.898,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Georgia",
+    "max_day_from_first_case": 157,
+    "population_density": 65.032,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Ghana",
+    "max_day_from_first_case": 144,
+    "population_density": 126.719,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Guinea",
+    "max_day_from_first_case": 143,
+    "population_density": 51.755,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Gambia",
+    "max_day_from_first_case": 140,
+    "population_density": 207.566,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Equatorial Guinea",
+    "max_day_from_first_case": 143,
+    "population_density": 45.194,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Greece",
+    "max_day_from_first_case": 160,
+    "population_density": 83.479,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Grenada",
+    "max_day_from_first_case": 135,
+    "population_density": 317.132,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Guatemala",
+    "max_day_from_first_case": 143,
+    "population_density": 157.834,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Guyana",
+    "max_day_from_first_case": 143,
+    "population_density": 3.952,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Honduras",
+    "max_day_from_first_case": 144,
+    "population_density": 82.805,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Croatia",
+    "max_day_from_first_case": 161,
+    "population_density": 73.726,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Haiti",
+    "max_day_from_first_case": 138,
+    "population_density": 398.448,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Hungary",
+    "max_day_from_first_case": 153,
+    "population_density": 108.043,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Indonesia",
+    "max_day_from_first_case": 149,
+    "population_density": 145.725,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "India",
+    "max_day_from_first_case": 187,
+    "population_density": 450.419,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Ireland",
+    "max_day_from_first_case": 155,
+    "population_density": 69.874,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Iran",
+    "max_day_from_first_case": 167,
+    "population_density": 49.831,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Iraq",
+    "max_day_from_first_case": 160,
+    "population_density": 88.125,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Iceland",
+    "max_day_from_first_case": 158,
+    "population_density": 3.404,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Israel",
+    "max_day_from_first_case": 165,
+    "population_density": 402.606,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Italy",
+    "max_day_from_first_case": 187,
+    "population_density": 205.859,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Jamaica",
+    "max_day_from_first_case": 145,
+    "population_density": 266.879,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Jordan",
+    "max_day_from_first_case": 145,
+    "population_density": 109.285,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Japan",
+    "max_day_from_first_case": 203,
+    "population_density": 347.778,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Kazakhstan",
+    "max_day_from_first_case": 143,
+    "population_density": 6.681,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Kenya",
+    "max_day_from_first_case": 144,
+    "population_density": 87.324,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Kyrgyzstan",
+    "max_day_from_first_case": 139,
+    "population_density": 32.333,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Cambodia",
+    "max_day_from_first_case": 181,
+    "population_density": 90.672,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "South Korea",
+    "max_day_from_first_case": 198,
+    "population_density": 527.967,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Kuwait",
+    "max_day_from_first_case": 160,
+    "population_density": 232.128,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Laos",
+    "max_day_from_first_case": 133,
+    "population_density": 29.715,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Lebanon",
+    "max_day_from_first_case": 161,
+    "population_density": 594.561,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Liberia",
+    "max_day_from_first_case": 141,
+    "population_density": 49.127,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Libya",
+    "max_day_from_first_case": 133,
+    "population_density": 3.623,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Saint Lucia",
+    "max_day_from_first_case": 143,
+    "population_density": 293.187,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Sri Lanka",
+    "max_day_from_first_case": 181,
+    "population_density": 341.955,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Lithuania",
+    "max_day_from_first_case": 159,
+    "population_density": 45.135,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Luxembourg",
+    "max_day_from_first_case": 157,
+    "population_density": 231.447,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Latvia",
+    "max_day_from_first_case": 155,
+    "population_density": 31.212,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Morocco",
+    "max_day_from_first_case": 155,
+    "population_density": 80.08,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Moldova",
+    "max_day_from_first_case": 148,
+    "population_density": 123.655,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Madagascar",
+    "max_day_from_first_case": 137,
+    "population_density": 43.951,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Mexico",
+    "max_day_from_first_case": 158,
+    "population_density": 66.444,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Macedonia",
+    "max_day_from_first_case": 151,
+    "population_density": 82.6,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Mali",
+    "max_day_from_first_case": 132,
+    "population_density": 15.196,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Malta",
+    "max_day_from_first_case": 151,
+    "population_density": 1454.037,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Myanmar",
+    "max_day_from_first_case": 134,
+    "population_density": 81.721,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Montenegro",
+    "max_day_from_first_case": 140,
+    "population_density": 46.28,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Mongolia",
+    "max_day_from_first_case": 142,
+    "population_density": 1.98,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Mozambique",
+    "max_day_from_first_case": 135,
+    "population_density": 37.728,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Mauritius",
+    "max_day_from_first_case": 138,
+    "population_density": 622.962,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Malawi",
+    "max_day_from_first_case": 124,
+    "population_density": 197.519,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Malaysia",
+    "max_day_from_first_case": 193,
+    "population_density": 96.254,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Niger",
+    "max_day_from_first_case": 137,
+    "population_density": 16.955,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Nicaragua",
+    "max_day_from_first_case": 139,
+    "population_density": 51.667,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Netherlands",
+    "max_day_from_first_case": 159,
+    "population_density": 508.544,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Norway",
+    "max_day_from_first_case": 160,
+    "population_density": 14.462,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Nepal",
+    "max_day_from_first_case": 193,
+    "population_density": 204.43,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "New Zealand",
+    "max_day_from_first_case": 157,
+    "population_density": 18.206,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Oman",
+    "max_day_from_first_case": 156,
+    "population_density": 14.98,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Pakistan",
+    "max_day_from_first_case": 155,
+    "population_density": 255.573,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Panama",
+    "max_day_from_first_case": 148,
+    "population_density": 55.133,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Peru",
+    "max_day_from_first_case": 151,
+    "population_density": 25.129,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Philippines",
+    "max_day_from_first_case": 184,
+    "population_density": 351.873,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Poland",
+    "max_day_from_first_case": 152,
+    "population_density": 124.027,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Portugal",
+    "max_day_from_first_case": 155,
+    "population_density": 112.371,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Paraguay",
+    "max_day_from_first_case": 150,
+    "population_density": 17.144,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Qatar",
+    "max_day_from_first_case": 153,
+    "population_density": 227.322,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Romania",
+    "max_day_from_first_case": 158,
+    "population_density": 85.129,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Russia",
+    "max_day_from_first_case": 186,
+    "population_density": 8.823,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Saudi Arabia",
+    "max_day_from_first_case": 152,
+    "population_density": 15.322,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Sudan",
+    "max_day_from_first_case": 144,
+    "population_density": 23.258,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Singapore",
+    "max_day_from_first_case": 194,
+    "population_density": 7915.731,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "El Salvador",
+    "max_day_from_first_case": 139,
+    "population_density": 307.811,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Serbia",
+    "max_day_from_first_case": 151,
+    "population_density": 80.291,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Sao Tome and Principe",
+    "max_day_from_first_case": 118,
+    "population_density": 212.841,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Suriname",
+    "max_day_from_first_case": 138,
+    "population_density": 3.612,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Slovakia",
+    "max_day_from_first_case": 150,
+    "population_density": 113.128,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Slovenia",
+    "max_day_from_first_case": 152,
+    "population_density": 102.619,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Sweden",
+    "max_day_from_first_case": 186,
+    "population_density": 24.718,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Swaziland",
+    "max_day_from_first_case": 143,
+    "population_density": 79.492,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Seychelles",
+    "max_day_from_first_case": 143,
+    "population_density": 208.354,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Togo",
+    "max_day_from_first_case": 151,
+    "population_density": 143.366,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Thailand",
+    "max_day_from_first_case": 205,
+    "population_density": 135.132,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Tajikistan",
+    "max_day_from_first_case": 96,
+    "population_density": 64.281,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Timor",
+    "max_day_from_first_case": 136,
+    "population_density": 87.176,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Trinidad and Tobago",
+    "max_day_from_first_case": 145,
+    "population_density": 266.886,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Tunisia",
+    "max_day_from_first_case": 149,
+    "population_density": 74.228,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Turkey",
+    "max_day_from_first_case": 144,
+    "population_density": 104.914,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Tanzania",
+    "max_day_from_first_case": 141,
+    "population_density": 64.699,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Uganda",
+    "max_day_from_first_case": 136,
+    "population_density": 213.759,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Ukraine",
+    "max_day_from_first_case": 144,
+    "population_density": 77.39,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Uruguay",
+    "max_day_from_first_case": 143,
+    "population_density": 19.751,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "United States",
+    "max_day_from_first_case": 197,
+    "population_density": 35.608,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Uzbekistan",
+    "max_day_from_first_case": 142,
+    "population_density": 76.134,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Saint Vincent and the Grenadines",
+    "max_day_from_first_case": 134,
+    "population_density": 281.787,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Venezuela",
+    "max_day_from_first_case": 142,
+    "population_density": 36.253,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Vietnam",
+    "max_day_from_first_case": 194,
+    "population_density": 308.127,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Yemen",
+    "max_day_from_first_case": 117,
+    "population_density": 53.508,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "South Africa",
+    "max_day_from_first_case": 152,
+    "population_density": 46.754,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Zambia",
+    "max_day_from_first_case": 139,
+    "population_density": 22.995,
+    "date": "4/8/2020"
+  },
+  {
+    "location_unique": "Zimbabwe",
+    "max_day_from_first_case": 137,
+    "population_density": 42.729,
+    "date": "4/8/2020"
+  }
+]
