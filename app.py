@@ -284,13 +284,16 @@ def predicted(data,num):
             respo = json.loads(fl)
             tests1=0
             tests2=0
+            totcases=0
             for itm in respo:
                 if(itm.get("country").lower()==data.lower()):
                     cases=int(itm.get("todayCases"))
-                    rate=float(cases/(itm.get("tests")))
+                    rate=float((int(itm.get("cases"))/(int(itm.get("tests"))))
+                    totcases=int(itm.get("cases"))
                     tests1=itm.get("tests")
                     cntrygot=1;
                     break
+            
             if(cntrygot==1):        
                 
                 f4 = open('countryyesterday2.txt').read()
@@ -314,8 +317,7 @@ def predicted(data,num):
                 datestr3=str(datetime.date.today()+datetime.timedelta(days=2))
                 tests=tests1-tests2
                 data2=model.predict([[days+1,cases,tests,density,rate]])
-                rate2=(cases+data2)/tests1
-                data3=model.predict([[days+2,cases+data2,tests,density,rate2]])
+                data3=model.predict([[days+2,data2,tests,density,rate]])
                 data2=int(data2)
                 data3=int(data3)
                 data2=f'{data2:,}'
