@@ -23,6 +23,8 @@ from flask import request
 from flask import make_response
 
 from googleapiclient.discovery import build
+import datetime
+import time
 import pprint
 import duckduckgo
 import facts
@@ -200,90 +202,136 @@ def predicted(data,num):
         if(data==value):
             cntry=key
             break
+    flg=":"+str(cntry)+":"
 #     #print("FFFFFFFFFFF")
 #     #print(cntry)
 #     #print(data)
-    url="https://covid19-api.org/api/prediction/"+str(cntry)
-    err=0
-    try:
-        err=0
-        respo = requests.request("GET", url,timeout=3.5)
-    except:
-        err=1
-    finally:
-        if(err==0):
-            ###print("FREEEEEEEEEEEEEE")
-#             fl = open('countryyesterday.txt').read()
-#             respo1 = json.loads(fl)
-            respo=respo.json()
-            i1=''
-            flg=''
-#             for itm in respo1:
-#                 if(itm.get("country").lower()==data1.lower()):
-#                     i1=itm.get("cases")
-#                     flg=itm.get("countryInfo").get("iso2")
-#                     flg=":"+str(flg)+":"
-#                     break
-            i1=9999999
-            flg=":"+str(cntry)+":"
-            if(not(i1=='')):
-#                 i1=respo[l-1].get("Confirmed")
-#                 i2=respo[l-1].get("Recovered")
-#                 i3=respo[l-1].get("Deaths")
-#                 i4=respo[l-1].get("Country")
-                ca1=respo[0].get("cases")
-                ca2=respo[1].get("cases")
-                ca3=respo[2].get("cases")
+#     url="https://covid19-api.org/api/prediction/"+str(cntry)
+#     err=0
+#     try:
+#         err=0
+#         respo = requests.request("GET", url,timeout=3.5)
+#     except:
+#         err=1
+#     finally:
+#         if(err==0):
+#             ###print("FREEEEEEEEEEEEEE")
+# #             fl = open('countryyesterday.txt').read()
+# #             respo1 = json.loads(fl)
+#             respo=respo.json()
+#             i1=''
+#             flg=''
+# #             for itm in respo1:
+# #                 if(itm.get("country").lower()==data1.lower()):
+# #                     i1=itm.get("cases")
+# #                     flg=itm.get("countryInfo").get("iso2")
+# #                     flg=":"+str(flg)+":"
+# #                     break
+#             i1=9999999
+#             flg=":"+str(cntry)+":"
+#             if(not(i1=='')):
+# #                 i1=respo[l-1].get("Confirmed")
+# #                 i2=respo[l-1].get("Recovered")
+# #                 i3=respo[l-1].get("Deaths")
+# #                 i4=respo[l-1].get("Country")
+#                 ca1=respo[0].get("cases")
+#                 ca2=respo[1].get("cases")
+#                 ca3=respo[2].get("cases")
             
-                dat1=respo[0].get("date")
-                dat1=str(dat1)
-                dat1=dat1.split("-")
-                arr4=["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"]
-                dat5=(int(dat1[1]))-1
-                dat9=arr4[dat5]
-                dat2=int(dat1[2])
-                datestr1=str(dat2)+" "+dat9
+#                 dat1=respo[0].get("date")
+#                 dat1=str(dat1)
+#                 dat1=dat1.split("-")
+#                 arr4=["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"]
+#                 dat5=(int(dat1[1]))-1
+#                 dat9=arr4[dat5]
+#                 dat2=int(dat1[2])
+#                 datestr1=str(dat2)+" "+dat9
                 
-                dat1=respo[1].get("date")
-                dat1=str(dat1)
-                dat1=dat1.split("-")
-                dat5=(int(dat1[1]))-1
-                dat9=arr4[dat5]
-                dat2=int(dat1[2])
-                datestr2=str(dat2)+" "+dat9
+#                 dat1=respo[1].get("date")
+#                 dat1=str(dat1)
+#                 dat1=dat1.split("-")
+#                 dat5=(int(dat1[1]))-1
+#                 dat9=arr4[dat5]
+#                 dat2=int(dat1[2])
+#                 datestr2=str(dat2)+" "+dat9
                 
-                dat1=respo[2].get("date")
-                dat1=str(dat1)
-                dat1=dat1.split("-")
-                dat5=(int(dat1[1]))-1
-                dat9=arr4[dat5]
-                dat2=int(dat1[2])
-                datestr3=str(dat2)+" "+dat9
+#                 dat1=respo[2].get("date")
+#                 dat1=str(dat1)
+#                 dat1=dat1.split("-")
+#                 dat5=(int(dat1[1]))-1
+#                 dat9=arr4[dat5]
+#                 dat2=int(dat1[2])
+#                 datestr3=str(dat2)+" "+dat9
                 
-                rise1=int(ca1)-int(i1)
-                rise1=f'{rise1:,}'
-                rise2=int(ca2)-int(ca1)
-                rise2=f'{rise2:,}'
-                rise3=int(ca3)-int(ca2)
-                rise3=f'{rise3:,}'
+#                 rise1=int(ca1)-int(i1)
+#                 rise1=f'{rise1:,}'
+#                 rise2=int(ca2)-int(ca1)
+#                 rise2=f'{rise2:,}'
+#                 rise3=int(ca3)-int(ca2)
+#                 rise3=f'{rise3:,}'
+    if(1):            
+        if(1):    
+            model=pickle.load(open('model.pkl','rb'))
+            cntrygot=0;    
+            fl = open('countryyesterday.txt').read()
+            days=''
+            cases=''
+            tests=''
+            density=''
+            rate=''
+            respo = json.loads(fl)
+            for itm in respo:
+                if(itm.get("country").lower()==data.lower()):
+                    cases=int(itm.get("todayCases"))
+                    rate=float(cases/(itm.get("tests")))
+                    test1=itm.get("tests")
+                    cntrygot=1;
+                    break
+            if(cntrygot==1):        
                 
+                f4 = open('countryyesterday2.txt').read()
+                respo4 = json.loads(f4)
+                for itm in respo4:
+                    if(itm.get("country").lower()==data.lower()):
+                        test2=itm.get("tests")
+                        break
+                
+                f2 = open('MLdata.txt').read()
+                respo1 = json.loads(f2)
+                for itm in respo1:
+                    if(itm.get("location_unique").lower()==data.lower()):
+                        density=float(itm.get("population_density"))
+                        date_format="%d/%m/%Y"
+                        a=pd.to_datetime('4/8/2020',date_format)
+                        b=pd.to_datetime(str(datetime.date.today()),'%Y-%m-%d')
+                        days=int(itm.get("max_day_from_first_case"))+int((b-a).days)
+                        break
+                datestr2=str(datetime.date.today()+datetime.timedelta(days=1))
+                datestr3=str(datetime.date.today()+datetime.timedelta(days=2))
+                tests=tests1-tests2
+                data2=model.predict([[days+1,cases,tests,density,rate]])
+                data3=model.predict([[days+2,cases,tests,density,rate]])
+                data2=int(data2)
+                data3=int(data3)
+                data2=f'{data2:,}'
+                data3=f'{data3:,}'
                 if(num==1):
                     #r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *Total tests done:* "+str(infot)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi *(Or forward this message to your friends & family)*\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
-                    r1=flag.flagize(flg)+" *"+data1+" (Predicted Cases)*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" "+datestr2+": "+str(rise2)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" "+datestr3+": "+str(rise3)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi *(Or forward this message to your friends & family)*\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *3* to see predictions for more countries\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
+                    r1=flag.flagize(flg)+" *"+data1+" (Predicted Cases)*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" "+datestr2+": "+str(data2)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" "+datestr3+": "+str(data3)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi *(Or forward this message to your friends & family)*\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *3* to see predictions for more countries\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
                 else:
                     #r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+" (रियल टाइम)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+"*पिछले 24 घंटों में:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(infod)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *कुल टेस्ट्स:* "+str(infot)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते *(या फिर इस मैसेज को अपने दोस्तों और परिवार को भेजें)*\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी देश के मामले देखने के लिए उसका नाम लिख कर भेजें (उदाहरण: *इटली*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
-                    r1=flag.flagize(flg)+" *"+i4+" (रियल टाइम)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" कुल मामले: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" ठीक हुए: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" कुल मौतें: "+str(i3)+"\n\n"+"*पिछले 24 घंटों में:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(infod)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *कुल टेस्ट्स:* "+str(infot)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते *(या फिर इस मैसेज को अपने दोस्तों और परिवार को भेजें)*\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी देश के मामले देखने के लिए उसका नाम लिख कर भेजें (उदाहरण: *इटली*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
+                    r1=flag.flagize(flg)+" *"+data1+" (कल और परसो कितने मामले आ सकते हैं)*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" "+datestr2+": "+str(data2)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" "+datestr3+": "+str(data3)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" शेयर करें - https://wa.me/917380648641?text=नमस्ते *(या फिर इस मैसेज को अपने दोस्तों और परिवार को भेजें)*\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"किसी भी देश के होने वाले मामले देखने के लिए *3* लिख कर भेजें (उदाहरण: *इटली*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
             else:
                 if(num==1):
                     r1="Please check the country's name (Ex: *New Zealand*) and try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
                 else:
                     r1="कृपया देश का नाम चेक करें (उदाहरण: *इटली*) और पुन: प्रयास करें.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
-        else:
-            if(num==1):
-                r1="Oops, there was an error! Please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
-            else:
-                r1=emoji.emojize(':mag_right:', use_aliases=True)+' कृपया पुन: प्रयास करें\n\n'+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
-        return r1
+#         else:
+#             if(num==1):
+#                 r1="Oops, there was an error! Please try again.\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
+#             else:
+#                 r1=emoji.emojize(':mag_right:', use_aliases=True)+' कृपया पुन: प्रयास करें\n\n'+emoji.emojize(':round_pushpin:', use_aliases=True)+"मुख्य मैन्यू के लिए *0* लिख के भेजें"
+            return r1
 
 
 
