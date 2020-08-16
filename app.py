@@ -284,12 +284,10 @@ def predicted(data,num):
             respo = json.loads(fl)
             tests1=0
             tests2=0
-            totcases=0
             for itm in respo:
                 if(itm.get("country").lower()==data.lower()):
                     cases=int(itm.get("todayCases"))
                     rate=float((int(itm.get("cases"))/(int(itm.get("tests"))))
-                    totcases=int(itm.get("cases"))
                     tests1=itm.get("tests")
                     cntrygot=1;
                     break
