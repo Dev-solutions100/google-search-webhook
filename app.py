@@ -282,11 +282,13 @@ def predicted(data,num):
             density=''
             rate=''
             respo = json.loads(fl)
+            tests1=0
+            tests2=0
             for itm in respo:
                 if(itm.get("country").lower()==data.lower()):
                     cases=int(itm.get("todayCases"))
                     rate=float(cases/(itm.get("tests")))
-                    test1=itm.get("tests")
+                    tests1=itm.get("tests")
                     cntrygot=1;
                     break
             if(cntrygot==1):        
@@ -295,7 +297,7 @@ def predicted(data,num):
                 respo4 = json.loads(f4)
                 for itm in respo4:
                     if(itm.get("country").lower()==data.lower()):
-                        test2=itm.get("tests")
+                        tests2=itm.get("tests")
                         break
                 
                 f2 = open('MLdata.txt').read()
