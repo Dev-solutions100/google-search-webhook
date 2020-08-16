@@ -10,6 +10,7 @@ from urllib.request import urlopen, Request
 from urllib.error import HTTPError
 
 import emoji
+import pandas as pd
 import flag
 from bs4 import BeautifulSoup
 import urllib
