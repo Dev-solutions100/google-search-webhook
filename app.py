@@ -304,8 +304,8 @@ def predicted(data,num):
                     if(itm.get("location_unique").lower()==data.lower()):
                         density=float(itm.get("population_density"))
                         date_format="%d/%m/%Y"
-                        a=pd.to_datetime('4/8/2020',date_format)
-                        b=pd.to_datetime(str(datetime.date.today()),'%Y-%m-%d')
+                        a=pd.to_datetime("4/8/2020",format="%d/%m/%Y")
+                        b=pd.to_datetime(str(datetime.date.today()),format="%Y-%m-%d")
                         days=int(itm.get("max_day_from_first_case"))+int((b-a).days)
                         break
                 datestr2=str(datetime.date.today()+datetime.timedelta(days=1))
