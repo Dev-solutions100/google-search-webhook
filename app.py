@@ -314,7 +314,8 @@ def predicted(data,num):
                 datestr3=str(datetime.date.today()+datetime.timedelta(days=2))
                 tests=tests1-tests2
                 data2=model.predict([[days+1,cases,tests,density,rate]])
-                data3=model.predict([[days+2,cases,tests,density,rate]])
+                rate2=(cases+data2)/tests1
+                data3=model.predict([[days+2,cases+data2,tests,density,rate2]])
                 data2=int(data2)
                 data3=int(data3)
                 data2=f'{data2:,}'
