@@ -28,6 +28,7 @@ def my_job():
     contents7=repo.get_contents("countryyesterday.txt")
     contents8=repo.get_contents("dailyalldata.txt")
     contents9=repo.get_contents("dailyalldatayesterday.txt")
+    contents10=repo.get_contents("countryyesterday2.txt")
 #     str=str+" test"
     now1=datetime.datetime.now()
  
@@ -50,6 +51,7 @@ def my_job():
     url7= "https://disease.sh/v2/countries?yesterday=true"
     url8= "https://api.covid19india.org/v4/data-"+str(yestdt)+".json"
     url9= "https://api.covid19india.org/v4/data-"+str(yestdt2)+".json"
+    url10= "https://disease.sh/v2/countries?twoDaysAgo=true"
     ck=0
     err=0
     try:
@@ -66,6 +68,7 @@ def my_job():
             #print('INCORRECT')
             respo8 = requests.request("GET", 'https://api.covid19india.org/v4/data.json', timeout=5)
         respo9 = requests.request("GET", url9, timeout=5)
+        respo10 = requests.request("GET", url10, timeout=5)
 #         print("FREEEEEEEEEEEEEE")
 #         print(respo.status_code)
     except:
@@ -82,6 +85,7 @@ def my_job():
             respo7=respo7.json()
             respo8=respo8.json()
             respo9=respo9.json()
+            respo10=respo10.json()
             respo2=str(respo2)
             respo=str(respo)
             respo3=str(respo3)
@@ -92,6 +96,7 @@ def my_job():
             respo7=str(respo7)
             respo8=str(respo8)
             respo9=str(respo9)
+            respo10=str(respo10)
             
             respo2=respo2.replace('\"','\'')
             respo2=respo2.replace('{\'','{\"')
@@ -196,6 +201,16 @@ def my_job():
             respo9=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo9)
             respo9=respo9.replace('Reason given : \"','Reason given : \'')
             
+            respo10=respo10.replace('\"','\'')
+            respo10=respo10.replace('{\'','{\"')
+            respo10=respo10.replace('\'}','\"}')
+            respo10=respo10.replace('\':','\":')
+            respo10=respo10.replace(': \'',': \"')
+            respo10=respo10.replace(', \'',', \"')
+            respo10=respo10.replace('\',','\",')
+            #respo10=re.sub(r'^\s*(N|n)\s*(O|o)\s*(N|n)\s*(E|e)\s*$','\"0\"',respo10)
+            respo10=respo10.replace('None','\"0\"')
+            
             try:
                 repo.update_file(contents.path,"Updated",respo,contents.sha)
                 repo.update_file(contents1.path,"Updated",respo1,contents1.sha)
@@ -207,6 +222,7 @@ def my_job():
                 repo.update_file(contents7.path,"Updated",respo7,contents7.sha)
                 repo.update_file(contents8.path,"Updated",respo8,contents8.sha)
                 repo.update_file(contents9.path,"Updated",respo9,contents9.sha)
+                repo.update_file(contents10.path,"Updated",respo10,contents10.sha)
             except:
                 ck=1
 #     file1 = open("test.txt", "w")  # append mode 
@@ -227,7 +243,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=3600)
+    scheduler.add_job(my_job, 'interval', seconds=30)
     scheduler.start()
 
     while True:
