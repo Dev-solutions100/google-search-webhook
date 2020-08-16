@@ -287,7 +287,7 @@ def predicted(data,num):
             for itm in respo:
                 if(itm.get("country").lower()==data.lower()):
                     cases=int(itm.get("todayCases"))
-                    rate=float((int(itm.get("cases"))/(int(itm.get("tests"))))
+                    rate=float((int(itm.get("cases")))/(int(itm.get("tests"))))
                     tests1=itm.get("tests")
                     cntrygot=1;
                     break
