@@ -195,9 +195,9 @@ def predicted(data,num):
     if(data.lower()=="england" or data.lower()=="uk" or data.lower()=="britain" or data.lower()=="great britain" or data.lower()=="scotland" or data.lower()=="united kingdom"):
         data="United Kingdom"
         data1="UK"
-    if(data.lower()=="america" or data.lower()=="us" or data.lower()=="usa" or data.lower()=="united states of america" or data.lower()=="united states"):
-        data="United States"
-        data1="USA"
+#     if(data.lower()=="america" or data.lower()=="us" or data.lower()=="usa" or data.lower()=="united states of america" or data.lower()=="united states"):
+#         data="United States"
+#         data1="USA"
     f = open('iso.json') 
     datas = json.load(f)
     for key,value in datas.items():
@@ -319,6 +319,22 @@ def predicted(data,num):
                 data3=int(data3)
                 data2=f'{data2:,}'
                 data3=f'{data3:,}'
+                
+                
+                dat1=datestr2.split("-")
+                arr4=["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"]
+                dat5=(int(dat1[1]))-1
+                dat9=arr4[dat5]
+                dat2=int(dat1[2])
+                datestr2=str(dat2)+" "+dat9
+                
+                
+                dat1=datestr3.split("-")
+                dat5=(int(dat1[1]))-1
+                dat9=arr4[dat5]
+                dat2=int(dat1[2])
+                datestr3=str(dat2)+" "+dat9
+                
                 if(num==1):
                     #r1=emoji.emojize(':globe_with_meridians:', use_aliases=True)+" *"+i4+" (Real Time)*\n\n"+emoji.emojize(':bar_chart:', use_aliases=True)+" Total cases: "+str(i1)+"\n"+emoji.emojize(':chart_with_upwards_trend:', use_aliases=True)+" Total recovery: "+str(i2)+"\n"+emoji.emojize(':chart_with_downwards_trend:', use_aliases=True)+" Total deaths: "+str(i3)+"\n\n"+"*In last 24 hours:*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(infoc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(infod)+"\n\n"+emoji.emojize(':syringe:', use_aliases=True)+" *Total tests done:* "+str(infot)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi *(Or forward this message to your friends & family)*\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply with any country's name to see its cases (Example: *Spain*)\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
                     r1=flag.flagize(flg)+" *"+data1+" (Predicted Cases)*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" "+datestr2+": "+str(data2)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" "+datestr3+": "+str(data3)+"\n\n"+emoji.emojize(':white_check_mark:', use_aliases=True)+" Share this bot - https://wa.me/917380648641?text=Hi *(Or forward this message to your friends & family)*\n\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *3* to see predictions for more countries\n"+emoji.emojize(':round_pushpin:', use_aliases=True)+"Reply *0* to see more options"
