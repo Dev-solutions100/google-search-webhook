@@ -3,6 +3,7 @@
 from __future__ import print_function
 from future.standard_library import install_aliases
 install_aliases()
+import pickle
 import requests
 from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
