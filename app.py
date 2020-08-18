@@ -495,8 +495,10 @@ def risk(data,num):
                                     itmm2=itm11['meta']
                                     try:
                                         itmm=itm11['delta']
-                                        
+                                        print('1')
+                                        print(itmm.keys())
                                         if("confirmed" in itmm.keys()):
+                                            print('2')
                                             itmc1=itmm["confirmed"]
                                             yc=emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(itmc)
                                             ych=emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(itmc)
