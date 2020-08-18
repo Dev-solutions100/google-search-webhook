@@ -469,6 +469,12 @@ def risk(data,num):
                 errno1=0
                 errno2=0
                 testing4=''
+                yc=''
+                yr=''
+                yd=''
+                ych=''
+                yrh=''
+                ydh=''
                 for itmt in itm9.keys():
 #                     #print(itm9[itmt])
 #                     #print("OKKKKK")
@@ -489,9 +495,25 @@ def risk(data,num):
                                     itmm2=itm11['meta']
                                     try:
                                         itmm=itm11['delta']
-                                        itmc1=itmm["confirmed"]
-                                        itmd1=itmm["deceased"]
-                                        itmr1=itmm["recovered"]
+                                        
+                                        if("confirmed" in itmm.keys()):
+                                            itmc1=itmm["confirmed"]
+                                            yc=emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(itmc)
+                                            ych=emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(itmc)
+                                            if("deceased" in itmm.keys() or "recovered" in itmm.keys()):
+                                                yc=yc+"\n"
+                                                ych=ych+"\n"
+                                        if("deceased" in itmm.keys()):
+                                            itmd1=itmm["deceased"]
+                                            yd=emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(itmd)
+                                            ydh=emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(itmd)
+                                        if("recovered" in itmm.keys()):
+                                            itmr1=itmm["recovered"]
+                                            yr=emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(itmr)
+                                            yrh=emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(itmr)
+                                            if("deceased" in itmm.keys()):
+                                                yr=yr+"\n"
+                                                yrh=yrh+"\n"
                                         itmc=itmc1
                                         itmd=itmd1
                                         itmr=itmr1
@@ -536,9 +558,10 @@ def risk(data,num):
                 r1h=''
                 if(num20==1):
                     if(errno1!=1):
-                        r1e="\n\n*Yesterday ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Cases: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Recovered: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" Deaths: "+str(itmd)
-                        r1h="\n\n*कल ("+datestr+"):*\n\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मामले: "+str(itmc)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" ठीक हुए: "+str(itmr)+"\n"+emoji.emojize(':arrow_up:', use_aliases=True)+" मौतें: "+str(itmd)
-                        errno1=0
+                        if(yc!='' or yr!='' or yd!=''):
+                            r1e="\n\n*Yesterday ("+datestr+"):*\n\n"+yc+yr+yd
+                            r1h="\n\n*कल ("+datestr+"):*\n\n"+ych+yrh+ydh
+                            errno1=0
                 else:
                     r1e=''
                     r1h=''
