@@ -196,15 +196,20 @@ def predicted(data,num):
         data="United Kingdom"
         data1="UK"
     if(data.lower()=="america" or data.lower()=="us" or data.lower()=="usa" or data.lower()=="united states of america" or data.lower()=="united states"):
-        data="United States of America"
+        data="United States"
         data1="USA"
-    f = open('iso.json') 
+    if(data.lower()=="united arab emirates"):
+        data="United Arab Emirates"
+        data1="UAE"
+    f = open('iso.json')
+    cntry=''
     datas = json.load(f)
     for key,value in datas.items():
         if(data==value):
             cntry=key
             break
     flg=":"+str(cntry)+":"
+    data=data1
 #     #print("FFFFFFFFFFF")
 #     #print(cntry)
 #     #print(data)
@@ -301,6 +306,12 @@ def predicted(data,num):
                         tests2=itm.get("tests")
                         break
                 
+                if(data.lower()=='usa'):
+                    data='United States'
+                if(data.lower()=='uk'):
+                    data='United Kingdom'
+                if(data.lower()=='uae'):
+                    data='United Arab Emirates'
                 f2 = open('MLdata.txt').read()
                 respo1 = json.loads(f2)
                 for itm in respo1:
@@ -1235,6 +1246,8 @@ def maps_search1(data,num):
     if(data.lower()=="america" or data.lower()=="us" or data.lower()=="usa" or data.lower()=="united states of america" or data.lower()=="united states"):
         #data="United States"
         data="usa"
+    if(data.lower()=="united arab emirates"):
+        data="uae"
 #     url = "https://api.covid19api.com/summary"
 #     respo = requests.request("GET", url)
 #     ##print("FREEEEEEEEEEEEEE")
