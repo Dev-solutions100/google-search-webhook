@@ -34,9 +34,9 @@ def my_job():
  
     dcnt2=2
     dcnt1=1
-    if(now1.hour<=6):
-        dcnt2=dcnt2+1
-        dcnt1=dcnt1+1
+#     if(now1.hour<=6):
+#         dcnt2=dcnt2+1
+#         dcnt1=dcnt1+1
     yestdt2=datetime.date.today()-datetime.timedelta(days=dcnt2)
     yestdt=datetime.date.today()-datetime.timedelta(days=dcnt1)
     #print("DATE")
