@@ -21,8 +21,6 @@ def my_job():
     access_token="52b312b65016ca43fc43145df3a0027aa25bfbd9"
     print('Access token working okay')
     g=Github(access_token)
-    usr=g.get_user()
-    print(usr.name)
     repo=g.get_user().get_repo("google-search-webhook")
     contents=repo.get_contents("test.txt")
     contents1=repo.get_contents("zone.txt")
@@ -249,7 +247,7 @@ if __name__ == '__main__':
     #app.run(debug=False, port=port, host='0.0.0.0')
     
     scheduler = BackgroundScheduler()
-    scheduler.add_job(my_job, 'interval', seconds=30)
+    scheduler.add_job(my_job, 'interval', seconds=3600)
     scheduler.start()
 
     while True:
