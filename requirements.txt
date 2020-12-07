@@ -6,7 +6,7 @@ emoji==0.5.4
 emoji-country-flag==1.2.1
 crontabs==0.1.4
 APScheduler==3.6.3
-PyGithub==1.51
+PyGithub==1.54
 scipy==1.5.2
 scikit-learn==0.21.3
 pandas==1.1.0
