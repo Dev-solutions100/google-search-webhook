@@ -16,7 +16,7 @@ def my_job():
 #         file1.write("Today") 
 #     file1.close()
     
-    g=github.Github(base_url="https://api.github.com",login_or_token="1c770ce741ada6a0852eca85b4ff59bae83c67e9")
+    g=github.Github(base_url="https://api.github.com/v3",login_or_token="1c770ce741ada6a0852eca85b4ff59bae83c67e9")
     repo=g.get_user().get_repo("google-search-webhook")
     contents=repo.get_contents("test.txt")
     contents1=repo.get_contents("zone.txt")
